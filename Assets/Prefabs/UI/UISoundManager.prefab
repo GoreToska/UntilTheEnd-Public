@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5474056430569351516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5474056430569351518}
+  - component: {fileID: 5474056430569351519}
+  m_Layer: 0
+  m_Name: UISoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5474056430569351518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474056430569351516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.24618, y: 2.4535835, z: 41.724102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5474056430569351519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474056430569351516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66686bc1cd06e7f4bb75fb385d02747b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UISoundsAudioMixer: {fileID: 5686073372016816806, guid: 3ef397a161209094a91773cff34781e2, type: 2}
+  _UIClickClips:
+  - {fileID: 8300000, guid: 8c1cb5587b31fe7449e33442b53ce437, type: 3}
+  - {fileID: 8300000, guid: dee5148a8e3279a48bb55af050dd92f7, type: 3}
+  - {fileID: 8300000, guid: 581b42aa26f228d42a1b0d59ec0835d4, type: 3}
+  - {fileID: 8300000, guid: 48b87fdbf8443dd4ea30ce82d4009462, type: 3}
+  _UIConclusionSounds:
+  - {fileID: 8300000, guid: 7692535b73dfa2d46bbc440d08d84ec3, type: 3}
+  - {fileID: 8300000, guid: 8f865da4a48b0ab4ca8ff79dfedf2dfa, type: 3}
+  _UIDeleteConclusionClip: {fileID: 8300000, guid: 9cc78315b59a3c8429d762570a1f0260, type: 3}
+  _UIAudioSource: {fileID: 0}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6517f7ef772e6594eaee192a1b66f3c7, type: 3}
+  m_Name: Snow
+  m_EditorClassIdentifier: 
+  _tag: Snow
+  _sounds:
+  - {fileID: 8300000, guid: e6aad462abe3e1543b54a622ebc3ce5b, type: 3}
+  - {fileID: 8300000, guid: b927519265c9bb747af82d2004e5070e, type: 3}
+  - {fileID: 8300000, guid: 24d4cf571e55ff94d9ee5c724b942322, type: 3}
+  - {fileID: 8300000, guid: d5a4184c1c25d434194b51846f817ff7, type: 3}
+  - {fileID: 8300000, guid: f1aa3b6a5d78f33479c0bdb7819057ec, type: 3}
+  - {fileID: 8300000, guid: 570bf95fd7c46e347994bdf008496b97, type: 3}
+  - {fileID: 8300000, guid: 47bcb5ae4cca38e4891601070837a088, type: 3}
+  - {fileID: 8300000, guid: e71e00ab773ba034185973b8e6e753d6, type: 3}
+  - {fileID: 8300000, guid: 1853b33dcb6b2c0449aaf4cbc7fddf17, type: 3}
+  - {fileID: 8300000, guid: 18f6ef0d6efe65648a4f2c91ebbb9734, type: 3}
+  - {fileID: 8300000, guid: 4d2c8159d3af7ce40af27d358ed0a0fe, type: 3}
+  - {fileID: 8300000, guid: 7f1307e1f8049854ebd5c932005f3aca, type: 3}

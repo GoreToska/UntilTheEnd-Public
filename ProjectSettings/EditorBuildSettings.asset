@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Train.unity
+    guid: cd7f0fc76460d43499749c9f93da128f
+  - enabled: 1
+    path: Assets/Scenes/Railway.unity
+    guid: 50a69d76a5625f14094b623915a1552e
+  - enabled: 1
+    path: Assets/Scenes/CourtHouse.unity
+    guid: cef2011f1cea9bd4e8c7fbdbfb90dabc
+  - enabled: 1
+    path: Assets/Scenes/Estate.unity
+    guid: 5d49ac72889dbff46afcc23543c44e7b
+  - enabled: 1
+    path: Assets/Scenes/EstateFirstFloor.unity
+    guid: 5828daca67ce9444083b5550e4e72457
+  - enabled: 1
+    path: Assets/Scenes/EstateSecondFloor.unity
+    guid: 5b26d27b08884bb448cbef2f625a543e
+  - enabled: 1
+    path: Assets/Scenes/Pub.unity
+    guid: 00a8055bbb8b20742865ea177e8bdcc3
+  m_configObjects: {}

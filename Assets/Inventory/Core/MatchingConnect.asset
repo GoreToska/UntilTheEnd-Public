@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a767c8a5cf0f64292eb20db8eff5e3, type: 3}
+  m_Name: MatchingConnect
+  m_EditorClassIdentifier: 
+  _matching: {fileID: 11400000, guid: 0fa81c4063f501649b65681b20d571a0, type: 2}
+  _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4594c40154937045bb6bf7f56c371b7, type: 3}
+  m_Name: EvidenceMatching
+  m_EditorClassIdentifier: 
+  _evidenceCombinations:
+  - _evidenceOne: {fileID: 11400000, guid: 513dde71725e4c544b8d8064fa0f916f, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: bac2d81f97003df49b0d9efd4251d6b0, type: 2}
+    _report: {fileID: 11400000, guid: 492f4182cc86f5b4f945f835ec1d1f3f, type: 2}
+    _variableName: CanTalkWithDoor
+  - _evidenceOne: {fileID: 11400000, guid: 0fb2c13ad4cdbf7489d688ff080ca4a6, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: 87a0a6a424e125c4b8df314cb32ec275, type: 2}
+    _report: {fileID: 11400000, guid: 1aa90227688be0b49b767303183b717b, type: 2}
+    _variableName: ActOne.EngineerTookCigars
+  - _evidenceOne: {fileID: 11400000, guid: 128d471d409119d40adf31589509c5c0, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: 4bac3537c3de2494ca85db4e11a04b7d, type: 2}
+    _report: {fileID: 11400000, guid: 8df62788bc9ae2749acdcb42b5e66a36, type: 2}
+    _variableName: ActOne.BogshaWasAtEstate
+  - _evidenceOne: {fileID: 11400000, guid: cffc603d5b5ba0443822dc6bb1eed168, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: bb403c3fef40d654b8f985ed7055122a, type: 2}
+    _report: {fileID: 11400000, guid: 1d535ab235a487f4e969177d2ba15c78, type: 2}
+    _variableName: ActOne.BogshaNastasyaLied
+  - _evidenceOne: {fileID: 11400000, guid: 982ca195e8965534692f53f47330fb59, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: fc417046300e8af44a60b4e740e8e6eb, type: 2}
+    _report: {fileID: 11400000, guid: 6b5253fd0022cfd4e888125c737a89a8, type: 2}
+    _variableName: ActOne.BogshaHelpedRene
+  - _evidenceOne: {fileID: 11400000, guid: ec71abe5ffd0fbe49ae76931fab31cf1, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: 9ac407afbeecfc2478005107a8a78d1b, type: 2}
+    _report: {fileID: 11400000, guid: 3850e2c07cef366408c3833b6d097a54, type: 2}
+    _variableName: ActOne.NastasyaFamilyDeath
+  - _evidenceOne: {fileID: 11400000, guid: 74920b4a01c215340938108b4cdd76ee, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: cd385393b9503e54aa02e6d04891ca89, type: 2}
+    _report: {fileID: 11400000, guid: d14b2a168f28c874297a48ce8a9cd51f, type: 2}
+    _variableName: ActOne.NastasyaTornDress
+  - _evidenceOne: {fileID: 11400000, guid: f6f6fb8831554f146bec15025c77268d, type: 2}
+    _evidenceTwo: {fileID: 11400000, guid: 531858ad8225a2b46b8633c47dd5eab1, type: 2}
+    _report: {fileID: 11400000, guid: e4aa4f0876543504bb5cf317dc81bd8b, type: 2}
+    _variableName: ActOne.SawShot
+  _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
