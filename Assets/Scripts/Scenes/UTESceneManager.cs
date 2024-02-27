@@ -128,7 +128,7 @@ public class UTESceneManager : MonoBehaviour
 
     public void OnLoadGame()
     {
-        UIManager.instance.OnCloseMenu();
+        UIManager.Instance.OnCloseMenu();
         MapManager.instance.SetCurrentButtonLong(MapManager.instance.SavedLocation);
         PromptManager.instance.DeactivatePrompts();
         PixelCrushers.SaveSystem.LoadFromSlot(0);

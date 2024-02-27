@@ -50,7 +50,7 @@ public class EvidenceFound : MonoBehaviour
         if (!_evidenceName)
             _evidenceName = GameObject.Find("EvidenceName").GetComponent<TMP_Text>();
 
-        UIAnimations.Ønstance.DialogueFadeOut();
+        UIAnimations.Instance.DialogueFadeOut();
         _inputReader.SwitchToInspectionControls();
         _inputReader.TakeEvidenceEvent += OnTakeDialogueEvidence;
 
@@ -70,7 +70,7 @@ public class EvidenceFound : MonoBehaviour
 
     private void StartInspect(bool isDialogue)
     {
-        _inspectableObject = Instantiate(gameObject, InspectionCamera.instance.gameObject.transform.GetChild(0));
+        _inspectableObject = Instantiate(gameObject, InspectionCamera.Instance.gameObject.transform.GetChild(0));
         _inspectableObject.GetComponent<Rigidbody>().isKinematic = true;
         _inspectableObject.GetComponent<BoxCollider>().enabled = false;
         PromptManager.instance.DeactivatePromptEvidence();
@@ -83,13 +83,13 @@ public class EvidenceFound : MonoBehaviour
         inspectableObject.transform.localRotation = Quaternion.Euler(Vector3.zero + inspectableObject.spawnRotationOffset);
         _evidenceName.text = inspectableObject.Name;
 
-        UIManager.instance.OnEvidenceOpen();
+        UIManager.Instance.OnEvidenceOpen();
 
-        InspectionCamera.instance.inspectableObject = inspectableObject;
-        InspectionCamera.instance.GetComponentInChildren<Camera>().enabled = true;
+        InspectionCamera.Instance.inspectableObject = inspectableObject;
+        InspectionCamera.Instance.GetComponentInChildren<Camera>().enabled = true;
 
         //Äîáàâèòü àíèìàöèþ
-        UIManager.instance.HideMainCanvas();
+        UIManager.Instance.HideMainCanvas();
 
         if (isDialogue)
             _takeButton.onClick.AddListener(() => OnTakeDialogueEvidence());
@@ -100,10 +100,10 @@ public class EvidenceFound : MonoBehaviour
     private void OnTakeDialogueEvidence()
     {
         _inventory.AddEvidence(_evidenceItem);
-        UIManager.instance.OnEvidenceClose();
-        InspectionCamera.instance.GetComponentInChildren<Camera>().enabled = false;
-        UIManager.instance.ShowMainCanvas();
-        UIAnimations.Ønstance.DialogueFadeIn();
+        UIManager.Instance.OnEvidenceClose();
+        InspectionCamera.Instance.GetComponentInChildren<Camera>().enabled = false;
+        UIManager.Instance.ShowMainCanvas();
+        UIAnimations.Instance.DialogueFadeIn();
 
         if (_dialogueVariableName != "")
         {
@@ -121,10 +121,10 @@ public class EvidenceFound : MonoBehaviour
         _inventory.AddEvidence(_evidenceItem);
 
         // TODO: Better funcs to switch canvases
-        UIManager.instance.OnEvidenceClose(); // <- is better
+        UIManager.Instance.OnEvidenceClose(); // <- is better
 
-        InspectionCamera.instance.GetComponentInChildren<Camera>().enabled = false;
-        UIManager.instance.ShowMainCanvas();
+        InspectionCamera.Instance.GetComponentInChildren<Camera>().enabled = false;
+        UIManager.Instance.ShowMainCanvas();
 
         if (_dialogueVariableName != "")
         {

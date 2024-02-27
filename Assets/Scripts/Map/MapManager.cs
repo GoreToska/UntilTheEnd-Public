@@ -59,7 +59,7 @@ public class MapManager : MonoBehaviour
         _mapButton.isOn = true;
         EnableFastTravel();
         //UIManager.instance.SetMapCurrentPage();
-        UIManager.instance.OnOpenJournal();
+        UIManager.Instance.OnOpenJournal();
         _closeButton.SetActive(true);
     }
 
@@ -67,7 +67,7 @@ public class MapManager : MonoBehaviour
     {
         DisableFastTravel();
         _closeButton.SetActive(false);
-        UIManager.instance.OnCloseJournal();
+        UIManager.Instance.OnCloseJournal();
         _lastButton.isOn = true;
     }
 

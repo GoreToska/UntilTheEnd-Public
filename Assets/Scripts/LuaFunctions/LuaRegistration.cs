@@ -31,8 +31,8 @@ public class LuaRegistration : MonoBehaviour
     {
         AttitudeManager.instance.RegisterLua();
         SkillsManager.instance.RegisterLua();
-        UIAnimations.Ønstance.RegisterLua();
-        UIManager.instance.RegisterLua();
+        UIAnimations.Instance.RegisterLua();
+        UIManager.Instance.RegisterLua();
         UTESceneManager.instance.RegisterLua();
         MapManager.instance.RegisterLua();
         CameraStateManager.Ønstance.RegisterLua();

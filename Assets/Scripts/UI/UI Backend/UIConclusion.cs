@@ -18,6 +18,7 @@ public class UIConclusion : MonoBehaviour
     [SerializeField] private GameObject _reportExample;
 
     private float _fadeTime = 0.5f;
+    private IEnumerator _alertCoroutine;
 
     private void Awake()
     {
@@ -31,11 +32,11 @@ public class UIConclusion : MonoBehaviour
         }
 
         ConclusionInit();
+		_alertCoroutine = ConclusionsAlertMessage();
+		//_conclusionsAllertText.enabled = false;
+	}
 
-        //_conclusionsAllertText.enabled = false;
-    }
-
-    private void Start()
+	private void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
@@ -115,7 +116,9 @@ public class UIConclusion : MonoBehaviour
 
     public void ShowConclusionsAlertMessage()
     {
-        StartCoroutine(ConclusionsAlertMessage());
+        _alertCoroutine.Reset();
+		//StopCoroutine(_alertCoroutine);
+		StartCoroutine(_alertCoroutine);
     }
 
     public void ShowConclusionSuccess(float value)

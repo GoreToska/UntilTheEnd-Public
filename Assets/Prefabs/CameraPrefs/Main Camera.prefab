@@ -158,4 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06879ad86d82f574481c2f872b5c471b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraInterim: {fileID: 11400000, guid: e1abe1116b456e84f846913c724108eb, type: 2}
+  _vCameras: []
+  _cameraInterim: {fileID: 11400000, guid: e1abe1116b456e84f846913c724108eb, type: 2}

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InspectionCamera : MonoBehaviour
 {
-    [HideInInspector] public static InspectionCamera instance;
+    [HideInInspector] public static InspectionCamera Instance;
 
     [NonSerialized] public InspectableObject inspectableObject;
 
@@ -22,9 +22,9 @@ public class InspectionCamera : MonoBehaviour
 
     public void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

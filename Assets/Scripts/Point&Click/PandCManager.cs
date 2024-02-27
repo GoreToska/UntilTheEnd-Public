@@ -26,7 +26,7 @@ public class PandCManager : MonoBehaviour
             {
                 var envObject = hit.collider.gameObject.GetComponent<EnvironmentDataHolder>();
 
-                UIManager.instance.ShowInspectionWindow(envObject.Data.Description, envObject.Data.Voice.length);
+                UIManager.Instance.ShowInspectionWindow(envObject.Data.Description, envObject.Data.Voice.length);
                 MusicManager.instance.PlayInspectionPhrase(envObject.Data.Voice);
                 envObject.Destruct();
             }

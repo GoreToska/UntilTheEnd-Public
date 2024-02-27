@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 
 public class UIAnimations : MonoBehaviour
 {
-    [HideInInspector] public static UIAnimations Ønstance;
+    [HideInInspector] public static UIAnimations Instance;
 
     [SerializeField] private Canvas _dialogueCanvas;
     [SerializeField] private Canvas _endGame;
@@ -18,9 +18,9 @@ public class UIAnimations : MonoBehaviour
 
     private void Awake()
     {
-        if (Ønstance == null)
+        if (Instance == null)
         {
-            Ønstance = this;
+            Instance = this;
         }
         else
         {

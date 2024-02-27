@@ -46,7 +46,7 @@ public class ButtonScript : MonoBehaviour
         if (_buttonToggle.isOn)
         {
             SetHighlight(1);
-            UIManager.instance.Invoke(_buttonFunction.ToString(), 0);
+            UIManager.Instance.Invoke(_buttonFunction.ToString(), 0);
         }
         else
         {

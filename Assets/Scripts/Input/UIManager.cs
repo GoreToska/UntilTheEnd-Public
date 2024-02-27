@@ -4,7 +4,7 @@ using PixelCrushers.DialogueSystem;
 
 public class UIManager : MonoBehaviour
 {
-    [HideInInspector] public static UIManager instance;
+    [HideInInspector] public static UIManager Instance;
 
     [Header("Journal pages")]
     [SerializeField] private Canvas _journalCanvas;
@@ -43,9 +43,9 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -95,12 +95,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowMainCanvas()
     {
-        UIAnimations.Ønstance.FadeCanvas(1f, _mainCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _mainCanvas.gameObject);
     }
 
     public void HideMainCanvas()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _mainCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _mainCanvas.gameObject);
     }
 
     public void EnableInspectText(bool value)
@@ -121,44 +121,44 @@ public class UIManager : MonoBehaviour
     public void ShowInspectionWindow(string description, float voiceLenght)
     {
         _inspectionDescription.text = description;
-        StartCoroutine(UIAnimations.Ønstance.ShowReportAlert(_inspectionPageCanvas.gameObject, voiceLenght));
+        StartCoroutine(UIAnimations.Instance.ShowReportAlert(_inspectionPageCanvas.gameObject, voiceLenght));
     }
 
     public void OnQuestsOpen()
     {
         FadeOutAllWindows(3);
 
-        UIAnimations.Ønstance.FadeCanvas(1f, _questsPageCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _questsPageCanvas.gameObject);
         _currentCanvas = _questsPageCanvas;
     }
 
     public void OnActiveQuestOpen()
     {
-        UIAnimations.Ønstance.FadeCanvas(1f, _activeQuestInfoPage.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(0f, _doneQuestInfoPage.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _activeQuestInfoPage.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _doneQuestInfoPage.gameObject);
     }
 
     public void OnDoneQuestOpen()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _activeQuestInfoPage.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(1f, _doneQuestInfoPage.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _activeQuestInfoPage.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _doneQuestInfoPage.gameObject);
     }
 
     public void OnEvidenceOpen()
     {
-        UIAnimations.Ønstance.FadeCanvas(1f, _evidenceCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _evidenceCanvas.gameObject);
     }
 
     public void OnEvidenceClose()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _evidenceCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _evidenceCanvas.gameObject);
     }
 
     public void OnCaseOpen()
     {
         FadeOutAllWindows(1);
 
-        UIAnimations.Ønstance.FadeCanvas(1f, _casePageCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _casePageCanvas.gameObject);
         _currentCanvas = _casePageCanvas;
     }
 
@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
     {
         FadeOutAllWindows(2);
 
-        UIAnimations.Ønstance.FadeCanvas(1f, _mapPageCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _mapPageCanvas.gameObject);
         _currentCanvas = _casePageCanvas;
 
         //_currentCanvas = _mapPageCanvas;
@@ -194,32 +194,32 @@ public class UIManager : MonoBehaviour
 
     public void DisableStartSkillsCanvas()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _startSkillsCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _startSkillsCanvas.gameObject);
     }
 
     public void EnableStartSkillsCanvas()
     {
-        UIAnimations.Ønstance.FadeCanvas(1f, _startSkillsCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _startSkillsCanvas.gameObject);
     }
 
     public void DisableGuideCanvas()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _startGuideCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _startGuideCanvas.gameObject);
     }
 
     public void OnOpenJournal()
     {
-        UIAnimations.Ønstance.FadeCanvasWithVolume(1f, _journalCanvas.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(0f, _mainCanvas.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(1f, _currentCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvasWithVolume(1f, _journalCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _mainCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _currentCanvas.gameObject);
         _inputReader.SwitchToJournalControls();
     }
 
     public void OnCloseJournal()
     {
-        UIAnimations.Ønstance.FadeCanvasWithVolume(0f, _journalCanvas.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(1f, _mainCanvas.gameObject);
-        UIAnimations.Ønstance.FadeCanvas(0f, _currentCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvasWithVolume(0f, _journalCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _mainCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _currentCanvas.gameObject);
         _inputReader.SwitchToGameControls();
     }
 
@@ -229,30 +229,30 @@ public class UIManager : MonoBehaviour
         switch (n)
         {
             case 0:
-                UIAnimations.Ønstance.FadeCanvas(0, _mapPageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _questsPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _mapPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _questsPageCanvas.gameObject);
                 //StartCoroutine(FadeSingleCanvas(0, _optionsPageObject));
-                UIAnimations.Ønstance.FadeCanvas(0, _casePageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _casePageCanvas.gameObject);
                 break;
             case 1:
-                UIAnimations.Ønstance.FadeCanvas(0, _mapPageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _questsPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _mapPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _questsPageCanvas.gameObject);
                 //StartCoroutine(FadeSingleCanvas(0, _optionsPageObject));
                 break;
             case 2:
-                UIAnimations.Ønstance.FadeCanvas(0, _casePageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _questsPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _casePageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _questsPageCanvas.gameObject);
                 //StartCoroutine(FadeSingleCanvas(0, _optionsPageObject));
                 break;
             case 3:
-                UIAnimations.Ønstance.FadeCanvas(0, _casePageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _mapPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _casePageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _mapPageCanvas.gameObject);
                 //StartCoroutine(FadeSingleCanvas(0, _optionsPageObject));
                 break;
             case 4:
-                UIAnimations.Ønstance.FadeCanvas(0, _casePageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _mapPageCanvas.gameObject);
-                UIAnimations.Ønstance.FadeCanvas(0, _questsPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _casePageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _mapPageCanvas.gameObject);
+                UIAnimations.Instance.FadeCanvas(0, _questsPageCanvas.gameObject);
                 break;
 
         }
@@ -270,7 +270,7 @@ public class UIManager : MonoBehaviour
 
     public void EndLoading()
     {
-        UIAnimations.Ønstance.FadeLoadingCanvas(0f, _loadingCanvas.gameObject);
+        UIAnimations.Instance.FadeLoadingCanvas(0f, _loadingCanvas.gameObject);
     }
 
     #endregion
@@ -279,13 +279,13 @@ public class UIManager : MonoBehaviour
 
     public void OnCloseMenu()
     {
-        UIAnimations.Ønstance.FadeCanvas(0f, _menuCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(0f, _menuCanvas.gameObject);
         _inputReader.SwitchToGameControls();
     }
 
     public void OnOpenMenu()
     {
-        UIAnimations.Ønstance.FadeCanvas(1f, _menuCanvas.gameObject);
+        UIAnimations.Instance.FadeCanvas(1f, _menuCanvas.gameObject);
         _inputReader.SwitchToMainMenuControls();
     }
 
