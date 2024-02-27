@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class WallsLookThrough : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private LayerMask wallMask;
-    private static int CutHeightID = Shader.PropertyToID("_CutoffHeight");
-    private static int PlayerPosID = Shader.PropertyToID("_PlayerPosition");
+    [SerializeField] private Transform _target;
+    [SerializeField] private LayerMask _wallMask;
+    private static int _CutHeightID = Shader.PropertyToID("_CutoffHeight");
+    private static int _PlayerPosID = Shader.PropertyToID("_PlayerPosition");
 
-    [SerializeField] private float dissolveSpeed = 3f; // maybe must be counted from the size
-    [SerializeField] private float thresholdHeight = 0.1f;
+    [SerializeField] private float _dissolveSpeed = 3f; // maybe must be counted from the size
+    [SerializeField] private float _thresholdHeight = 0.1f;
 
-    private RaycastHit[] hitObjects;
+    private RaycastHit[] _hitObjects;
     private Dictionary<string, RaycastHit> _hitsObjects = new Dictionary<string, RaycastHit>();
 
     // TODO: Optimize
@@ -24,28 +24,28 @@ public class WallsLookThrough : MonoBehaviour
 
     private void CheckWalls()
     {
-        Vector3 offset = target.transform.position - CameraStateManager.Ønstance.GetComponent<Camera>().transform.position;
-        hitObjects = Physics.RaycastAll(CameraStateManager.Ønstance.GetComponent<Camera>().transform.position, offset.normalized, offset.magnitude, wallMask);
+        Vector3 offset = _target.transform.position - CameraStateManager.Ønstance.GetComponent<Camera>().transform.position;
+        _hitObjects = Physics.RaycastAll(CameraStateManager.Ønstance.GetComponent<Camera>().transform.position, offset.normalized, offset.magnitude, _wallMask);
 
-        for (int i = 0; i < hitObjects.Length; ++i)
+        for (int i = 0; i < _hitObjects.Length; ++i)
         {
-            if (!_hitsObjects.ContainsKey(hitObjects[i].collider.gameObject.name))
+            if (!_hitsObjects.ContainsKey(_hitObjects[i].collider.gameObject.name))
             {
-                _hitsObjects.Add(hitObjects[i].collider.gameObject.name, hitObjects[i]);
+                _hitsObjects.Add(_hitObjects[i].collider.gameObject.name, _hitObjects[i]);
             }
 
-            Material[] materials = hitObjects[i].transform.GetComponent<Renderer>().materials;
+            Material[] materials = _hitObjects[i].transform.GetComponent<Renderer>().materials;
             for (int j = 0; j < materials.Length; ++j)
             {
-                if (materials[j].HasFloat(CutHeightID))
+                if (materials[j].HasFloat(_CutHeightID))
                 {
-                    float lowBorder = hitObjects[i].transform.GetComponent<Collider>().bounds.min.y + thresholdHeight;
-                    float curCutoffHeight = materials[j].GetFloat(CutHeightID);
-                    materials[j].SetVector(PlayerPosID, CheckPlayerPos());
+                    float lowBorder = _hitObjects[i].transform.GetComponent<Collider>().bounds.min.y + _thresholdHeight;
+                    float curCutoffHeight = materials[j].GetFloat(_CutHeightID);
+                    materials[j].SetVector(_PlayerPosID, CheckPlayerPos());
 
                     if (curCutoffHeight > lowBorder)
                     {
-                        materials[j].SetFloat(CutHeightID, curCutoffHeight - dissolveSpeed * Time.deltaTime);
+                        materials[j].SetFloat(_CutHeightID, curCutoffHeight - _dissolveSpeed * Time.deltaTime);
                     }
                 }
                 else
@@ -66,9 +66,9 @@ public class WallsLookThrough : MonoBehaviour
         foreach (KeyValuePair<string, RaycastHit> dictVal in _hitsObjects)
         {
             check = true;
-            for (int i = 0; i < hitObjects.Length; ++i)
+            for (int i = 0; i < _hitObjects.Length; ++i)
             {
-                if (dictVal.Key == hitObjects[i].collider.gameObject.name)
+                if (dictVal.Key == _hitObjects[i].collider.gameObject.name)
                 {
                     check = false;
                     break;
@@ -80,15 +80,15 @@ public class WallsLookThrough : MonoBehaviour
                 Material[] materials = dictVal.Value.transform.GetComponent<Renderer>().materials;
                 for (int k = 0; k < materials.Length; ++k)
                 {
-                    if (materials[k].HasFloat(CutHeightID))
+                    if (materials[k].HasFloat(_CutHeightID))
                     {
                         float highBorder = dictVal.Value.transform.GetComponent<Renderer>().bounds.max.y + 0.2f;
                         // 0.2f - to be sure there is no invisible parts
-                        float curCutoffHeight = materials[k].GetFloat(CutHeightID);
+                        float curCutoffHeight = materials[k].GetFloat(_CutHeightID);
 
                         if (curCutoffHeight < highBorder)
                         {
-                            materials[k].SetFloat(CutHeightID, curCutoffHeight + dissolveSpeed * Time.deltaTime);
+                            materials[k].SetFloat(_CutHeightID, curCutoffHeight + _dissolveSpeed * Time.deltaTime);
                         }
                         else
                         {

@@ -34,11 +34,11 @@ public class EvidenceInfo : MonoBehaviour
         _name.text = name;
         _image.sprite = portrait;
         
-        UIAnimations.instance.FadeCanvas(1f, GetComponent<Canvas>().gameObject);
+        UIAnimations.Ønstance.FadeCanvas(1f, GetComponent<Canvas>().gameObject);
     }
 
     public void HideInfo()
     {
-        UIAnimations.instance.FadeCanvas(0f, GetComponent<Canvas>().gameObject);
+        UIAnimations.Ønstance.FadeCanvas(0f, GetComponent<Canvas>().gameObject);
     }
 }

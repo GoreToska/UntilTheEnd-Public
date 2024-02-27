@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 
 public class UIAnimations : MonoBehaviour
 {
-    [HideInInspector] public static UIAnimations instance;
+    [HideInInspector] public static UIAnimations Ønstance;
 
     [SerializeField] private Canvas _dialogueCanvas;
     [SerializeField] private Canvas _endGame;
@@ -18,19 +18,14 @@ public class UIAnimations : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Ønstance == null)
         {
-            instance = this;
+            Ønstance = this;
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
     }
 
     public void RegisterLua()

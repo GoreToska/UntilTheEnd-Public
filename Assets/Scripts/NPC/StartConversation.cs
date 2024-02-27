@@ -46,7 +46,7 @@ public class StartConversation : MonoBehaviour
         PromptManager.instance.DeactivatePromptDialogue();
         _inputReader.InteractEvent -= OpenDialogue;
 
-        UIAnimations.instance.DialogueFadeIn();
+        UIAnimations.Ønstance.DialogueFadeIn();
 
         if(_conversant)
             DialogueManager.StartConversation(_conversationName, _player.transform, _conversant.transform);

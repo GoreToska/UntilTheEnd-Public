@@ -50,7 +50,7 @@ public class EvidenceFound : MonoBehaviour
         if (!_evidenceName)
             _evidenceName = GameObject.Find("EvidenceName").GetComponent<TMP_Text>();
 
-        UIAnimations.instance.DialogueFadeOut();
+        UIAnimations.Ønstance.DialogueFadeOut();
         _inputReader.SwitchToInspectionControls();
         _inputReader.TakeEvidenceEvent += OnTakeDialogueEvidence;
 
@@ -103,7 +103,7 @@ public class EvidenceFound : MonoBehaviour
         UIManager.instance.OnEvidenceClose();
         InspectionCamera.instance.GetComponentInChildren<Camera>().enabled = false;
         UIManager.instance.ShowMainCanvas();
-        UIAnimations.instance.DialogueFadeIn();
+        UIAnimations.Ønstance.DialogueFadeIn();
 
         if (_dialogueVariableName != "")
         {
