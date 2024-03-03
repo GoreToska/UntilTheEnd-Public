@@ -26,7 +26,7 @@ public class UISoundManager : MonoBehaviour
 
 	public void PlayClickSound()
 	{
-		_UIAudioSource.PlayOneShot(_UIClickClips[Random.Range(0, _UIClickClips.Count - 1)]);
+		_UIAudioSource.PlayOneShot(_UIClickClips[Random.Range(0, _UIClickClips.Count)]);
 	}
 
 	public void PlaySuccessConclusionSound()

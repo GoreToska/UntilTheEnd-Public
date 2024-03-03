@@ -61,6 +61,7 @@ public class EvMatchConnectUI : ScriptableObject
             return;
 
         EvidenceReport answer = _matching.FindMatch(_activeEvidences[0], _activeEvidences[1]);
+       
         if (answer == null)
         {
             UIConclusion.instance.ShowConclusionsAlertMessage();
