@@ -38,19 +38,20 @@ public class StaticDialogueCameraMovement : MonoBehaviour
 
     private void Start()
     {
-       // _virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
-    }
+		DontDestroyOnLoad(gameObject);
+		_virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
+	}
 
-    private void OnEnable()
+	private void OnEnable()
     {
-        _inputReader.ZoomEvent += OnZoom;
+		InputReader.ZoomEvent += OnZoom;
 
         _virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
     }
 
     private void OnDisable()
     {
-        _inputReader.ZoomEvent -= OnZoom;
+		InputReader.ZoomEvent -= OnZoom;
     }
 
     private void OnZoom(float zoom)

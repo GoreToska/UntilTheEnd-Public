@@ -26,19 +26,19 @@ public class PromptManager : MonoBehaviour
     {
         if (_promptDialogue.activeSelf)
         {
-            Vector3 newPromptPos = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetDialogue.transform.position) + new Vector3(0, _lift, 0);
+            Vector3 newPromptPos = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetDialogue.transform.position) + new Vector3(0, _lift, 0);
             _promptDialogue.transform.position = newPromptPos;
         }
 
         if (_promptEvidence.activeSelf)
         {
-            Vector3 newPromptPos = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetEvidence.transform.position) + new Vector3(0, _lift, 0);
+            Vector3 newPromptPos = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetEvidence.transform.position) + new Vector3(0, _lift, 0);
             _promptEvidence.transform.position = newPromptPos;
         }
 
         if (_promtLocation.activeSelf)
         {
-            Vector3 newPromptPos = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetLocation.transform.position) + new Vector3(0, _lift, 0);
+            Vector3 newPromptPos = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetLocation.transform.position) + new Vector3(0, _lift, 0);
             _promtLocation.transform.position = newPromptPos;
         }
     }
@@ -53,11 +53,6 @@ public class PromptManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDisable()
@@ -78,7 +73,7 @@ public class PromptManager : MonoBehaviour
     {
         _targetDialogue = target;
         _NPCName.text = target.GetComponent<DialogueActor>().actor;
-        _promptDialogue.transform.position = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetDialogue.transform.position) + new Vector3(0, _lift, 0);
+        _promptDialogue.transform.position = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetDialogue.transform.position) + new Vector3(0, _lift, 0);
         _promptDialogue.SetActive(true);
     }
 
@@ -95,7 +90,7 @@ public class PromptManager : MonoBehaviour
     {
         _targetEvidence = target;
         _evidenceName.text = target.GetComponent<InspectableObject>().Name;
-        _promptEvidence.transform.position = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetEvidence.transform.position) + new Vector3(0, _lift, 0);
+        _promptEvidence.transform.position = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetEvidence.transform.position) + new Vector3(0, _lift, 0);
         _promptEvidence.SetActive(true);
     }
 
@@ -111,7 +106,7 @@ public class PromptManager : MonoBehaviour
     {
         _targetLocation = target;
         _locationName.text = target.GetComponent<LoadSceneOnTrigger>().Name;
-        _promtLocation.transform.position = CameraStateManager.Ønstance.GetComponent<Camera>().WorldToScreenPoint(_targetLocation.transform.position) + new Vector3(0, _lift, 0);
+        _promtLocation.transform.position = CameraStateManager.Instance.GetComponent<Camera>().WorldToScreenPoint(_targetLocation.transform.position) + new Vector3(0, _lift, 0);
         _promtLocation.SetActive(true);
     }
 

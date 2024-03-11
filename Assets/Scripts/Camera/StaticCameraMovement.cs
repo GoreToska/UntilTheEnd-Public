@@ -43,7 +43,7 @@ public class StaticCameraMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.ZoomEvent += OnZoom;
+		InputReader.ZoomEvent += OnZoom;
 
         _virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
 
@@ -53,7 +53,7 @@ public class StaticCameraMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputReader.ZoomEvent -= OnZoom;
+		InputReader.ZoomEvent -= OnZoom;
     }
 
     private void OnZoom(float zoom)

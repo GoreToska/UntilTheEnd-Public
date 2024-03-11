@@ -5568,7 +5568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411266227841225984, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2138959452665394552, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5612,7 +5612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595215165957515684, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769259743196265114, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5981,6 +5981,22 @@ PrefabInstance:
     - target: {fileID: 7306800424395117567, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5255717303017973433}
+    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5255717303017973433}
+    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateMainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateDialogueCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7306800424914209323, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8293,6 +8309,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b084337c5c3d96b4fb4aa13a89b802ac, type: 3}
+--- !u!114 &5255717303017973433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5287575611878615336, guid: b084337c5c3d96b4fb4aa13a89b802ac, type: 3}
+  m_PrefabInstance: {fileID: 5255717303017973432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06879ad86d82f574481c2f872b5c471b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6161028299358795232
 PrefabInstance:
   m_ObjectHideFlags: 0

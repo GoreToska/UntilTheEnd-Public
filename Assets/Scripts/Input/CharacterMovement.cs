@@ -21,14 +21,14 @@ public class CharacterMovement : MonoBehaviour
     {
         _playerRigidbody = GetComponent<Rigidbody>();
 
-        _inputReader.MoveEvent += OnMove;
+		InputReader.MoveEvent += OnMove;
 
         // TODO: other functions
     }
 
     private void OnDisable()
     {
-        _inputReader.MoveEvent -= OnMove;
+		InputReader.MoveEvent -= OnMove;
 
         // TODO: other functions
     }

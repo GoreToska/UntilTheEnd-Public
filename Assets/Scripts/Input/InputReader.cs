@@ -8,31 +8,31 @@ using UnityEngine.InputSystem;
 public class InputReader : ScriptableObject, GameInput.IGameControlsActions, GameInput.IInspectionControlsActions, GameInput.IMenuControlsActions, GameInput.IMainMenuControlsActions
 {
     //Gameplay delegates
-    public event UnityAction<Vector2> MoveEvent = delegate { };
-    public event UnityAction<Vector2> LookEvent = delegate { };
-    public event UnityAction<float> ZoomEvent = delegate { };
-    public event UnityAction InteractEvent = delegate { };
-    public event UnityAction InspectEvent = delegate { };
-    public event UnityAction OpenMenuEvent = delegate { };
-    public event UnityAction OpenJournal = delegate { };
-    public event UnityAction PointAndClick = delegate { };
-    public event UnityAction SaveGame = delegate { };
-    public event UnityAction LoadGame = delegate { };
-    public event UnityAction Sprint = delegate { };
-    public event UnityAction StopSprint = delegate { };
+    public static event UnityAction<Vector2> MoveEvent = delegate { };
+    public static event UnityAction<Vector2> LookEvent = delegate { };
+    public static event UnityAction<float> ZoomEvent = delegate { };
+    public static event UnityAction InteractEvent = delegate { };
+    public static event UnityAction InspectEvent = delegate { };
+    public static event UnityAction OpenMenuEvent = delegate { };
+    public static event UnityAction OpenJournal = delegate { };
+    public static event UnityAction PointAndClick = delegate { };
+    public static event UnityAction SaveGame = delegate { };
+    public static event UnityAction LoadGame = delegate { };
+    public static event UnityAction Sprint = delegate { };
+    public static event UnityAction StopSprint = delegate { };
 
     //Inspecrion delegates
-    public event UnityAction<bool> ClickEvent = delegate { };
-    public event UnityAction<Vector2> RotateEvent = delegate { };
-    public event UnityAction<float> ZoomEvidenceEvent = delegate { };
-    public event UnityAction TakeEvidenceEvent = delegate { };
+    public static event UnityAction<bool> ClickEvent = delegate { };
+    public static event UnityAction<Vector2> RotateEvent = delegate { };
+    public static event UnityAction<float> ZoomEvidenceEvent = delegate { };
+    public static event UnityAction AcceptEvent = delegate { };
 
     //Menu delegates
-    public event UnityAction MouseClickEvent = delegate { };
-    public event UnityAction ExitEvent = delegate { };
+    public static event UnityAction MouseClickEvent = delegate { };
+    public static event UnityAction ExitEvent = delegate { };
 
     //Main menu delegates
-    public event UnityAction CloseMenuEvent = delegate { };
+    public static event UnityAction CloseMenuEvent = delegate { };
 
     private GameInput _gameInput;
 
@@ -193,7 +193,7 @@ public class InputReader : ScriptableObject, GameInput.IGameControlsActions, Gam
     {
         if (context.performed)
         {
-            TakeEvidenceEvent.Invoke();
+            AcceptEvent.Invoke();
         }
     }
     #endregion
@@ -235,8 +235,8 @@ public class InputReader : ScriptableObject, GameInput.IGameControlsActions, Gam
 
     public void TakeEvidenceInvoke()
     {
-        TakeEvidenceEvent.Invoke();
-        TakeEvidenceEvent = null;
+        AcceptEvent.Invoke();
+        AcceptEvent = null;
     }
 
     public void OpenJournalInvoke()

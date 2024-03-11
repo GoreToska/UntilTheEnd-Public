@@ -19,12 +19,12 @@ public class WalkingDialogueActorsManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void RegisterLua()
+	public void RegisterLua()
     {
         Lua.RegisterFunction("DisableActorWalk", this, SymbolExtensions.GetMethodInfo(() => DisableActorWalk((string)"", (double)0)));
         Lua.RegisterFunction("LetActorWalk", this, SymbolExtensions.GetMethodInfo(() => LetActorWalk((string)"", (double)0)));

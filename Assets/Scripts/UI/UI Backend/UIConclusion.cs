@@ -36,11 +36,6 @@ public class UIConclusion : MonoBehaviour
 		//_conclusionsAllertText.enabled = false;
 	}
 
-	private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void OnEnable()
     {
         _inventory.AddConclusionEvent += AddConclusion;
@@ -116,8 +111,8 @@ public class UIConclusion : MonoBehaviour
 
     public void ShowConclusionsAlertMessage()
     {
-        _alertCoroutine.Reset();
-		//StopCoroutine(_alertCoroutine);
+        //_alertCoroutine.Reset();
+		StopCoroutine(_alertCoroutine);
 		StartCoroutine(_alertCoroutine);
     }
 

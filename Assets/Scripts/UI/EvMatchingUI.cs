@@ -36,11 +36,6 @@ public class EvMatchingUI : MonoBehaviour
         _matchingConnect.Initialize();
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void FillSlot(int num, AEvidence evidence)
     {
         DetermingCurrentSlot(num);
@@ -49,7 +44,7 @@ public class EvMatchingUI : MonoBehaviour
         if(evidence.EvidenceType == EEvidenceType.Item)
         {
             EvidenceItem evidenceItem = evidence as EvidenceItem;
-            _tempSlot.GetComponentsInChildren<Image>()[1].sprite = evidenceItem.GetSprite;
+            _tempSlot.GetComponentsInChildren<Image>()[1].sprite = evidenceItem.EvidenceIcon;
             _tempSlot.GetComponentsInChildren<Image>()[1].color = new Color(255, 255, 255, 1);
         }
         else if (evidence.EvidenceType == EEvidenceType.Report)

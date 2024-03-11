@@ -33,12 +33,12 @@ public class MapManager : MonoBehaviour
         DisableFastTravel();
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void RegisterLua()
+	public void RegisterLua()
     {
         Lua.RegisterFunction("OpenMap", this, SymbolExtensions.GetMethodInfo(() => OpenMap()));
         Lua.RegisterFunction("CloseMap", this, SymbolExtensions.GetMethodInfo(() => CloseMap()));

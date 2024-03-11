@@ -23,11 +23,6 @@ public class EvidenceInfo : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void ShowInfo(string text, string name, Sprite portrait)
     {
         _infoText.text = text;

@@ -8,7 +8,7 @@ namespace PixelCrushers
     {
         [Tooltip("If set, save specified evidence. Otherwise save this evidence.")]
         [SerializeField]
-        private EvidenceFound _evidence = null;
+        private WorldEvidence _evidence = null;
 
         [Serializable]
         public class EvidenceData
@@ -26,9 +26,9 @@ namespace PixelCrushers
 
         protected EvidenceData e_data;
 
-        public EvidenceFound Evidence
+        public WorldEvidence Evidence
         {
-            get { return (_evidence == null) ? this.transform.GetComponent<EvidenceFound>() : _evidence; }
+            get { return (_evidence == null) ? this.transform.GetComponent<WorldEvidence>() : _evidence; }
             set { _evidence = value; }
         }
 
@@ -42,14 +42,7 @@ namespace PixelCrushers
         {
             EvidenceData data = new EvidenceData();
             Debug.Log(Evidence);
-            //data._promptManager = Evidence._promptManager;
-            //data._cvc = Evidence._cvc;
-            //data._mainCamera = Evidence._maincamera;
-            //data._inspectionCamera = Evidence._inspectionCamera;
-            //data._blur = Evidence._blur;
-            //data._inspectionCanvas = Evidence._inspectionCanvas;
-            //data._mainCanvas = Evidence._mainCanvas;
-            data._evidenceName = Evidence._evidenceName;
+            //data._evidenceName = Evidence.EvidenceItem.Name;
             data._dialogueVariable = Evidence._dialogueVariableName;
 
             return SaveSystem.Serialize(data);
@@ -66,14 +59,7 @@ namespace PixelCrushers
 
         private void SetFields(EvidenceData data)
         {
-            //Evidence._promptManager = data._promptManager;
-            //Evidence._cvc = data._cvc;
-            //Evidence._maincamera = data._mainCamera;
-            //Evidence._inspectionCamera = data._inspectionCamera;
-            //Evidence._blur = data._blur;
-            //Evidence._inspectionCanvas = data._inspectionCanvas;
-            //Evidence._mainCanvas = data._mainCanvas;
-            Evidence._evidenceName = data._evidenceName;
+            //Evidence._evidenceName = data._evidenceName;
             Evidence._dialogueVariableName = data._dialogueVariable;
         }
 

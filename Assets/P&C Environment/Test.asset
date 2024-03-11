@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: "\u042D\u0442\u043E \u0442\u0435\u0441\u0442\u043E\u0432\u0430\u044F
     \u0448\u0442\u0443\u043A\u0430."
-  _name: "\u0422\u0435\u0441\u0442\u043E\u0432\u044B\u0439 \u043E\u0431\u044A\u0435\u043A\u0442."
-  _voice: {fileID: 8300000, guid: b910edcd37b75244a946d57aec9d0210, type: 3}
+  _voice: {fileID: 8300000, guid: 9e8ccbe3a4d41c5488a8b58ba9be8947, type: 3}

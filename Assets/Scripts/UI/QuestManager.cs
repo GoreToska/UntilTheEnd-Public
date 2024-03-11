@@ -66,8 +66,6 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-
         foreach (var quest in QuestLog.GetAllQuests(true, null))
         {
             UpdateQuest(quest, QuestLog.GetQuestState(quest));

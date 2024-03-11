@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebe5071654d62340a104a75a489b6c4, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  _evidenceItems: []
+  _evidenceItems:
+  - {fileID: 11400000, guid: 513dde71725e4c544b8d8064fa0f916f, type: 2}
+  - {fileID: 11400000, guid: 128d471d409119d40adf31589509c5c0, type: 2}
+  - {fileID: 11400000, guid: 87a0a6a424e125c4b8df314cb32ec275, type: 2}
+  - {fileID: 11400000, guid: 71cd5d6c26943904c89dd6e14896d6b0, type: 2}
   _logsInfos:
   - {fileID: 11400000, guid: 426e009280a0cfe46bc0ce4fc9e9a2ac, type: 2}
-  _evidenceReports: []
-  _conclusions: []
+  - {fileID: 11400000, guid: 157c64c09eb881a4281664cd632c8f97, type: 2}
+  - {fileID: 11400000, guid: 426e009280a0cfe46bc0ce4fc9e9a2ac, type: 2}
+  _evidenceReports:
+  - {fileID: 11400000, guid: 0fb2c13ad4cdbf7489d688ff080ca4a6, type: 2}
+  - {fileID: 11400000, guid: 531858ad8225a2b46b8633c47dd5eab1, type: 2}
+  _conclusions:
+  - {fileID: 11400000, guid: 1aa90227688be0b49b767303183b717b, type: 2}

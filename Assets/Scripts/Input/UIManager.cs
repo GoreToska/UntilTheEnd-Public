@@ -58,7 +58,6 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-
         _currentCanvas = _casePageCanvas;
         DisableAllWindows();
         OnCloseJournal();
@@ -66,8 +65,8 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.OpenJournal += OnOpenJournal;
-        _inputReader.ExitEvent += OnCloseJournal;
+		InputReader.OpenJournal += OnOpenJournal;
+		InputReader.ExitEvent += OnCloseJournal;
         //_inputReader.OpenMenuEvent += OnOpenMenu;
         //_inputReader.CloseMenuEvent += OnCloseMenu;
 
@@ -77,8 +76,8 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputReader.OpenJournal -= OnOpenJournal;
-        _inputReader.ExitEvent -= OnCloseJournal;
+		InputReader.OpenJournal -= OnOpenJournal;
+		InputReader.ExitEvent -= OnCloseJournal;
         //_inputReader.OpenMenuEvent -= OnOpenMenu;
         //_inputReader.CloseMenuEvent -= OnCloseMenu;
 

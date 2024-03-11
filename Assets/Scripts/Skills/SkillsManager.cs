@@ -18,12 +18,12 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void RegisterLua()
+	public void RegisterLua()
     {
         Lua.RegisterFunction("CheckLaw", this, SymbolExtensions.GetMethodInfo(() => CheckLaw((double)0)));
         Lua.RegisterFunction("CheckCharter", this, SymbolExtensions.GetMethodInfo(() => CheckCharter((double)0)));

@@ -177,8 +177,8 @@ GameObject:
   - component: {fileID: 2067702513321004974}
   - component: {fileID: 2067702513321004969}
   - component: {fileID: 2067702513321004968}
-  - component: {fileID: 2067702513321004971}
   - component: {fileID: 2067702513321004970}
+  - component: {fileID: -8817294128761217712}
   m_Layer: 0
   m_Name: CigaretteCaseEvidence
   m_TagString: Untagged
@@ -220,12 +220,7 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: 513dde71725e4c544b8d8064fa0f916f, type: 2}
-  _promptManager: {fileID: 0}
-  _cvc: {fileID: 0}
-  _maincamera: {fileID: 0}
-  _inspectionCamera: {fileID: 0}
-  _inspectionCanvas: {fileID: 0}
-  _mainCanvas: {fileID: 0}
+  _dialogueVariableName: 
 --- !u!65 &2067702513321004968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -239,22 +234,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2748368, y: 1.3877748, z: 1}
   m_Center: {x: 0.13741723, y: -0.19388731, z: -1.1728178e-15}
---- !u!114 &2067702513321004971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648324655242499088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f977291f24ed341b66c3396cb25cb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPositionOffset: {x: 0, y: 0, z: 0}
-  spawnRotationOffset: {x: 0, y: 0, z: 0}
-  minMaxZoom: {x: 0.5, y: 1}
-  defaultZoomValue: 0.5
 --- !u!54 &2067702513321004970
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,6 +250,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8817294128761217712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648324655242499088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd6c0418d04ec24b95aff6190b1819e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5030390587721348337
 GameObject:
   m_ObjectHideFlags: 0

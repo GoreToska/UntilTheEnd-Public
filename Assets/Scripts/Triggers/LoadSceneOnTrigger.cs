@@ -17,7 +17,7 @@ public class LoadSceneOnTrigger : MonoBehaviour
         if (_requireConfirmation)
         {
             PromptManager.instance.ActivatePromptLocation(gameObject);
-            _inputReader.InteractEvent += OnInteract;
+			InputReader.InteractEvent += OnInteract;
         }
         else
         {
@@ -34,7 +34,7 @@ public class LoadSceneOnTrigger : MonoBehaviour
 
         if (_requireConfirmation)
         {
-            _inputReader.InteractEvent -= OnInteract;
+			InputReader.InteractEvent -= OnInteract;
         }
     }
 
@@ -42,7 +42,7 @@ public class LoadSceneOnTrigger : MonoBehaviour
     {
         if (_spawnPointName != null)
         {
-            _inputReader.InteractEvent -= OnInteract;
+			InputReader.InteractEvent -= OnInteract;
             PixelCrushers.SaveSystem.LoadScene($"{_sceneName}@{_spawnPointName}");
             PromptManager.instance.DeactivatePromptLocation();
         }

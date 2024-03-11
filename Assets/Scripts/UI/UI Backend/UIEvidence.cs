@@ -5,60 +5,68 @@ using UnityEngine.UI;
 
 public class UIEvidence : MonoBehaviour
 {
-    [SerializeField] private GameObject _evidenceExample;
-    [SerializeField] private GameObject _evidenceHelp;
-    [SerializeField] private GameObject _evidencesScrollView;
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private EvMatchConnectUI _matchingConnect;
-    [SerializeField] private GameObject _pageHint;
-    private PageHint _hint;
+	[SerializeField] private GameObject _evidenceExample;
+	[SerializeField] private GameObject _evidenceHelp;
+	[SerializeField] private GameObject _evidencesScrollView;
+	[SerializeField] private Inventory _inventory;
+	[SerializeField] private EvMatchConnectUI _matchingConnect;
+	[SerializeField] private GameObject _pageHint;
+	private PageHint _hint;
 
-    private void Awake()
-    {
-        EvidencesInit();
-        _inventory.AddEvidenceEvent += AddEvidence;
+	private void Awake()
+	{
+		EvidencesInit();
+		_hint = _pageHint.GetComponent<PageHint>();
+	}
 
-        _hint = _pageHint.GetComponent<PageHint>();
-    }
+	private void OnEnable()
+	{
+		_inventory.AddEvidenceEvent += AddEvidence;
+	}
 
-    public void AddEvidence(EvidenceItem evidenceItem, bool disableHint)
-    {
-        if (_inventory.EvidenceInfos.Count >= 0)
-        {
-            _evidenceHelp.SetActive(false); 
-        }
+	private void OnDisable()
+	{
+		_inventory.AddEvidenceEvent -= AddEvidence;
+	}
 
-        // Visual
-        var evidence = Instantiate(_evidenceExample, _evidencesScrollView.transform.GetChild(1).transform);
-        evidence.GetComponentsInChildren<Image>()[1].sprite = evidenceItem.GetSprite;
+	public void AddEvidence(EvidenceItem evidenceItem, bool disableHint)
+	{
+		if (_inventory.EvidenceInfos.Count >= 0)
+		{
+			_evidenceHelp.SetActive(false);
+		}
 
-        // Backend
-        evidence.GetComponent<Button>().onClick.AddListener(() => _matchingConnect.PassEvidence(evidenceItem));
-        evidence.GetComponent<Button>().onClick.AddListener(() => UISoundManager.instance.PlayClickSound());
-        evidence.GetComponent<InvokeReportInfo>().SetData(evidenceItem.Description, evidenceItem.Name, evidenceItem.GetSprite);
+		// Visual
+		var evidence = Instantiate(_evidenceExample, _evidencesScrollView.transform.GetChild(1).transform);
+		evidence.GetComponentsInChildren<Image>()[1].sprite = evidenceItem.EvidenceIcon;
 
-        if (disableHint)
-        {
-            evidence.GetComponent<ButtonHint>().DisableHint();
-        }
-        else
-        {
-            _hint.EnableHint();
-        }
-    }
+		// Backend
+		evidence.GetComponent<Button>().onClick.AddListener(() => _matchingConnect.PassEvidence(evidenceItem));
+		evidence.GetComponent<Button>().onClick.AddListener(() => UISoundManager.instance.PlayClickSound());
+		evidence.GetComponent<InvokeReportInfo>().SetData(evidenceItem.Description, evidenceItem.Name, evidenceItem.EvidenceIcon);
 
-    private void EvidencesInit()
-    {
-        List<EvidenceItem> evidenceItems = _inventory.EvidenceInfos;
+		if (disableHint)
+		{
+			evidence.GetComponent<ButtonHint>().DisableHint();
+		}
+		else
+		{
+			_hint.EnableHint();
+		}
+	}
 
-        foreach (EvidenceItem newEvidenceItem in evidenceItems)
-        {
-            AddEvidence(newEvidenceItem, true);
-        }
-    }
+	private void EvidencesInit()
+	{
+		List<EvidenceItem> evidenceItems = _inventory.EvidenceInfos;
 
-    //public Canvas Panel
-    //{
-    //    get { return _evidencesScrollView; }
-    //}
+		foreach (EvidenceItem newEvidenceItem in evidenceItems)
+		{
+			AddEvidence(newEvidenceItem, true);
+		}
+	}
+
+	//public Canvas Panel
+	//{
+	//    get { return _evidencesScrollView; }
+	//}
 }

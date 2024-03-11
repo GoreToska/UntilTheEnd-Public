@@ -39260,7 +39260,7 @@ MonoBehaviour:
         width: 205
         height: 93
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 341.23495, y: 99.60556}
+    canvasScrollPosition: {x: 264.63922, y: 0}
     canvasZoom: 0.94000006
   - id: 14
     fields:
@@ -51888,14 +51888,16 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: 'TakeEvidence("FootprintsEvidence");
+
+        Destroy("Interest_Footprints")'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 1076.0029
-        y: 176.70775
+        y: 177.51353
         width: 160
         height: 30
     - id: 10
@@ -51947,11 +51949,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'EndDialogue();
-
-        TakeEvidence("FootprintsEvidence");
-
-        Destroy("Interest_Footprints")'
+      userScript: EndDialogue();
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -51970,8 +51968,8 @@ MonoBehaviour:
         width: 248.99994
         height: 98.87233
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 396.36053, y: 0}
-    canvasZoom: 0.91099983
+    canvasScrollPosition: {x: 745.9158, y: 0}
+    canvasZoom: 1.2409996
   - id: 21
     fields:
     - title: Title
@@ -53325,7 +53323,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 586.12067, y: 0}
+    canvasScrollPosition: {x: 533.44214, y: 0}
     canvasZoom: 1.1199999
   syncInfo:
     syncActors: 0

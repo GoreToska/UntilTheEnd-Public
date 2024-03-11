@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class CameraStateManager : MonoBehaviour
 {
-    [HideInInspector] public static CameraStateManager Ønstance;
+    [HideInInspector] public static CameraStateManager Instance;
 
     [SerializeField] private List<CinemachineVirtualCamera> _vCameras = new List<CinemachineVirtualCamera>();
     [SerializeField] private CameraInterim _cameraInterim;
 
     private void Awake()
     {
-        if (Ønstance == null)
+        if (Instance == null)
         {
-            Ønstance = this;
+            Instance = this;
         }
         else
         {
@@ -24,6 +24,8 @@ public class CameraStateManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         _vCameras.Add(StaticCameraMovement.instance.GetComponent<CinemachineVirtualCamera>());
         _vCameras.Add(StaticDialogueCameraMovement.Instance.GetComponent<CinemachineVirtualCamera>());
 

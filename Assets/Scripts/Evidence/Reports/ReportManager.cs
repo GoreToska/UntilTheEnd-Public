@@ -28,12 +28,12 @@ public class ReportManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void RegisterLua()
+	public void RegisterLua()
     {
         Lua.RegisterFunction("AddReport", this, SymbolExtensions.GetMethodInfo(() => AddReport(string.Empty)));
     }

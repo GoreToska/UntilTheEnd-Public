@@ -2091,7 +2091,6 @@ GameObject:
   - component: {fileID: 5742581750851765577}
   - component: {fileID: 3565128680061805398}
   - component: {fileID: 840678997274197609}
-  - component: {fileID: 8368323971605885201}
   m_Layer: 0
   m_Name: Tool box
   m_TagString: Untagged
@@ -2166,14 +2165,6 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: 513dde71725e4c544b8d8064fa0f916f, type: 2}
-  _promptManager: {fileID: 0}
-  _cvc: {fileID: 0}
-  _maincamera: {fileID: 0}
-  _inspectionCamera: {fileID: 0}
-  _blur: {fileID: 0}
-  _inspectionCanvas: {fileID: 0}
-  _mainCanvas: {fileID: 0}
-  _evidenceName: {fileID: 0}
   _dialogueVariableName: ToolboxIsFound
 --- !u!65 &3565128680061805398
 BoxCollider:
@@ -2204,25 +2195,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8368323971605885201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6307199834461319610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f977291f24ed341b66c3396cb25cb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPositionOffset: {x: 0, y: 0, z: 0}
-  spawnRotationOffset: {x: -90, y: 0, z: 0}
-  minMaxZoomZ: {x: 0, y: 0}
-  minMaxZoomX: {x: 0, y: 0}
-  defaultZoomValue: 1
-  _name: 
-  _description: 
 --- !u!1 &6412816493286644834
 GameObject:
   m_ObjectHideFlags: 0

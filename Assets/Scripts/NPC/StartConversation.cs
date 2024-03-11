@@ -27,7 +27,7 @@ public class StartConversation : MonoBehaviour
             PromptManager.instance.ActivatePromptDialogue(gameObject);
         }
 
-        _inputReader.InteractEvent += OpenDialogue;
+		InputReader.InteractEvent += OpenDialogue;
     }
 
     private void OnTriggerExit(Collider other)
@@ -36,7 +36,7 @@ public class StartConversation : MonoBehaviour
             return;
 
         PromptManager.instance.DeactivatePromptDialogue();
-        _inputReader.InteractEvent -= OpenDialogue;
+		InputReader.InteractEvent -= OpenDialogue;
     }
 
     private void OpenDialogue()
@@ -44,7 +44,7 @@ public class StartConversation : MonoBehaviour
         _inputReader.SwitchToJournalControls();
 
         PromptManager.instance.DeactivatePromptDialogue();
-        _inputReader.InteractEvent -= OpenDialogue;
+		InputReader.InteractEvent -= OpenDialogue;
 
         UIAnimations.Instance.DialogueFadeIn();
 

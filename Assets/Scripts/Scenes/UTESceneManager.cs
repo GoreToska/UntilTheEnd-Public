@@ -31,21 +31,21 @@ public class UTESceneManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    private void OnEnable()
+	private void OnEnable()
     {
-        _inputReader.SaveGame += OnSaveGame;
-        _inputReader.LoadGame += OnLoadGame;
+		InputReader.SaveGame += OnSaveGame;
+		InputReader.LoadGame += OnLoadGame;
     }
 
     private void OnDisable()
     {
-        _inputReader.SaveGame -= OnSaveGame;
-        _inputReader.LoadGame -= OnLoadGame;
+		InputReader.SaveGame -= OnSaveGame;
+		InputReader.LoadGame -= OnLoadGame;
     }
 
     public void RegisterLua()
@@ -64,7 +64,7 @@ public class UTESceneManager : MonoBehaviour
 
         //Temp location
         MapManager.instance.SetCurrentButton("Railway1");
-        MusicManager.instance.StopAllMusic(); //    place to on scene change event
+        MusicManager.Instance.StopAllMusic(); //    place to on scene change event
         StartCoroutine(LoadScene("Railway1"));
     }
 
@@ -74,7 +74,7 @@ public class UTESceneManager : MonoBehaviour
             return;
 
         MapManager.instance.SetCurrentButton(_railway);
-        MusicManager.instance.StopAllMusic();
+        MusicManager.Instance.StopAllMusic();
         StartCoroutine(LoadScene(_railway));
     }
 
@@ -84,7 +84,7 @@ public class UTESceneManager : MonoBehaviour
             return;
 
         MapManager.instance.SetCurrentButton(_railway);
-        MusicManager.instance.StopAllMusic();
+        MusicManager.Instance.StopAllMusic();
         PixelCrushers.SaveSystem.LoadScene($"{_railway}@{spawnpoint}");
 
         //StartCoroutine(LoadScene(_railway, spawnpoint));
@@ -96,7 +96,7 @@ public class UTESceneManager : MonoBehaviour
             return;
 
         MapManager.instance.SetCurrentButton(_estate);
-        MusicManager.instance.StopAllMusic();
+        MusicManager.Instance.StopAllMusic();
         StartCoroutine(LoadScene(_estate));
     }
 
@@ -106,7 +106,7 @@ public class UTESceneManager : MonoBehaviour
             return;
 
         MapManager.instance.SetCurrentButton(_court);
-        MusicManager.instance.StopAllMusic();
+        MusicManager.Instance.StopAllMusic();
         StartCoroutine(LoadScene(_court));
     }
 
@@ -116,7 +116,7 @@ public class UTESceneManager : MonoBehaviour
             return;
 
         MapManager.instance.SetCurrentButton(_pub);
-        MusicManager.instance.StopAllMusic();
+        MusicManager.Instance.StopAllMusic();
         StartCoroutine(LoadScene(_pub));
     }
 

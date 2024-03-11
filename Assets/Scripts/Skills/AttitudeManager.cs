@@ -22,12 +22,12 @@ public class AttitudeManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
 
-    public void RegisterLua()
+	public void RegisterLua()
     {
         Lua.RegisterFunction("CheckAttitude", this, SymbolExtensions.GetMethodInfo(() => CheckAttitude((string)"", (string)"")));
         Lua.RegisterFunction("AddAttitude", this, SymbolExtensions.GetMethodInfo(() => AddAttitude((string)"", (double)0)));

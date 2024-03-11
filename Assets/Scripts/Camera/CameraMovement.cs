@@ -43,14 +43,14 @@ public class CameraMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.LookEvent += OnLook;
-        _inputReader.ZoomEvent += OnZoom;
+		InputReader.LookEvent += OnLook;
+		InputReader.ZoomEvent += OnZoom;
     }
 
     private void OnDisable()
     {
-        _inputReader.LookEvent -= OnLook;
-        _inputReader.ZoomEvent -= OnZoom;
+		InputReader.LookEvent -= OnLook;
+		InputReader.ZoomEvent -= OnZoom;
     }
 
     private void Update()

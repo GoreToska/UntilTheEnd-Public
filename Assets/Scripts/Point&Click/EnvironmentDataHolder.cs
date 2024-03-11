@@ -2,49 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentDataHolder : MonoBehaviour
+public class EnvironmentDataHolder : MonoBehaviour, IInteractable
 {
-    [SerializeField] public EnvironmentObjectData Data;
+	[SerializeField] public EnvironmentObjectData Data;
 
-    private float _fadeTime = 0.5f;
-    private int _glowFactorID = Shader.PropertyToID("_GlowFactor");
+	private HighlightComponent _highlightComponent;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag != "Player")
-            return;
+	private void Awake()
+	{
+		_highlightComponent = GetComponentInChildren<HighlightComponent>();
+	}
 
-        SetGlow(1, this.gameObject);
-    }
+	private void Destruct()
+	{
+		_highlightComponent.SetGlow(0, this.gameObject);
+		Destroy(this);
+	}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag != "Player")
-            return;
-
-        SetGlow(0, this.gameObject);
-    }
-
-    public void Destruct()
-    {
-        SetGlow(0, this.gameObject);
-        Destroy(this);
-    }
-
-    private void SetGlow(float value, GameObject gObject)
-    {
-        Transform[] allChildren = gObject.GetComponentsInChildren<Transform>();
-
-        foreach (Transform child in allChildren)
-        {
-            Renderer childRenderer = child.gameObject.GetComponent<Renderer>();
-            if (childRenderer)
-            {
-                foreach (Material mat in childRenderer.materials)
-                {
-                    mat.SetFloat(_glowFactorID, value);
-                }
-            }
-        }
-    }
+	public void StartInteraction()
+	{
+		UIManager.Instance.ShowInspectionWindow(Data.Description, Data.Voice.length);
+		MusicManager.Instance.PlayInspectionPhrase(Data.Voice);
+		Destruct();
+	}
 }

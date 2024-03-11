@@ -1,36 +1,30 @@
-using PixelCrushers.DialogueSystem;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using PixelCrushers.DialogueSystem;
 
-public class DialogueEvidence : MonoBehaviour
+public class DialogueEvidence : WorldEvidence
 {
-    [HideInInspector] public static DialogueEvidence instance;
+	public override void StartInspect()
+	{
+		base.StartInspect();
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+		UIAnimations.Instance.DialogueFadeOut();
+	}
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+	public override void OnInteractionView()
+	{
+		_inventory.AddEvidence(_evidenceItem);
 
-    public void RegisterLua()
-    {
-        Lua.RegisterFunction("TakeEvidence", this, SymbolExtensions.GetMethodInfo(() => TakeEvidence("")));
-    }
+		UIManager.Instance.OnEvidenceClose();
+		UIManager.Instance.ShowMainCanvas();
+		UIAnimations.Instance.DialogueFadeIn();
 
-    public void TakeEvidence(string name)
-    {
-        GameObject.Find(name).GetComponent<EvidenceFound>().DialogueEvidence();
-    }
+		if (_dialogueVariableName != "")
+		{
+			DialogueLua.SetVariable(_dialogueVariableName, true);
+		}
+
+		PlayerInteractionSystem.Instance.EndInteraction();
+
+		EvidenceUIManager.Instance.RemoveButtonEvents();
+		ClearEvidence();
+	}
 }

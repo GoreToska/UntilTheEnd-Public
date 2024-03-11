@@ -14050,6 +14050,7 @@ GameObject:
   - component: {fileID: 8907114558993850230}
   - component: {fileID: 693108231}
   - component: {fileID: 693108232}
+  - component: {fileID: 819176679214750351}
   m_Layer: 7
   m_Name: OfficerFix
   m_TagString: Player
@@ -14191,7 +14192,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 2
   MaxDistance: 50
@@ -14293,12 +14294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a8cf86f63339547a2ac31800fbbf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8154062635090707894}
-  wallMask:
+  _target: {fileID: 8154062635090707894}
+  _wallMask:
     serializedVersion: 2
-    m_Bits: 64
-  dissolveSpeed: 3
-  thresholdHeight: 0.35
+    m_Bits: 0
+  _dissolveSpeed: 3
+  _thresholdHeight: 0.1
 --- !u!114 &7403170431090049535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14448,6 +14449,18 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_usePlayerSpawnpoint: 1
   m_multiscene: 0
+--- !u!114 &819176679214750351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818853390221991692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a8d1eed0540524c9fa3942847ab50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8833699568482866812
 GameObject:
   m_ObjectHideFlags: 0

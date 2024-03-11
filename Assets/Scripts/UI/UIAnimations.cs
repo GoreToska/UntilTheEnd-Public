@@ -26,9 +26,16 @@ public class UIAnimations : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    public void RegisterLua()
+		DialogueFadeOut();
+	}
+
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
+
+	public void RegisterLua()
     {
         Lua.RegisterFunction("StartDialogueFade", this, SymbolExtensions.GetMethodInfo(() => StartDialogueFade((double)0, (double)0)));
         Lua.RegisterFunction("ShowEndCanvas", this, SymbolExtensions.GetMethodInfo(() => ShowEndCanvas()));

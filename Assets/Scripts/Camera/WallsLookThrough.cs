@@ -24,8 +24,8 @@ public class WallsLookThrough : MonoBehaviour
 
     private void CheckWalls()
     {
-        Vector3 offset = _target.transform.position - CameraStateManager.Ønstance.GetComponent<Camera>().transform.position;
-        _hitObjects = Physics.RaycastAll(CameraStateManager.Ønstance.GetComponent<Camera>().transform.position, offset.normalized, offset.magnitude, _wallMask);
+        Vector3 offset = _target.transform.position - CameraStateManager.Instance.GetComponent<Camera>().transform.position;
+        _hitObjects = Physics.RaycastAll(CameraStateManager.Instance.GetComponent<Camera>().transform.position, offset.normalized, offset.magnitude, _wallMask);
 
         for (int i = 0; i < _hitObjects.Length; ++i)
         {
@@ -111,6 +111,6 @@ public class WallsLookThrough : MonoBehaviour
 
     private Vector2 CheckPlayerPos()
     {
-        return CameraStateManager.Ønstance.GetComponent<Camera>().WorldToViewportPoint(gameObject.transform.position);
+        return CameraStateManager.Instance.GetComponent<Camera>().WorldToViewportPoint(gameObject.transform.position);
     }
 }

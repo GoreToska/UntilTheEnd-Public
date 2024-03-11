@@ -8,13 +8,13 @@ public class ReportFound : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _inputReader.InteractEvent += OnInteract;
+		InputReader.InteractEvent += OnInteract;
     }
 
     private void OnTriggerExit(Collider other)
     {
 
-        _inputReader.InteractEvent -= OnInteract;
+		InputReader.InteractEvent -= OnInteract;
     }
 
     private void OnInteract()
@@ -22,7 +22,7 @@ public class ReportFound : MonoBehaviour
         Debug.Log("OnInteract");
 
         _inventory.AddEvidence(_evidenceReport);
-        _inputReader.InteractEvent -= OnInteract;
+		InputReader.InteractEvent -= OnInteract;
         Destroy(gameObject);
     }
 }

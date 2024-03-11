@@ -22,4 +22,9 @@ MonoBehaviour:
   _type: 0
   _npcName: 0
   _logsInfo: {fileID: 11400000, guid: 426e009280a0cfe46bc0ce4fc9e9a2ac, type: 2}
-  _sprite: {fileID: 21300000, guid: 2053fd1c817aff44692c2b3ceb934218, type: 3}
+  <EvidenceIcon>k__BackingField: {fileID: 21300000, guid: 2053fd1c817aff44692c2b3ceb934218, type: 3}
+  <SpawnPositionOffset>k__BackingField: {x: -0.5, y: 0, z: 1}
+  <SpawnRotationOffset>k__BackingField: {x: 0, y: 140, z: 0}
+  <MinMaxZoomZ>k__BackingField: {x: 0, y: 0}
+  <MinMaxZoomX>k__BackingField: {x: 0, y: 0}
+  <defaultZoomValue>k__BackingField: 1

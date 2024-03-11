@@ -29,7 +29,7 @@ public class CharacterFootSteps : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(startPoint, startPoint + Vector3.down, out hit, _layerMask))
         {
-            MusicManager.instance.PlayFootSound(hit.collider.tag, _audioSource);
+            MusicManager.Instance.PlayFootSound(hit.collider.tag, _audioSource);
         }
     }
 }

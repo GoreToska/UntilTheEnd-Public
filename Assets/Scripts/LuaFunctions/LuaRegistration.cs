@@ -17,17 +17,15 @@ public class LuaRegistration : MonoBehaviour
         {
             Destroy(gameObject);
         }
+	}
 
-    }
-
-    private void Start()
-    {
+	private void Start()
+	{
         DontDestroyOnLoad(gameObject);
+		RegisterAllLua();
+	}
 
-        RegisterAllLua();
-    }
-
-    private void RegisterAllLua()
+	private void RegisterAllLua()
     {
         AttitudeManager.instance.RegisterLua();
         SkillsManager.instance.RegisterLua();
@@ -35,9 +33,9 @@ public class LuaRegistration : MonoBehaviour
         UIManager.Instance.RegisterLua();
         UTESceneManager.instance.RegisterLua();
         MapManager.instance.RegisterLua();
-        CameraStateManager.Ønstance.RegisterLua();
+        CameraStateManager.Instance.RegisterLua();
         ReportManager.instance.RegisterLua();
-        DialogueEvidence.instance.RegisterLua();
+        DialogueEvidenceInteraction.Instance.RegisterLua();
         WalkingDialogueActorsManager.instance.RegisterLua();
         _inventory.RegisterLua();   
 

@@ -38,17 +38,17 @@ public class StaticCharacterMovement : MonoBehaviour
     private void OnEnable()
     {
         _playerNavMesh = GetComponent<NavMeshAgent>();
-        _inputReader.MoveEvent += OnMove;
-        _inputReader.Sprint += OnSprint;
-        _inputReader.StopSprint += OnSprintExit;
+		InputReader.MoveEvent += OnMove;
+		InputReader.Sprint += OnSprint;
+		InputReader.StopSprint += OnSprintExit;
         // TODO: other functions
     }
 
     private void OnDisable()
     {
-        _inputReader.MoveEvent -= OnMove;
-        _inputReader.Sprint -= OnSprint;
-        _inputReader.StopSprint -= OnSprintExit;
+		InputReader.MoveEvent -= OnMove;
+		InputReader.Sprint -= OnSprint;
+		InputReader.StopSprint -= OnSprintExit;
     }
 
     private void Update()

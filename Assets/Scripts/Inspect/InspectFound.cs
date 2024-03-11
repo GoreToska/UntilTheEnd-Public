@@ -23,13 +23,13 @@ public class InspectFound : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _inputReader.InspectEvent += OnInspect;
+		InputReader.InspectEvent += OnInspect;
         _manager.EnableInspectText(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _inputReader.InspectEvent -= OnInspect;
+		InputReader.InspectEvent -= OnInspect;
         _manager.EnableInspectText(false);
     }
 
@@ -42,7 +42,7 @@ public class InspectFound : MonoBehaviour
 
     private void OnDestroy()
     {
-        _inputReader.InspectEvent -= OnInspect;
+		InputReader.InspectEvent -= OnInspect;
     }
 
     IEnumerator InspectionCoroutine()
