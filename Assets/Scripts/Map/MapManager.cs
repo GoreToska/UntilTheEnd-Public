@@ -1,5 +1,6 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -8,135 +9,154 @@ using Zenject;
 public class MapManager : MonoBehaviour
 {
 
-    [Header(" нопки локаций стоит называть так, как называетс€ сцена локации")]
-    [SerializeField] private List<LocationButton> _mapButtons;
-    [SerializeField] private List<UnityEngine.UI.Toggle> _topBarButtons;
-    [SerializeField] private GameObject _closeButton;
-    [SerializeField] private UnityEngine.UI.Toggle _mapButton;
-    private UnityEngine.UI.Toggle _lastButton;
-    private string _savedLocation;
+	[Header(" нопки локаций стоит называть так, как называетс€ сцена локации")]
+	[SerializeField] private List<LocationButton> _mapButtons;
+	[SerializeField] private List<UnityEngine.UI.Toggle> _topBarButtons;
+	[SerializeField] private GameObject _closeButton;
+	[SerializeField] private UnityEngine.UI.Toggle _mapButton;
+	[SerializeField] public LocationsList LocationsList;
 
-    public event UnityAction EnableFastTravels = delegate { };
-    public event UnityAction DisableFastTravels = delegate { };
+	private UnityEngine.UI.Toggle _lastButton;
+	private string _savedLocation;
 
-    [Inject] private UIManager _uiManager;
+	public event UnityAction EnableFastTravels = delegate { };
+	public event UnityAction DisableFastTravels = delegate { };
+
+	[Inject] private UIManager _uiManager;
 
 	private void Awake()
-    {
-        DisableFastTravel();
-    }
+	{
+		foreach (var item in LocationsList.Locations)
+		{
+			if (item.IsAvailable)
+			{
+				_mapButtons.First(i => i.Name == item.LocationName).UnsetCurrentLocation();
+			}
+			else
+			{
+				_mapButtons.First(i => i.Name == item.LocationName).DisableLocation();
+			}
 
-	public void RegisterLua()
-    {
-        Lua.RegisterFunction("OpenMap", this, SymbolExtensions.GetMethodInfo(() => OpenMap()));
-        Lua.RegisterFunction("CloseMap", this, SymbolExtensions.GetMethodInfo(() => CloseMap()));
-        Lua.RegisterFunction("EnableLocation", this, SymbolExtensions.GetMethodInfo(() => EnableLocation("")));
-    }
+			if (item.IsCurrent || SceneManager.GetActiveScene().name == item.LocationName)
+			{
+				_mapButtons.First(i => i.Name == item.LocationName).SetCurrentLocation();
+			}
+		}
 
-    public void UnregisterLua()
-    {
-        Lua.UnregisterFunction("OpenMap");
-        Lua.UnregisterFunction("CloseMap");
-        Lua.UnregisterFunction("EnableLocation");
+		DisableFastTravel();
 	}
 
-    public void OpenMap()
-    {
-        foreach (var button in _topBarButtons)
-        {
-            if (button.isOn)
-            {
-                _lastButton = button;
-            }
-        }
+	public void RegisterLua()
+	{
+		Lua.RegisterFunction("OpenMap", this, SymbolExtensions.GetMethodInfo(() => OpenMap()));
+		Lua.RegisterFunction("CloseMap", this, SymbolExtensions.GetMethodInfo(() => CloseMap()));
+		Lua.RegisterFunction("EnableLocation", this, SymbolExtensions.GetMethodInfo(() => EnableLocation("")));
+	}
 
-        _lastButton.isOn = false;
-        _mapButton.isOn = true;
-        EnableFastTravel();
+	public void UnregisterLua()
+	{
+		Lua.UnregisterFunction("OpenMap");
+		Lua.UnregisterFunction("CloseMap");
+		Lua.UnregisterFunction("EnableLocation");
+	}
+
+	public void OpenMap()
+	{
+		foreach (var button in _topBarButtons)
+		{
+			if (button.isOn)
+			{
+				_lastButton = button;
+			}
+		}
+
+		_lastButton.isOn = false;
+		_mapButton.isOn = true;
+		EnableFastTravel();
 		//UIManager.instance.SetMapCurrentPage();
 		_uiManager.OnOpenJournal();
-        _closeButton.SetActive(true);
-    }
+		_closeButton.SetActive(true);
+	}
 
-    public void CloseMap()
-    {
-        DisableFastTravel();
-        _closeButton.SetActive(false);
+	public void CloseMap()
+	{
+		DisableFastTravel();
+		_closeButton.SetActive(false);
 		_uiManager.OnCloseJournal();
-        _lastButton.isOn = true;
-    }
+		_lastButton.isOn = true;
+	}
 
-    public void SetCurrentButton(string name)
-    {
-        foreach (var button in _mapButtons)
-        {
-            if (button.Name == SceneManager.GetActiveScene().name)
-            {
-                button.UnsetCurrent();
-            }
-        }
+	public void SetCurrentButton(string name)
+	{
+		foreach (var button in _mapButtons)
+		{
+			if (button.Name == SceneManager.GetActiveScene().name)
+			{
+				button.UnsetCurrentLocation();
+			}
+		}
 
-        foreach (var button in _mapButtons)
-        {
-            if (button.Name == name)
-            {
-                button.SetCurrent();
-            }
-        }
-    }
+		foreach (var button in _mapButtons)
+		{
+			if (button.Name == name)
+			{
+				button.SetCurrentLocation();
+			}
+		}
+	}
 
-    public void SetCurrentButtonLong(string name)
-    {
-        foreach (var button in _mapButtons)
-        {
-            button.UnsetCurrent();
-        }
+	public void SetCurrentButtonLong(string name)
+	{
+		foreach (var button in _mapButtons)
+		{
+			button.UnsetCurrentLocation();
+		}
 
-        foreach (var button in _mapButtons)
-        {
-            if (button.Name == name)
-            {
-                button.SetCurrent();
-            }
-        }
-    }
+		foreach (var button in _mapButtons)
+		{
+			if (button.Name == name)
+			{
+				button.SetCurrentLocation();
+			}
+		}
+	}
 
-    public void EnableLocation(string name)
-    {
-        foreach (var button in _mapButtons)
-        {
-            if (button.Name == name)
-            {
-                button.EnableLocation();
-            }
-        }
-    }
+	public void EnableLocation(string name)
+	{
+		foreach (var button in _mapButtons)
+		{
+			if (button.Name == name)
+			{
+				button.EnableLocation();
+			}
+		}
+	}
 
-    public void DisableLocation(string name)
-    {
-        foreach (var button in _mapButtons)
-        {
-            if (button.Name == name)
-                button.DisableLocation();
-        }
-    }
+	public void DisableLocation(string name)
+	{
+		foreach (var button in _mapButtons)
+		{
+			if (button.Name == name)
+				button.DisableLocation();
+		}
+	}
 
-    public void EnableFastTravel()
-    {
-        EnableFastTravels.Invoke();
-    }
+	public void EnableFastTravel()
+	{
+		EnableFastTravels.Invoke();
+	}
 
-    public void DisableFastTravel()
-    {
-        DisableFastTravels.Invoke();
-    }
+	public void DisableFastTravel()
+	{
+		DisableFastTravels.Invoke();
+	}
 
-    public static string ActiveScene
-    { get { return SceneManager.GetActiveScene().ToString(); } }
+	public static string ActiveScene
+	{ get { return SceneManager.GetActiveScene().ToString(); } }
 
-    public string SavedLocation
-    {
-        get { return _savedLocation; }
-        set { _savedLocation = value; }
-    }
+	public string SavedLocation
+	{
+		get { return _savedLocation; }
+		set { _savedLocation = value; }
+	}
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,103 +6,118 @@ using Zenject;
 
 public class LocationButton : MonoBehaviour
 {
-    [Header("По умолчанию ставить картинку выключенной локации")]
-    [SerializeField] private Sprite _enabledImage;
-    [SerializeField] private Sprite _currentImage;
-    [SerializeField] private bool _enabledOnStart = false;
-    [SerializeField] private string _name;
+	[Header("По умолчанию ставить картинку выключенной локации")]
+	[SerializeField] private Sprite _enabledImage;
+	[SerializeField] private Sprite _currentImage;
+	[SerializeField] private bool _enabledOnStart = false;
+	[SerializeField] private string _name;
 
-    private Button _button;
+	private Button _button;
 
-    [Inject] private MapManager _mapManager;
+	[Inject] private MapManager _mapManager;
 
 	private void Awake()
-    {
-        _button = GetComponent<Button>();
+	{
+		_button = GetComponent<Button>();
 
-        if (UTESceneManager.CurrentScene == _name)
-        {
-            SetCurrent();
-        }
-        else
-        {
-            UnsetCurrent();
-        }
+		//if (UTESceneManager.CurrentScene == _name)
+		//{
+		//	SetCurrentLocation();
+		//}
+		//else
+		//{
+		//	UnsetCurrentLocation();
+		//}
 
-		if (!_enabledOnStart)
-		{
-			DisableLocation();
-			return;
-		}
+		//if (_mapManager.LocationsList.ContainsLocation(_name, out var location))
+		//{
+		//	DisableLocation();
+		//	return;
+		//}
 	}
 
-    public void SetCurrent()
-    {
-        _button.image.sprite = _currentImage;
-        RemoveListeners();
-    }
+	public void SetCurrentLocation()
+	{
+		_button.image.sprite = _currentImage;
+		RemoveListeners();
 
-    public void RemoveListeners()
-    {
-        _button.onClick.RemoveListener(() => _mapManager.CloseMap());
-        _button.onClick.RemoveListener(() => _mapManager.DisableFastTravel());
-    }
+		if (!_mapManager.LocationsList.ContainsLocation(_name))
+			return;
 
-    public void AddListeners()
-    {
-        _button.onClick.AddListener(() => _mapManager.CloseMap());
-        _button.onClick.AddListener(() => _mapManager.DisableFastTravel());
-    }
+		_mapManager.LocationsList.Locations.First(i => i.LocationName == _name).IsAvailable = true;
+		_mapManager.LocationsList.Locations.First(i => i.LocationName == _name).IsCurrent = true;
+	}
 
-    public void UnsetCurrent()
-    {
-        EnableLocation();
-        _button.image.sprite = _enabledImage;
+	public void RemoveListeners()
+	{
+		_button.onClick.RemoveListener(() => _mapManager.CloseMap());
+		_button.onClick.RemoveListener(() => _mapManager.DisableFastTravel());
+	}
 
-        AddListeners();
-    }
+	public void AddListeners()
+	{
+		_button.onClick.AddListener(() => _mapManager.CloseMap());
+		_button.onClick.AddListener(() => _mapManager.DisableFastTravel());
+	}
 
-    private void EnableFastTravel()
-    {
-        _button.interactable = true;
-    }
+	public void UnsetCurrentLocation()
+	{
+		EnableLocation();
+		_button.image.sprite = _enabledImage;
 
-    private void DisableFastTravel()
-    {
-        _button.interactable = false;
-    }
+		AddListeners();
 
-    public void DisableLocation()
-    {
-        _button.transform.gameObject.SetActive(false);
-        //MapManager.instance.EnableFastTravels -= EnableFastTravel;
-        //MapManager.instance.DisableFastTravels -= DisableFastTravel;
-    }
+		if (!_mapManager.LocationsList.ContainsLocation(_name))
+			return;
 
-    public void EnableLocation()
-    {
-		_mapManager.EnableFastTravels += EnableFastTravel;
-        _mapManager.DisableFastTravels += DisableFastTravel;
+		_mapManager.LocationsList.Locations.First(i => i.LocationName == _name).IsAvailable = true;
+		_mapManager.LocationsList.Locations.First(i => i.LocationName == _name).IsCurrent = false;
+	}
 
-        AddListeners();
+	private void SetInteractable()
+	{
+		_button.interactable = true;
+	}
 
-        _button.transform.gameObject.SetActive(true);
-        DisableFastTravel();
-    }
+	private void UnsetInteractable()
+	{
+		_button.interactable = false;
+	}
 
-    public bool EnabledOnStart
-    {
-        get { return _enabledOnStart; }
-        set { _enabledOnStart = value; }
-    }
+	public void DisableLocation()
+	{
+		_button.transform.gameObject.SetActive(false);
+	}
 
-    public string Name
-    {
-        get { return _name; }
-    }
+	public void EnableLocation()
+	{
+		_mapManager.EnableFastTravels += SetInteractable;
+		_mapManager.DisableFastTravels += UnsetInteractable;
 
-    public Button Button
-    {
-        get { return Button; }
-    }
+		AddListeners();
+
+		_button.transform.gameObject.SetActive(true);
+		UnsetInteractable();
+
+		if (!_mapManager.LocationsList.ContainsLocation(_name))
+			return;
+
+		_mapManager.LocationsList.Locations.First(i => i.LocationName == _name).IsAvailable = true;
+	}
+
+	public bool EnabledOnStart
+	{
+		get { return _enabledOnStart; }
+		set { _enabledOnStart = value; }
+	}
+
+	public string Name
+	{
+		get { return _name; }
+	}
+
+	public Button Button
+	{
+		get { return Button; }
+	}
 }

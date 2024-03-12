@@ -9936,6 +9936,7 @@ MonoBehaviour:
   - {fileID: 1815218234}
   _closeButton: {fileID: 7744713809627274432}
   _mapButton: {fileID: 1815218234}
+  LocationsList: {fileID: 11400000, guid: f91e16b604210d842b2e357bd4e302ef, type: 2}
 --- !u!114 &1981617407389186672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22917,7 +22918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597650348684318538, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708362936635231882, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_Enabled
@@ -23542,7 +23543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597650348684318538, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708362936635231882, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_Enabled

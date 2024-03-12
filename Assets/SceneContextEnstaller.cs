@@ -24,7 +24,7 @@ public class SceneContextEnstaller : MonoInstaller
 	[SerializeField] private PromptManager _promptManager;
 	[SerializeField] private MusicManager _musicManager;
 	[SerializeField] private StandardDialogueUI _standardDialogueUI;
-	[SerializeField] protected CameraTarget _cameraTarget;
+	[SerializeField] private CameraTarget _cameraTarget;
 
 	public override void InstallBindings()
 	{
