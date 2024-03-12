@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class EnvironmentDataHolder : MonoBehaviour, IInteractable
 {
 	[SerializeField] public EnvironmentObjectData Data;
 
 	private HighlightComponent _highlightComponent;
+
+	[Inject] private UIManager _uiManager;
+	[Inject] private MusicManager _musicManager;
 
 	private void Awake()
 	{
@@ -21,8 +25,8 @@ public class EnvironmentDataHolder : MonoBehaviour, IInteractable
 
 	public void StartInteraction()
 	{
-		UIManager.Instance.ShowInspectionWindow(Data.Description, Data.Voice.length);
-		MusicManager.Instance.PlayInspectionPhrase(Data.Voice);
+		_uiManager.ShowInspectionWindow(Data.Description, Data.Voice.length);
+		_musicManager.PlayInspectionPhrase(Data.Voice);
 		Destruct();
 	}
 }

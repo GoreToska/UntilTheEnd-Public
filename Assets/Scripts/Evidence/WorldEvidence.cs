@@ -2,6 +2,7 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using TMPro;
 using UnityEngine.UI;
+using Zenject;
 
 public class WorldEvidence : MonoBehaviour, IViewableInteractable
 {
@@ -12,10 +13,15 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	protected GameObject _inspectableObject;
 
 	[SerializeField] public string _dialogueVariableName = "";
-	protected PlayerInteractionSystem _playerInteractionComponent;
 	protected HighlightComponent _highlightComponent;
 
 	public EvidenceItem EvidenceItem { get { return _evidenceItem; } }
+
+	[Inject] protected EvidenceUIManager _evidenceUIManager;
+	[Inject] protected UIManager _uiManager;
+	[Inject] protected PromptManager _promptManager;
+	[Inject] protected UIAnimations _uIAnimations;
+	[Inject] protected PlayerInteractionSystem _playerInteractionSystem;
 
 	private void Awake()
 	{
@@ -27,9 +33,8 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		if (other.gameObject.tag != "Player")
 			return;
 
-		_playerInteractionComponent = other.GetComponent<PlayerInteractionSystem>();
-		_playerInteractionComponent.AddInteractable(this);
-		PromptManager.instance.ActivatePromptEvidence(gameObject);
+		_playerInteractionSystem.AddInteractable(this);
+		_promptManager.ActivatePromptEvidence(gameObject);
 		_highlightComponent.SetGlow(1, this.gameObject);
 	}
 
@@ -38,9 +43,9 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		if (other.gameObject.tag != "Player")
 			return;
 
-		_playerInteractionComponent.RemoveInteractable(this);
+		_playerInteractionSystem.RemoveInteractable(this);
 		_highlightComponent.SetGlow(0, this.gameObject);
-		PromptManager.instance.DeactivatePromptEvidence();
+		_promptManager.DeactivatePromptEvidence();
 	}
 
 	public virtual void StartInteraction()
@@ -55,24 +60,24 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	{
 		InstantiateEvidence();
 
-		PromptManager.instance.DeactivatePromptEvidence();
+		_promptManager.DeactivatePromptEvidence();
 		_highlightComponent.SetGlow(0, _inspectableObject);
 
 		// TODO: inspectableObject to scriptable object
 		_inspectableObject.transform.localPosition = Vector3.zero + EvidenceItem.SpawnPositionOffset;
 		_inspectableObject.transform.localRotation = Quaternion.Euler(Vector3.zero + EvidenceItem.SpawnRotationOffset);
 
-		EvidenceUIManager.Instance.SetEvidenceName(EvidenceItem.Name);
+		_evidenceUIManager.SetEvidenceName(EvidenceItem.Name);
 
-		UIManager.Instance.OnEvidenceOpen();
+		_uiManager.OnEvidenceOpen();
 		InspectionCamera.Instance.InspectableObject = this;
 		//Добавить анимацию
-		UIManager.Instance.HideMainCanvas();
+		_uiManager.HideMainCanvas();
 	}
 
 	protected virtual void AddButtonListener()
 	{
-		EvidenceUIManager.Instance.SetTakeButtonEvent(this);
+		_evidenceUIManager.SetTakeButtonEvent(this);
 	}
 
 	protected virtual void OnDisable()
@@ -100,17 +105,17 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	{
 		_inventory.AddEvidence(_evidenceItem);
 
-		UIManager.Instance.OnEvidenceClose();
-		UIManager.Instance.ShowMainCanvas();
+		_uiManager.OnEvidenceClose();
+		_uiManager.ShowMainCanvas();
 
 		if (_dialogueVariableName != "")
 		{
 			DialogueLua.SetVariable(_dialogueVariableName, true);
 		}
 
-		_playerInteractionComponent.EndInteraction();
+		_playerInteractionSystem.EndInteraction();
 		_inputReader.SwitchToGameControls();
-		EvidenceUIManager.Instance.RemoveButtonEvents();
+		_evidenceUIManager.RemoveButtonEvents();
 		ClearEvidence();
 	}
 }

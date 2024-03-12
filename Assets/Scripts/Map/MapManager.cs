@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class MapManager : MonoBehaviour
 {
-    [HideInInspector] public static MapManager instance;
 
     [Header(" нопки локаций стоит называть так, как называетс€ сцена локации")]
     [SerializeField] private List<LocationButton> _mapButtons;
@@ -19,24 +19,12 @@ public class MapManager : MonoBehaviour
     public event UnityAction EnableFastTravels = delegate { };
     public event UnityAction DisableFastTravels = delegate { };
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    [Inject] private UIManager _uiManager;
 
+	private void Awake()
+    {
         DisableFastTravel();
     }
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
 
 	public void RegisterLua()
     {
@@ -44,6 +32,13 @@ public class MapManager : MonoBehaviour
         Lua.RegisterFunction("CloseMap", this, SymbolExtensions.GetMethodInfo(() => CloseMap()));
         Lua.RegisterFunction("EnableLocation", this, SymbolExtensions.GetMethodInfo(() => EnableLocation("")));
     }
+
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("OpenMap");
+        Lua.UnregisterFunction("CloseMap");
+        Lua.UnregisterFunction("EnableLocation");
+	}
 
     public void OpenMap()
     {
@@ -58,8 +53,8 @@ public class MapManager : MonoBehaviour
         _lastButton.isOn = false;
         _mapButton.isOn = true;
         EnableFastTravel();
-        //UIManager.instance.SetMapCurrentPage();
-        UIManager.Instance.OnOpenJournal();
+		//UIManager.instance.SetMapCurrentPage();
+		_uiManager.OnOpenJournal();
         _closeButton.SetActive(true);
     }
 
@@ -67,7 +62,7 @@ public class MapManager : MonoBehaviour
     {
         DisableFastTravel();
         _closeButton.SetActive(false);
-        UIManager.Instance.OnCloseJournal();
+		_uiManager.OnCloseJournal();
         _lastButton.isOn = true;
     }
 

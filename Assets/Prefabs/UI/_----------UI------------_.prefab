@@ -4329,7 +4329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeAnimationSpeed: 0.2
-  _manager: {fileID: 7306800423008537194}
   _buttonFunction: 1
 --- !u!114 &1097109095
 MonoBehaviour:
@@ -7076,7 +7075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870235016
@@ -10298,7 +10297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeAnimationSpeed: 0.2
-  _manager: {fileID: 7306800423008537194}
   _buttonFunction: 0
 --- !u!114 &1573808572
 MonoBehaviour:
@@ -11151,7 +11149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeAnimationSpeed: 0.2
-  _manager: {fileID: 7306800423008537194}
   _buttonFunction: 2
 --- !u!114 &1815218234
 MonoBehaviour:
@@ -22920,7 +22917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597650348684318538, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 708362936635231882, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_Enabled
@@ -23545,7 +23542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 597650348684318538, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 708362936635231882, guid: 9109d02abb029f04b8b10940501b6a6b, type: 3}
       propertyPath: m_Enabled

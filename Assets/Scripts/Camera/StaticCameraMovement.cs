@@ -1,11 +1,11 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
+using Zenject;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]
 public class StaticCameraMovement : MonoBehaviour
 {
-    [HideInInspector] public static StaticCameraMovement instance;
-
     // input
     [SerializeField] private InputReader _inputReader = default;
     private CinemachineVirtualCamera _virtualCamera;
@@ -15,17 +15,10 @@ public class StaticCameraMovement : MonoBehaviour
     private float _minCameraOffset = 3f;
     [SerializeField] private float _zoomSensitivity = 1f;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+	[Inject] private CameraTarget _cameraTarget;
 
+	private void Awake()
+    {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
 
         if (_virtualCamera == null)
@@ -34,21 +27,16 @@ public class StaticCameraMovement : MonoBehaviour
             Debug.LogError("CameraMovement requires CinemachineVirtualCamera component");
         }
     }
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-        _virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
+	private void Start()
+	{
+        _virtualCamera.Follow = _cameraTarget.gameObject.transform;
     }
 
     private void OnEnable()
     {
 		InputReader.ZoomEvent += OnZoom;
 
-        _virtualCamera.Follow = CameraTarget.Instance.gameObject.transform;
-
-        //if (!_virtualCamera.Follow)
-        //    _virtualCamera.Follow = GameObject.Find("CameraTarget").transform;
+        _virtualCamera.Follow = _cameraTarget.gameObject.transform;
     }
 
     private void OnDisable()

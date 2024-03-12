@@ -17,8 +17,6 @@ namespace PixelCrushers.DialogueSystem.Wrappers
     [AddComponentMenu("Pixel Crushers/Dialogue System/UI/Standard UI/Dialogue/Standard Dialogue UI")]
     public class StandardDialogueUI : PixelCrushers.DialogueSystem.StandardDialogueUI
     {
-        [HideInInspector] public static StandardDialogueUI Instance;
-
         [Header("Conversation History")]
         [SerializeField] private GameObject _conversationDisplay;
         [SerializeField] private GameObject _phraseExample;
@@ -40,11 +38,6 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 
         public override void Awake()
         {
-            if(Instance == null)
-                Instance = this;
-            else
-                Destroy(gameObject);
-
             base.Awake();
             HideAdditionalUI();
         }

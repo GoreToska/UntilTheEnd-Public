@@ -5,8 +5,6 @@ using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
-    [HideInInspector] public static MusicManager Instance;
-
     [SerializeField] private AudioMixerGroup _musicAudioMixer;
     [SerializeField] private List<AudioClip> _TrainMusicClips;
     [SerializeField] private List<AudioClip> _RailwayMusicClips;
@@ -22,19 +20,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _voiceAudioSource;
 
     [SerializeField] private List<FootstepsSounds> _sounds;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    }
 
     private void OnDisable()
     {

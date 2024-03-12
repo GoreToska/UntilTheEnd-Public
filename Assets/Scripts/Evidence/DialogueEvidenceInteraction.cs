@@ -21,12 +21,17 @@ public class DialogueEvidenceInteraction : MonoBehaviour
 
 	private void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 
 	public void RegisterLua()
 	{
 		Lua.RegisterFunction("TakeEvidence", this, SymbolExtensions.GetMethodInfo(() => TakeEvidence("")));
+	}
+
+	public void UnregisterLua()
+	{
+		Lua.UnregisterFunction("TakeEvidence");
 	}
 
 	public void TakeEvidence(string name)

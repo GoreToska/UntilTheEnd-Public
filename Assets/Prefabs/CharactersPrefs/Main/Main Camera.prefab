@@ -133,8 +133,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
+    m_Style: 2
+    m_Time: 1.3
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -205,3 +205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
+  _pandcLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048

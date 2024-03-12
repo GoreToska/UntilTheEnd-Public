@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public class StaticCharacterMovement : MonoBehaviour
 {
@@ -27,12 +28,14 @@ public class StaticCharacterMovement : MonoBehaviour
     private float _smoothing = 0.25f;
     [SerializeField] private float _targetLerpSpeed = 1;
 
-    private void Start()
+    [Inject] private StaticCameraMovement _staticCameraMovement;
+
+	private void Start()
     {
         _directionForward.y = 0;
 
-        _directionForward = StaticCameraMovement.instance.gameObject.transform.forward.normalized;
-        MoveCameraTarget();
+        _directionForward = _staticCameraMovement.gameObject.transform.forward.normalized;
+        //MoveCameraTarget();
     }
 
     private void OnEnable()
@@ -54,7 +57,7 @@ public class StaticCharacterMovement : MonoBehaviour
     private void Update()
     {
         MoveCharacter();
-        MoveCameraTarget();
+        //MoveCameraTarget();
     }
 
     private void LateUpdate()
@@ -120,10 +123,10 @@ public class StaticCharacterMovement : MonoBehaviour
         get { return _playerNavMesh.velocity.magnitude * _movementMultiplier; }
     }
 
-    private void MoveCameraTarget()
-    {
-        CameraTarget.Instance.gameObject.transform.position = gameObject.transform.position;
-    }
+    //private void MoveCameraTarget()
+    //{
+    //    CameraTarget.Instance.gameObject.transform.position = gameObject.transform.position;
+    //}
 
     public void ControlSwitch(bool value)
     {

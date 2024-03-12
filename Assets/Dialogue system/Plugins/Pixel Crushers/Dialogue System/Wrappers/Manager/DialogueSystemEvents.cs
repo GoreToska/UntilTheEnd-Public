@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace PixelCrushers.DialogueSystem.Wrappers
 {
@@ -14,21 +15,25 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 	[AddComponentMenu("Pixel Crushers/Dialogue System/Misc/Dialogue System Events")]
 	public class DialogueSystemEvents : PixelCrushers.DialogueSystem.DialogueSystemEvents
 	{
+		[Inject] private CameraStateManager _cameraStateManager;
+		[Inject] private UIAnimations _uiAnimations;
+		[Inject] private StandardDialogueUI _standardDialogueUI;
+
 		private void OnEnable()
 		{
 			conversationEvents.onConversationStart.AddListener(
 				delegate
 				{
-					CameraStateManager.Instance.ActivateDialogueCamera();
-					UIAnimations.Instance.DialogueFadeIn();
+					_cameraStateManager.ActivateDialogueCamera();
+					_uiAnimations.DialogueFadeIn();
 				});
 
 			conversationEvents.onConversationEnd.AddListener(
 				delegate
 				{
-					CameraStateManager.Instance.ActivateMainCamera();
-					UIAnimations.Instance.DialogueFadeOut();
-					StandardDialogueUI.Instance.ClearHistory();
+					_cameraStateManager.ActivateMainCamera();
+					_uiAnimations.DialogueFadeOut();
+					_standardDialogueUI.ClearHistory();
 				});
 		}
 

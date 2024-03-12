@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Zenject;
 
 public enum ButtonFunctions
 {
@@ -14,7 +15,6 @@ public enum ButtonFunctions
 public class ButtonScript : MonoBehaviour
 {
     [SerializeField] private float _fadeAnimationSpeed;
-    [SerializeField] private UIManager _manager;
     [SerializeField] private ButtonFunctions _buttonFunction;
 
     private Color _redColor = new(255, 102, 102);
@@ -25,7 +25,9 @@ public class ButtonScript : MonoBehaviour
     private Tween _textTween;
     private Toggle _buttonToggle;
 
-    private void Awake()
+    [Inject] private UIManager _uiManager;
+
+	private void Awake()
     {
         _highlightImage = GetComponentInChildren<Image>();
         _buttonLabel = GetComponentInChildren<TMP_Text>();
@@ -46,7 +48,7 @@ public class ButtonScript : MonoBehaviour
         if (_buttonToggle.isOn)
         {
             SetHighlight(1);
-            UIManager.Instance.Invoke(_buttonFunction.ToString(), 0);
+			_uiManager.Invoke(_buttonFunction.ToString(), 0);
         }
         else
         {

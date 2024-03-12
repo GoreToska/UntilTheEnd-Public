@@ -7,8 +7,6 @@ using UnityEngine.Rendering;
 
 public class UIAnimations : MonoBehaviour
 {
-    [HideInInspector] public static UIAnimations Instance;
-
     [SerializeField] private Canvas _dialogueCanvas;
     [SerializeField] private Canvas _endGame;
     [SerializeField] private Volume _blur;
@@ -18,21 +16,7 @@ public class UIAnimations : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
 		DialogueFadeOut();
-	}
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
 	}
 
 	public void RegisterLua()
@@ -41,6 +25,13 @@ public class UIAnimations : MonoBehaviour
         Lua.RegisterFunction("ShowEndCanvas", this, SymbolExtensions.GetMethodInfo(() => ShowEndCanvas()));
         Lua.RegisterFunction("StartFadeToBlack", this, SymbolExtensions.GetMethodInfo(() => StartFadeToBlack((double)0, (double)0)));
     }
+
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("StartDialogueFade");
+        Lua.UnregisterFunction("ShowEndCanvas");
+        Lua.UnregisterFunction("StartFadeToBlack");
+	}
 
     public void ShowEndCanvas()
     {

@@ -2,72 +2,73 @@ using System.Collections.Generic;
 using Cinemachine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
+using Zenject;
 
 public class CameraStateManager : MonoBehaviour
 {
-    [HideInInspector] public static CameraStateManager Instance;
+	[SerializeField] private List<CinemachineVirtualCamera> _vCameras = new List<CinemachineVirtualCamera>();
+	[SerializeField] private CameraInterim _cameraInterim;
 
-    [SerializeField] private List<CinemachineVirtualCamera> _vCameras = new List<CinemachineVirtualCamera>();
-    [SerializeField] private CameraInterim _cameraInterim;
+	[Inject] private StaticCameraMovement _staticCameraMovement;
+	[Inject] private StaticDialogueCameraMovement _staticDialogueCameraMovement;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+	private CinemachineVirtualCamera _mainVirtualCamera;
+	private CinemachineVirtualCamera _dialogueVirtualCamera;
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
+	private void Awake()
+	{
+		_mainVirtualCamera = _staticCameraMovement.GetComponent<CinemachineVirtualCamera>();
+		_dialogueVirtualCamera = _staticDialogueCameraMovement.GetComponent<CinemachineVirtualCamera>();
 
-        _vCameras.Add(StaticCameraMovement.instance.GetComponent<CinemachineVirtualCamera>());
-        _vCameras.Add(StaticDialogueCameraMovement.Instance.GetComponent<CinemachineVirtualCamera>());
+		_vCameras.Add(_mainVirtualCamera);
+		_vCameras.Add(_dialogueVirtualCamera);
 
-        ActivateMainCamera();
-        //cameraInterim.DialogueActiveEvent += ActivateDialogueCamera;
-    }
+		ActivateMainCamera();
+	}
 
-    public void ActivateMainCamera()
-    {
-        _cameraInterim.DisactivateDialogue();
-        SwitchCamera(StaticCameraMovement.instance.GetComponent<CinemachineVirtualCamera>());
-    }
+	public void ActivateMainCamera()
+	{
+		_cameraInterim.DisactivateDialogue();
+		SwitchCamera(_mainVirtualCamera);
+	}
 
-    public void ActivateDialogueCamera()
-    {
-        _cameraInterim.ActivateDialogue();
-        SwitchCamera(StaticDialogueCameraMovement.Instance.GetComponent<CinemachineVirtualCamera>());
-    }
+	public void ActivateDialogueCamera()
+	{
+		_cameraInterim.ActivateDialogue();
+		SwitchCamera(_dialogueVirtualCamera);
+	}
 
-    public void ActivateSpecificCamera(string name)
-    {
-        ResetAllPriorities();
-        var vcam = GameObject.Find(name).GetComponent<CinemachineVirtualCamera>();
-        vcam.Priority = 10;
-    }
+	public void ActivateSpecificCamera(string name)
+	{
+		ResetAllPriorities();
 
-    private void SwitchCamera(CinemachineVirtualCamera vcam)
-    {
-        ResetAllPriorities();
-        vcam.Priority = 10;
-    }
+		var vcam = GameObject.Find(name).GetComponent<CinemachineVirtualCamera>();
+		vcam.Priority = 10;
+	}
 
-    public void ResetAllPriorities()
-    {
-        foreach (CinemachineVirtualCamera vcam in _vCameras)
-            vcam.Priority = 0;
-    }
+	private void SwitchCamera(CinemachineVirtualCamera vcam)
+	{
+		ResetAllPriorities();
+		vcam.Priority = 10;
+	}
 
-    public void RegisterLua()
-    {
-        Lua.RegisterFunction("ActivateDialogueCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateDialogueCamera()));
-        Lua.RegisterFunction("ActivateMainCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateMainCamera()));
-        Lua.RegisterFunction("ActivateSpecificCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateSpecificCamera("")));
-    }
+	public void ResetAllPriorities()
+	{
+		foreach (CinemachineVirtualCamera vcam in _vCameras)
+			vcam.Priority = 0;
+	}
+
+	public void RegisterLua()
+	{
+		Lua.RegisterFunction("ActivateDialogueCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateDialogueCamera()));
+		Lua.RegisterFunction("ActivateMainCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateMainCamera()));
+		Lua.RegisterFunction("ActivateSpecificCamera", this, SymbolExtensions.GetMethodInfo(() => ActivateSpecificCamera("")));
+	}
+
+	public void UnregisterLua()
+	{
+		Lua.UnregisterFunction("ActivateDialogueCamera");
+		Lua.UnregisterFunction("ActivateMainCamera");
+		Lua.UnregisterFunction("ActivateSpecificCamera");
+	}
 }

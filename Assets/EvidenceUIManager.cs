@@ -6,22 +6,8 @@ using UnityEngine.UI;
 
 public class EvidenceUIManager : MonoBehaviour
 {
-	[HideInInspector] public static EvidenceUIManager Instance;
-
 	[SerializeField] private TMP_Text _evidenceName;
 	[SerializeField] private Button _takeButton;
-
-	private void Awake()
-	{
-		if(Instance == null)
-		{
-			Instance = this;
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
 
 	public void SetEvidenceName(string name)
 	{

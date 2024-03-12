@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class EvidenceInfo : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class EvidenceInfo : MonoBehaviour
     [SerializeField] private TMP_Text _infoText;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private float _animationSpeed = 0.2f;
-    [SerializeField] private Image _image;  
+    [SerializeField] private Image _image;
 
-    private void Awake()
+    [Inject] private UIAnimations _uiAnimations;
+
+	private void Awake()
     {
         if(instance == null)
         {
@@ -28,12 +31,12 @@ public class EvidenceInfo : MonoBehaviour
         _infoText.text = text;
         _name.text = name;
         _image.sprite = portrait;
-        
-        UIAnimations.Instance.FadeCanvas(1f, GetComponent<Canvas>().gameObject);
+
+		_uiAnimations.FadeCanvas(1f, GetComponent<Canvas>().gameObject);
     }
 
     public void HideInfo()
     {
-        UIAnimations.Instance.FadeCanvas(0f, GetComponent<Canvas>().gameObject);
+		_uiAnimations.FadeCanvas(0f, GetComponent<Canvas>().gameObject);
     }
 }

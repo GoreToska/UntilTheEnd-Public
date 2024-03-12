@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LocationButton : MonoBehaviour
 {
@@ -12,15 +13,11 @@ public class LocationButton : MonoBehaviour
 
     private Button _button;
 
-    private void Awake()
+    [Inject] private MapManager _mapManager;
+
+	private void Awake()
     {
         _button = GetComponent<Button>();
-
-        if (!_enabledOnStart)
-        {
-            DisableLocation();
-            return;
-        }
 
         if (UTESceneManager.CurrentScene == _name)
         {
@@ -30,7 +27,13 @@ public class LocationButton : MonoBehaviour
         {
             UnsetCurrent();
         }
-    }
+
+		if (!_enabledOnStart)
+		{
+			DisableLocation();
+			return;
+		}
+	}
 
     public void SetCurrent()
     {
@@ -40,14 +43,14 @@ public class LocationButton : MonoBehaviour
 
     public void RemoveListeners()
     {
-        _button.onClick.RemoveListener(() => MapManager.instance.CloseMap());
-        _button.onClick.RemoveListener(() => MapManager.instance.DisableFastTravel());
+        _button.onClick.RemoveListener(() => _mapManager.CloseMap());
+        _button.onClick.RemoveListener(() => _mapManager.DisableFastTravel());
     }
 
     public void AddListeners()
     {
-        _button.onClick.AddListener(() => MapManager.instance.CloseMap());
-        _button.onClick.AddListener(() => MapManager.instance.DisableFastTravel());
+        _button.onClick.AddListener(() => _mapManager.CloseMap());
+        _button.onClick.AddListener(() => _mapManager.DisableFastTravel());
     }
 
     public void UnsetCurrent()
@@ -77,8 +80,8 @@ public class LocationButton : MonoBehaviour
 
     public void EnableLocation()
     {
-        MapManager.instance.EnableFastTravels += EnableFastTravel;
-        MapManager.instance.DisableFastTravels += DisableFastTravel;
+		_mapManager.EnableFastTravels += EnableFastTravel;
+        _mapManager.DisableFastTravels += DisableFastTravel;
 
         AddListeners();
 

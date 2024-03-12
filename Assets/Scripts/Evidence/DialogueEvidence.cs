@@ -1,4 +1,5 @@
 ﻿using PixelCrushers.DialogueSystem;
+using Zenject;
 
 public class DialogueEvidence : WorldEvidence
 {
@@ -6,25 +7,24 @@ public class DialogueEvidence : WorldEvidence
 	{
 		base.StartInspect();
 
-		UIAnimations.Instance.DialogueFadeOut();
+		_uIAnimations.DialogueFadeOut();
 	}
 
 	public override void OnInteractionView()
 	{
 		_inventory.AddEvidence(_evidenceItem);
 
-		UIManager.Instance.OnEvidenceClose();
-		UIManager.Instance.ShowMainCanvas();
-		UIAnimations.Instance.DialogueFadeIn();
+		_uiManager.OnEvidenceClose();
+		_uiManager.ShowMainCanvas();
+		_uIAnimations.DialogueFadeIn();
 
 		if (_dialogueVariableName != "")
 		{
 			DialogueLua.SetVariable(_dialogueVariableName, true);
 		}
 
-		PlayerInteractionSystem.Instance.EndInteraction();
-
-		EvidenceUIManager.Instance.RemoveButtonEvents();
+		_playerInteractionSystem.EndInteraction();
+		_evidenceUIManager.RemoveButtonEvents();
 		ClearEvidence();
 	}
 }

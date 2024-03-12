@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ReportManager : MonoBehaviour
 {
-    [HideInInspector] public static ReportManager instance;
+    [HideInInspector] public static ReportManager Instance;
 
     [SerializeField] private List<EvidenceReport> _listOfReports;
     [SerializeField] private Inventory _inventory;
@@ -18,9 +18,9 @@ public class ReportManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -30,12 +30,17 @@ public class ReportManager : MonoBehaviour
 
 	private void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 
 	public void RegisterLua()
     {
         Lua.RegisterFunction("AddReport", this, SymbolExtensions.GetMethodInfo(() => AddReport(string.Empty)));
+    }
+
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("AddReport");
     }
 
     private void AddReport(string reportName)

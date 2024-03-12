@@ -4,28 +4,9 @@ using UnityEngine;
 
 public class AttitudeManager : MonoBehaviour
 {
-    [HideInInspector] public static AttitudeManager instance;
-
     [SerializeField] private List<NPCAttitude> _npcAttitudes;
 
     private NPCAttitude _current;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
 
 	public void RegisterLua()
     {
@@ -34,8 +15,15 @@ public class AttitudeManager : MonoBehaviour
         Lua.RegisterFunction("SubAttitude", this, SymbolExtensions.GetMethodInfo(() => SubAttitude((string)"", (double)0)));
     }
 
-    #region Attitude Operations
-    public bool CheckAttitude(string NPCName, string attitudeLVL)
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("CheckAttitude");
+		Lua.UnregisterFunction("AddAttitude");
+		Lua.UnregisterFunction("SubAttitude");
+	}
+
+	#region Attitude Operations
+	public bool CheckAttitude(string NPCName, string attitudeLVL)
     {
         FindNPCbyName(NPCName);
 

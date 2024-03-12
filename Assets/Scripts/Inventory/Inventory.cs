@@ -22,6 +22,11 @@ public class Inventory : ScriptableObject
         Lua.RegisterFunction("HaveEvidence", this, SymbolExtensions.GetMethodInfo(() => HaveEvidence(string.Empty)));
     }
 
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("HaveEvidence");
+    }
+
     public void AddEvidence(AEvidence evidence)
     {
         if (evidence == null)

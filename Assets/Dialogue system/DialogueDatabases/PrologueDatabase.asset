@@ -10738,6 +10738,12 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
+      - originConversationID: 6
+        originDialogueID: 1
+        destinationConversationID: 6
+        destinationDialogueID: 0
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: ActivateSpecificCamera("CutsceneCamera01")
       onExecute:
@@ -12717,8 +12723,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 3162.555, y: 216.63797}
-    canvasZoom: 1.5099992
+    canvasScrollPosition: {x: 166.9119, y: 131.69608}
+    canvasZoom: 1.3599993
   - id: 7
     fields:
     - title: Title

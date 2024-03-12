@@ -1,23 +1,12 @@
 using UnityEngine;
+using Zenject;
 
 public class CameraTarget : MonoBehaviour
 {
-	[HideInInspector] public static CameraTarget Instance;
+	[Inject] private StaticCharacterMovement _character;
 
-	private void Awake()
+	private void Update()
 	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
+		this.transform.position = _character.transform.position;
 	}
 }

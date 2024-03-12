@@ -3,25 +3,7 @@ using UnityEngine;
 
 public class SkillsManager : MonoBehaviour
 {
-    [HideInInspector] public static SkillsManager instance;
     [SerializeField] private CharacterSkills _skills;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
 
 	public void RegisterLua()
     {
@@ -30,8 +12,15 @@ public class SkillsManager : MonoBehaviour
         Lua.RegisterFunction("CheckSavvy", this, SymbolExtensions.GetMethodInfo(() => CheckSavvy((double)0)));
     }
 
-    #region CheckSkills
-    private bool CheckLaw(double value)
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("CheckLaw");
+		Lua.UnregisterFunction("CheckCharter");
+		Lua.UnregisterFunction("CheckSavvy");
+	}
+
+	#region CheckSkills
+	private bool CheckLaw(double value)
     {
         if (_skills.Law >= (int)value)
             return true;

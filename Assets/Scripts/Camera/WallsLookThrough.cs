@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class WallsLookThrough : MonoBehaviour
 {
@@ -14,9 +15,16 @@ public class WallsLookThrough : MonoBehaviour
     private RaycastHit[] _hitObjects;
     private Dictionary<string, RaycastHit> _hitsObjects = new Dictionary<string, RaycastHit>();
 
-    // TODO: Optimize
-    // If it's already cut - dont't check it again
-    private void FixedUpdate()
+    private Camera _camera;
+
+	private void Awake()
+	{
+		_camera = Camera.main;
+	}
+
+	// TODO: Optimize
+	// If it's already cut - dont't check it again
+	private void FixedUpdate()
     {
         CheckWalls();
         UnCheckWalls();
@@ -24,8 +32,8 @@ public class WallsLookThrough : MonoBehaviour
 
     private void CheckWalls()
     {
-        Vector3 offset = _target.transform.position - CameraStateManager.Instance.GetComponent<Camera>().transform.position;
-        _hitObjects = Physics.RaycastAll(CameraStateManager.Instance.GetComponent<Camera>().transform.position, offset.normalized, offset.magnitude, _wallMask);
+        Vector3 offset = _target.transform.position - _camera.transform.position;
+        _hitObjects = Physics.RaycastAll(_camera.transform.position, offset.normalized, offset.magnitude, _wallMask);
 
         for (int i = 0; i < _hitObjects.Length; ++i)
         {
@@ -111,6 +119,6 @@ public class WallsLookThrough : MonoBehaviour
 
     private Vector2 CheckPlayerPos()
     {
-        return CameraStateManager.Instance.GetComponent<Camera>().WorldToViewportPoint(gameObject.transform.position);
+        return _camera.WorldToViewportPoint(gameObject.transform.position);
     }
 }

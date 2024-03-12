@@ -3,11 +3,10 @@ using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using System.Collections;
+using Zenject;
 
 public class UTESceneManager : MonoBehaviour
 {
-    [HideInInspector] public static UTESceneManager instance;
-
     [SerializeField] private InputReader _inputReader;
 
     [SerializeField] public const string _train = "Train";
@@ -18,23 +17,10 @@ public class UTESceneManager : MonoBehaviour
     [SerializeField] public const string _court = "CourtHouse";
     [SerializeField] public const string _pub = "Pub";
 
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-	private void Start()
-	{
-		DontDestroyOnLoad(gameObject);
-	}
+    [Inject] private MapManager _mapManager;
+    [Inject] private PromptManager _promptManager;
+    [Inject] private UIManager _uiManager;
+    [Inject] private MusicManager _musicManager;
 
 	private void OnEnable()
     {
@@ -57,14 +43,23 @@ public class UTESceneManager : MonoBehaviour
         Lua.RegisterFunction("LoadPub", this, SymbolExtensions.GetMethodInfo(() => LoadPub()));
     }
 
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("LoadTrain");
+        Lua.UnregisterFunction("LoadRailway");
+        Lua.UnregisterFunction("LoadRailwaySpawn");
+        Lua.UnregisterFunction("LoadEstate");
+        Lua.UnregisterFunction("LoadPub");
+	}
+
     public void LoadTrain()
     {
         if (CurrentScene == "Railway1")
             return;
 
-        //Temp location
-        MapManager.instance.SetCurrentButton("Railway1");
-        MusicManager.Instance.StopAllMusic(); //    place to on scene change event
+		//Temp location
+		_mapManager.SetCurrentButton("Railway1");
+		_musicManager.StopAllMusic(); //    place to on scene change event
         StartCoroutine(LoadScene("Railway1"));
     }
 
@@ -73,8 +68,8 @@ public class UTESceneManager : MonoBehaviour
         if (CurrentScene == _railway)
             return;
 
-        MapManager.instance.SetCurrentButton(_railway);
-        MusicManager.Instance.StopAllMusic();
+		_mapManager.SetCurrentButton(_railway);
+		_musicManager.StopAllMusic();
         StartCoroutine(LoadScene(_railway));
     }
 
@@ -83,8 +78,8 @@ public class UTESceneManager : MonoBehaviour
         if (CurrentScene == _railway)
             return;
 
-        MapManager.instance.SetCurrentButton(_railway);
-        MusicManager.Instance.StopAllMusic();
+        _mapManager.SetCurrentButton(_railway);
+		_musicManager.StopAllMusic();
         PixelCrushers.SaveSystem.LoadScene($"{_railway}@{spawnpoint}");
 
         //StartCoroutine(LoadScene(_railway, spawnpoint));
@@ -95,8 +90,8 @@ public class UTESceneManager : MonoBehaviour
         if (CurrentScene == _estate)
             return;
 
-        MapManager.instance.SetCurrentButton(_estate);
-        MusicManager.Instance.StopAllMusic();
+        _mapManager.SetCurrentButton(_estate);
+		_musicManager.StopAllMusic();
         StartCoroutine(LoadScene(_estate));
     }
 
@@ -105,8 +100,8 @@ public class UTESceneManager : MonoBehaviour
         if (CurrentScene == _court)
             return;
 
-        MapManager.instance.SetCurrentButton(_court);
-        MusicManager.Instance.StopAllMusic();
+        _mapManager.SetCurrentButton(_court);
+        _musicManager.StopAllMusic();
         StartCoroutine(LoadScene(_court));
     }
 
@@ -115,22 +110,22 @@ public class UTESceneManager : MonoBehaviour
         if (CurrentScene == _pub)
             return;
 
-        MapManager.instance.SetCurrentButton(_pub);
-        MusicManager.Instance.StopAllMusic();
+        _mapManager.SetCurrentButton(_pub);
+        _musicManager.StopAllMusic();
         StartCoroutine(LoadScene(_pub));
     }
 
     public void OnSaveGame()
     {
         PixelCrushers.SaveSystem.SaveToSlot(0);
-        MapManager.instance.SavedLocation = SceneManager.GetActiveScene().name;
+       _mapManager.SavedLocation = SceneManager.GetActiveScene().name;
     }
 
     public void OnLoadGame()
     {
-        UIManager.Instance.OnCloseMenu();
-        MapManager.instance.SetCurrentButtonLong(MapManager.instance.SavedLocation);
-        PromptManager.instance.DeactivatePrompts();
+        _uiManager.OnCloseMenu();
+		_mapManager.SetCurrentButtonLong(_mapManager.SavedLocation);
+		_promptManager.DeactivatePrompts();
         PixelCrushers.SaveSystem.LoadFromSlot(0);
     }
 

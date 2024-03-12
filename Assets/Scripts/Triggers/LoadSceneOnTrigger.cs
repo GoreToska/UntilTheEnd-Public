@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class LoadSceneOnTrigger : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class LoadSceneOnTrigger : MonoBehaviour
 
     [SerializeField] private bool _requireConfirmation;
 
-    private void OnTriggerEnter(Collider other)
+    [Inject] private PromptManager _promptManager;
+
+	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player")
             return;
 
         if (_requireConfirmation)
         {
-            PromptManager.instance.ActivatePromptLocation(gameObject);
+			_promptManager.ActivatePromptLocation(gameObject);
 			InputReader.InteractEvent += OnInteract;
         }
         else
@@ -30,7 +33,7 @@ public class LoadSceneOnTrigger : MonoBehaviour
         if (other.gameObject.tag != "Player")
             return;
 
-        PromptManager.instance.DeactivatePromptLocation();
+		_promptManager.DeactivatePromptLocation();
 
         if (_requireConfirmation)
         {
@@ -44,12 +47,12 @@ public class LoadSceneOnTrigger : MonoBehaviour
         {
 			InputReader.InteractEvent -= OnInteract;
             PixelCrushers.SaveSystem.LoadScene($"{_sceneName}@{_spawnPointName}");
-            PromptManager.instance.DeactivatePromptLocation();
+            _promptManager.DeactivatePromptLocation();
         }
         else
         {
             PixelCrushers.SaveSystem.LoadScene(_sceneName);
-            PromptManager.instance.DeactivatePromptLocation();
+            _promptManager.DeactivatePromptLocation();
         }
     }
 

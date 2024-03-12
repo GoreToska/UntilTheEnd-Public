@@ -5,13 +5,13 @@ using System.Collections;
 
 public class WalkingDialogueActorsManager : MonoBehaviour
 {
-    [HideInInspector] public static WalkingDialogueActorsManager instance;
+    [HideInInspector] public static WalkingDialogueActorsManager Instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -21,7 +21,7 @@ public class WalkingDialogueActorsManager : MonoBehaviour
 
 	private void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 
 	public void RegisterLua()
@@ -30,6 +30,13 @@ public class WalkingDialogueActorsManager : MonoBehaviour
         Lua.RegisterFunction("LetActorWalk", this, SymbolExtensions.GetMethodInfo(() => LetActorWalk((string)"", (double)0)));
         Lua.RegisterFunction("Rotate", this, SymbolExtensions.GetMethodInfo(() => Rotate((float)0f, (string)"")));
     }
+
+    public void UnregisterLua()
+    {
+        Lua.UnregisterFunction("DisableActorWalk");
+        Lua.UnregisterFunction("LetActorWalk");
+        Lua.UnregisterFunction("Rotate");
+	}
 
     public void Rotate(float value, string name)
     {

@@ -5,18 +5,8 @@ using UnityEngine;
 
 public class PlayerInteractionSystem : MonoBehaviour
 {
-	[HideInInspector] public static PlayerInteractionSystem Instance;
-
 	private List<IInteractable> _interactables = new List<IInteractable>();
 	private IInteractable _currentInteractable = null;
-
-	private void Awake()
-	{
-		if (Instance == null)
-			Instance = this;
-		else
-			Destroy(gameObject);
-	}
 
 	private void OnEnable()
 	{
