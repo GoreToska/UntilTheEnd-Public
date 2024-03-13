@@ -156,7 +156,7 @@ public class UIManager : MonoBehaviour
 		FadeOutAllWindows(2);
 
 		_uiAnimations.FadeCanvas(1f, _mapPageCanvas.gameObject);
-		_currentCanvas = _casePageCanvas;
+		_currentCanvas = _mapPageCanvas;
 
 		//_currentCanvas = _mapPageCanvas;
 
@@ -174,11 +174,6 @@ public class UIManager : MonoBehaviour
 		//_mapPageCanvas.enabled = true;
 		//Debug.Log(_mapPageCanvas.enabled);
 		////_mapPageCanvas.GetComponent<CanvasGroup>().alpha = 1f;
-	}
-
-	public void SetMapCurrentPage()
-	{
-		_currentCanvas = _mapPageCanvas;
 	}
 
 	public void DisableStartSkillsCanvas()
