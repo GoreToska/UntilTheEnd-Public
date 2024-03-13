@@ -11,8 +11,8 @@ public class UILog : MonoBehaviour
 
     private void Awake()
     {
-        LogsInit();
-        _inventory.ChangeLogEvent += AddLog;
+        //LogsInit();
+        //_inventory.ChangeLogEvent += AddLog;
     }
 
     //перепроектировать позже с учетом системы

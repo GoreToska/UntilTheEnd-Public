@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class UIConclusion : MonoBehaviour
 {
-    [HideInInspector] public static UIConclusion instance;
-
     [SerializeField] private GameObject _conclusionHelp;
     [SerializeField] private GameObject _conclusionsPanel;
     [SerializeField] private Inventory _inventory;
@@ -22,18 +20,8 @@ public class UIConclusion : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         ConclusionInit();
 		_alertCoroutine = ConclusionsAlertMessage();
-		//_conclusionsAllertText.enabled = false;
 	}
 
     private void OnEnable()
@@ -120,9 +108,4 @@ public class UIConclusion : MonoBehaviour
     {
         StartCoroutine(ConclusionSuccess(value));
     }
-
-    //public Canvas Panel
-    //{
-    //    get { return _conclusionsPanel; }
-    //}
 }

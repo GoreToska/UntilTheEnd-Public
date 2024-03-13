@@ -3461,6 +3461,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 936aa5ee41af0044fafbfa16f9460e13, type: 3}
+--- !u!114 &1186761793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 957378793465838345, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+  m_PrefabInstance: {fileID: 1644854721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed492757ad61294492a33ec7ba92425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1186761794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2139328666, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+  m_PrefabInstance: {fileID: 1644854721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66686bc1cd06e7f4bb75fb385d02747b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1357728830 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3561693451885253138, guid: 6cc929448b402ab4792f8e4810637e27, type: 3}
@@ -5878,7 +5900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411266227841225984, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2046171553645975962, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: _camera
@@ -7052,6 +7074,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1644854732}
     - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
+      propertyPath: _uiConclusion
+      value: 
+      objectReference: {fileID: 1186761793}
+    - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
       propertyPath: _promptManager
       value: 
       objectReference: {fileID: 1644854723}
@@ -7063,6 +7089,10 @@ PrefabInstance:
       propertyPath: _skillsManager
       value: 
       objectReference: {fileID: 1644854725}
+    - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
+      propertyPath: _uiSoundManager
+      value: 
+      objectReference: {fileID: 1186761794}
     - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
       propertyPath: _attitudeManager
       value: 

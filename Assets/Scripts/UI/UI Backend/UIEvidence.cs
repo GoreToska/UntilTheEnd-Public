@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class UIEvidence : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIEvidence : MonoBehaviour
 	[SerializeField] private EvMatchConnectUI _matchingConnect;
 	[SerializeField] private GameObject _pageHint;
 	private PageHint _hint;
+
+	[Inject] private UISoundManager _uiSoundManager;
 
 	private void Awake()
 	{
@@ -42,7 +45,7 @@ public class UIEvidence : MonoBehaviour
 
 		// Backend
 		evidence.GetComponent<Button>().onClick.AddListener(() => _matchingConnect.PassEvidence(evidenceItem));
-		evidence.GetComponent<Button>().onClick.AddListener(() => UISoundManager.instance.PlayClickSound());
+		evidence.GetComponent<Button>().onClick.AddListener(() => _uiSoundManager.PlayClickSound());
 		evidence.GetComponent<InvokeReportInfo>().SetData(evidenceItem.Description, evidenceItem.Name, evidenceItem.EvidenceIcon);
 
 		if (disableHint)

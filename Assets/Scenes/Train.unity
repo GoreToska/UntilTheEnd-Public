@@ -13280,7 +13280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411266227841225984, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2138959452665394552, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13324,7 +13324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595215165957515684, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769259743196265114, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13813,6 +13813,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b091197700398584a897df7494387677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1016025604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 957378793465838345, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+  m_PrefabInstance: {fileID: 1016025600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed492757ad61294492a33ec7ba92425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1016025605 stripped
@@ -38771,6 +38782,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2139328662}
     - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
+      propertyPath: _uiConclusion
+      value: 
+      objectReference: {fileID: 1016025604}
+    - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
       propertyPath: _promptManager
       value: 
       objectReference: {fileID: 102278681}
@@ -38782,6 +38797,10 @@ PrefabInstance:
       propertyPath: _skillsManager
       value: 
       objectReference: {fileID: 1141517592}
+    - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
+      propertyPath: _uiSoundManager
+      value: 
+      objectReference: {fileID: 1016025602}
     - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
       propertyPath: _attitudeManager
       value: 

@@ -25,6 +25,8 @@ public class SceneContextEnstaller : MonoInstaller
 	[SerializeField] private MusicManager _musicManager;
 	[SerializeField] private StandardDialogueUI _standardDialogueUI;
 	[SerializeField] private CameraTarget _cameraTarget;
+	[SerializeField] private UISoundManager _uiSoundManager;
+	[SerializeField] private UIConclusion _uiConclusion;
 
 	public override void InstallBindings()
 	{
@@ -47,5 +49,7 @@ public class SceneContextEnstaller : MonoInstaller
 		Container.BindInstance(_musicManager).AsSingle().NonLazy();
 		Container.BindInstance(_standardDialogueUI).AsSingle().NonLazy();
 		Container.BindInstance(_cameraTarget).AsSingle().NonLazy();
+		Container.BindInstance(_uiSoundManager).AsSingle().NonLazy();
+		Container.BindInstance(_uiConclusion).AsSingle().NonLazy();
 	}
 }

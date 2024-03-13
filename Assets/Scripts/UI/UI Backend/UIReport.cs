@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class UIReport : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class UIReport : MonoBehaviour
     //[SerializeField] private GameObject _pageHint;
     [SerializeField] private PageHint _hint;
 
-    private List<string> eNPCNames = new();
+    [Inject] private UISoundManager _uiSoundManager;
+
+	private List<string> eNPCNames = new();
 
     private void Awake()
     {
@@ -49,7 +52,7 @@ public class UIReport : MonoBehaviour
         NewReport.GetComponentsInChildren<Image>()[1].sprite = evidenceReport.Sprite;
 
         NewReport.GetComponent<Button>().onClick.AddListener(() => _matchingConnect.PassEvidence(evidenceReport));
-        NewReport.GetComponent<Button>().onClick.AddListener(() => UISoundManager.instance.PlayClickSound());
+        NewReport.GetComponent<Button>().onClick.AddListener(() => _uiSoundManager.PlayClickSound());
         NewReport.GetComponent<InvokeReportInfo>().SetData(evidenceReport.Description, evidenceReport.NPCName.ToString(), evidenceReport.Sprite);
 
         if (disableHint)

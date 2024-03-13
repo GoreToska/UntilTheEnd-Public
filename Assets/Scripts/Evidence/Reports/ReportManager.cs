@@ -3,35 +3,19 @@ using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ReportManager : MonoBehaviour
 {
-    [HideInInspector] public static ReportManager Instance;
-
     [SerializeField] private List<EvidenceReport> _listOfReports;
     [SerializeField] private Inventory _inventory;
     [SerializeField] private GameObject _alert;
     [SerializeField] private float _fadeTime = 0.2f;
     [SerializeField] private float _showTime = 5f;
 
-    private Sequence _sequence;
+    [Inject] private UISoundManager _soundManager;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-	private void Start()
-	{
-		//DontDestroyOnLoad(gameObject);
-	}
+	private Sequence _sequence;
 
 	public void RegisterLua()
     {
@@ -48,9 +32,10 @@ public class ReportManager : MonoBehaviour
         Debug.Log("Add report");
         if (!_alert)
             _alert = GameObject.Find("AlertPanel");
+
         StartCoroutine(ShowAlert(_alert, _showTime));
         _inventory.AddEvidence(FindReportWithName(reportName));
-        UISoundManager.instance.PlaySuccessConclusionSound();
+		_soundManager.PlaySuccessConclusionSound();
     }
 
     private EvidenceReport FindReportWithName(string name)

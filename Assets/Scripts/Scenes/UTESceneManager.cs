@@ -7,155 +7,167 @@ using Zenject;
 
 public class UTESceneManager : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader;
+	[SerializeField] private InputReader _inputReader;
 
-    [SerializeField] public const string _train = "Train";
-    [SerializeField] public const string _estate = "Estate";
-    [SerializeField] public const string _estateFirst = "EstateFirstFloor";
-    [SerializeField] public const string _estateSecond = "EstateSecondFloor";
-    [SerializeField] public const string _railway = "Railway";
-    [SerializeField] public const string _court = "CourtHouse";
-    [SerializeField] public const string _pub = "Pub";
+	[SerializeField] public const string _train = "Train";
+	[SerializeField] public const string _estate = "Estate";
+	[SerializeField] public const string _estateFirst = "EstateFirstFloor";
+	[SerializeField] public const string _estateSecond = "EstateSecondFloor";
+	[SerializeField] public const string _railway = "Railway";
+	[SerializeField] public const string _court = "CourtHouse";
+	[SerializeField] public const string _pub = "Pub";
+	[SerializeField] public const string _loading = "Loading";
 
-    [Inject] private MapManager _mapManager;
-    [Inject] private PromptManager _promptManager;
-    [Inject] private UIManager _uiManager;
-    [Inject] private MusicManager _musicManager;
+	[Inject] private MapManager _mapManager;
+	[Inject] private PromptManager _promptManager;
+	[Inject] private UIManager _uiManager;
+	[Inject] private MusicManager _musicManager;
+
+	private static AsyncOperation _loadingOperation;
 
 	private void OnEnable()
-    {
+	{
 		InputReader.SaveGame += OnSaveGame;
 		InputReader.LoadGame += OnLoadGame;
-    }
-
-    private void OnDisable()
-    {
-		InputReader.SaveGame -= OnSaveGame;
-		InputReader.LoadGame -= OnLoadGame;
-    }
-
-    public void RegisterLua()
-    {
-        Lua.RegisterFunction("LoadTrain", this, SymbolExtensions.GetMethodInfo(() => LoadTrain()));
-        Lua.RegisterFunction("LoadRailway", this, SymbolExtensions.GetMethodInfo(() => LoadRailway()));
-        Lua.RegisterFunction("LoadRailwaySpawn", this, SymbolExtensions.GetMethodInfo(() => LoadRailway("")));
-        Lua.RegisterFunction("LoadEstate", this, SymbolExtensions.GetMethodInfo(() => LoadEstate()));
-        Lua.RegisterFunction("LoadPub", this, SymbolExtensions.GetMethodInfo(() => LoadPub()));
-    }
-
-    public void UnregisterLua()
-    {
-        Lua.UnregisterFunction("LoadTrain");
-        Lua.UnregisterFunction("LoadRailway");
-        Lua.UnregisterFunction("LoadRailwaySpawn");
-        Lua.UnregisterFunction("LoadEstate");
-        Lua.UnregisterFunction("LoadPub");
 	}
 
-    public void LoadTrain()
-    {
-        if (CurrentScene == "Railway1")
-            return;
+	private void OnDisable()
+	{
+		InputReader.SaveGame -= OnSaveGame;
+		InputReader.LoadGame -= OnLoadGame;
+	}
 
-		//Temp location
-		_mapManager.SetCurrentButton("Railway1");
-		_musicManager.StopAllMusic(); //    place to on scene change event
-        StartCoroutine(LoadScene("Railway1"));
-    }
+	public void RegisterLua()
+	{
+		Lua.RegisterFunction("LoadRailway", this, SymbolExtensions.GetMethodInfo(() => LoadRailway()));
+		Lua.RegisterFunction("LoadRailwaySpawn", this, SymbolExtensions.GetMethodInfo(() => LoadRailway("")));
+		Lua.RegisterFunction("LoadEstate", this, SymbolExtensions.GetMethodInfo(() => LoadEstate()));
+		Lua.RegisterFunction("LoadPub", this, SymbolExtensions.GetMethodInfo(() => LoadPub()));
+	}
 
-    public void LoadRailway()
-    {
-        if (CurrentScene == _railway)
-            return;
+	public void UnregisterLua()
+	{
+		Lua.UnregisterFunction("LoadTrain");
+		Lua.UnregisterFunction("LoadRailway");
+		Lua.UnregisterFunction("LoadRailwaySpawn");
+		Lua.UnregisterFunction("LoadEstate");
+		Lua.UnregisterFunction("LoadPub");
+	}
+
+	public void LoadRailway()
+	{
+		if (CurrentScene == _railway)
+			return;
 
 		_mapManager.SetCurrentButton(_railway);
 		_musicManager.StopAllMusic();
-        StartCoroutine(LoadScene(_railway));
-    }
 
-    public void LoadRailway(string spawnpoint)
-    {
-        if (CurrentScene == _railway)
-            return;
+		_loadingOperation = LoadLoadingScene();
 
-        _mapManager.SetCurrentButton(_railway);
+		_loadingOperation.completed += delegate { LoadScene(_railway); _loadingOperation = null; };
+	}
+
+	public void LoadRailway(string spawnpoint)
+	{
+		if (CurrentScene == _railway)
+			return;
+
+		_mapManager.SetCurrentButton(_railway);
 		_musicManager.StopAllMusic();
-        PixelCrushers.SaveSystem.LoadScene($"{_railway}@{spawnpoint}");
 
-        //StartCoroutine(LoadScene(_railway, spawnpoint));
-    }
+		_loadingOperation = LoadLoadingScene();
 
-    public void LoadEstate()
-    {
-        if (CurrentScene == _estate)
-            return;
+		_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadScene($"{_railway}@{spawnpoint}"); };
 
-        _mapManager.SetCurrentButton(_estate);
+		//StartCoroutine(LoadScene(_railway, spawnpoint));
+	}
+
+	public void LoadEstate()
+	{
+		if (CurrentScene == _estate)
+			return;
+
+		_mapManager.SetCurrentButton(_estate);
 		_musicManager.StopAllMusic();
-        StartCoroutine(LoadScene(_estate));
-    }
 
-    public void LoadCourtHouse()
-    {
-        if (CurrentScene == _court)
-            return;
+		_loadingOperation = LoadLoadingScene();
+		_loadingOperation.allowSceneActivation = true;
+		_loadingOperation.completed += delegate { LoadScene(_estate); _loadingOperation = null; };
+	}
 
-        _mapManager.SetCurrentButton(_court);
-        _musicManager.StopAllMusic();
-        StartCoroutine(LoadScene(_court));
-    }
+	public void LoadCourtHouse()
+	{
+		if (CurrentScene == _court)
+			return;
 
-    public void LoadPub()
-    {
-        if (CurrentScene == _pub)
-            return;
+		_mapManager.SetCurrentButton(_court);
+		_musicManager.StopAllMusic();
 
-        _mapManager.SetCurrentButton(_pub);
-        _musicManager.StopAllMusic();
-        StartCoroutine(LoadScene(_pub));
-    }
+		_loadingOperation = LoadLoadingScene();
 
-    public void OnSaveGame()
-    {
-        PixelCrushers.SaveSystem.SaveToSlot(0);
-       _mapManager.SavedLocation = SceneManager.GetActiveScene().name;
-    }
+		_loadingOperation.completed += delegate { LoadScene(_court); _loadingOperation = null; };
+	}
 
-    public void OnLoadGame()
-    {
-        _uiManager.OnCloseMenu();
+	public void LoadPub()
+	{
+		if (CurrentScene == _pub)
+			return;
+
+		_mapManager.SetCurrentButton(_pub);
+		_musicManager.StopAllMusic();
+
+		_loadingOperation = LoadLoadingScene();
+
+		_loadingOperation.completed += delegate { LoadScene(_pub); _loadingOperation = null; };
+	}
+
+	public void OnSaveGame()
+	{
+		PixelCrushers.SaveSystem.SaveToSlot(0);
+		_mapManager.SavedLocation = SceneManager.GetActiveScene().name;
+	}
+
+	public void OnLoadGame()
+	{
+		_uiManager.OnCloseMenu();
 		_mapManager.SetCurrentButtonLong(_mapManager.SavedLocation);
 		_promptManager.DeactivatePrompts();
-        PixelCrushers.SaveSystem.LoadFromSlot(0);
-    }
 
-    private IEnumerator LoadScene(string locationName, string spawnPoint = null)
-    {
-        if (spawnPoint != null)
-        {
-            PixelCrushers.SaveSystem.LoadScene($"{locationName}@{spawnPoint}");
-        }
-        else
-        {
-            PixelCrushers.SaveSystem.LoadScene(locationName);
-        }
+		_loadingOperation = LoadLoadingScene();
 
-        yield return null;
-    }
+		_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadFromSlot(0); _loadingOperation = null; };
+	}
 
-    public static string CurrentScene { get { return SceneManager.GetActiveScene().name; } }
+	private void LoadScene(string locationName, string spawnPoint = null)
+	{
+		if (spawnPoint != null)
+		{
+			PixelCrushers.SaveSystem.LoadScene($"{locationName}@{spawnPoint}");
+		}
+		else
+		{
+			PixelCrushers.SaveSystem.LoadScene(locationName);
+		}
+	}
 
-    public static string TrainName { get { return _train; } }
+	private AsyncOperation LoadLoadingScene()
+	{
+		return SceneManager.LoadSceneAsync(_loading, LoadSceneMode.Single);
+	}
 
-    public static string RailwayName { get { return _railway; } }
+	public static string CurrentScene { get { return SceneManager.GetActiveScene().name; } }
 
-    public static string CourtName { get { return _court; } }
+	public static string TrainName { get { return _train; } }
 
-    public static string EstateName { get { return _estate; } }
+	public static string RailwayName { get { return _railway; } }
 
-    public static string EstateFirstName { get { return _estateFirst; } }
+	public static string CourtName { get { return _court; } }
 
-    public static string EstateSecondName { get { return _estateSecond; } }
+	public static string EstateName { get { return _estate; } }
 
-    public static string PubName { get { return _pub; } }
+	public static string EstateFirstName { get { return _estateFirst; } }
+
+	public static string EstateSecondName { get { return _estateSecond; } }
+
+	public static string PubName { get { return _pub; } }
 }

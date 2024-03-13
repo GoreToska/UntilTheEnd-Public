@@ -19,21 +19,6 @@ public class LocationButton : MonoBehaviour
 	private void Awake()
 	{
 		_button = GetComponent<Button>();
-
-		//if (UTESceneManager.CurrentScene == _name)
-		//{
-		//	SetCurrentLocation();
-		//}
-		//else
-		//{
-		//	UnsetCurrentLocation();
-		//}
-
-		//if (_mapManager.LocationsList.ContainsLocation(_name, out var location))
-		//{
-		//	DisableLocation();
-		//	return;
-		//}
 	}
 
 	public void SetCurrentLocation()
