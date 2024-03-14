@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, GameInput.IGameControlsActions, GameInput.IInspectionControlsActions, GameInput.IMenuControlsActions, GameInput.IMainMenuControlsActions
+public class InputReader : GameInput.IGameControlsActions, GameInput.IInspectionControlsActions, GameInput.IMenuControlsActions, GameInput.IMainMenuControlsActions
 {
     //Gameplay delegates
     public static event UnityAction<Vector2> MoveEvent = delegate { };
@@ -36,27 +35,23 @@ public class InputReader : ScriptableObject, GameInput.IGameControlsActions, Gam
 
     private GameInput _gameInput;
 
-    void OnEnable()
+    public InputReader()
     {
-        if (_gameInput == null)
-        {
-            _gameInput = new GameInput();
-            _gameInput.GameControls.SetCallbacks(this);
-            _gameInput.InspectionControls.SetCallbacks(this);
-            _gameInput.MenuControls.SetCallbacks(this);
-            _gameInput.MainMenuControls.SetCallbacks(this);
-            // TODO: add other interfaces callbacks
-        }
+		_gameInput = new GameInput();
+		_gameInput.GameControls.SetCallbacks(this);
+		_gameInput.InspectionControls.SetCallbacks(this);
+		_gameInput.MenuControls.SetCallbacks(this);
+		_gameInput.MainMenuControls.SetCallbacks(this);
 
-        // TODO: add function
-        _gameInput.GameControls.Enable();
-    }
+		_gameInput.GameControls.Enable();
+	}
 
-    #region Enable/Disable Controls
-    private void OnDisable()
+    ~InputReader()
     {
-        DisableAllInput();
-    }
+		DisableAllInput();
+	}
+
+	#region Enable/Disable Controls
 
     public void SwitchToInspectionControls()
     {

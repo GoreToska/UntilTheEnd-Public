@@ -5,7 +5,6 @@ using Zenject;
 
 public class StaticCharacterMovement : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader = default;
     [SerializeField] private float _walkSpeed = 1f;
     [SerializeField] private float _sprintSpeed = 1.6f;
 
@@ -35,7 +34,6 @@ public class StaticCharacterMovement : MonoBehaviour
         _directionForward.y = 0;
 
         _directionForward = _staticCameraMovement.gameObject.transform.forward.normalized;
-        //MoveCameraTarget();
     }
 
     private void OnEnable()
@@ -57,12 +55,6 @@ public class StaticCharacterMovement : MonoBehaviour
     private void Update()
     {
         MoveCharacter();
-        //MoveCameraTarget();
-    }
-
-    private void LateUpdate()
-    {
-        //MoveCameraTarget();
     }
 
     private void OnMove(Vector2 movement)
@@ -106,6 +98,7 @@ public class StaticCharacterMovement : MonoBehaviour
     private void RotateCharacter()
     {
         Vector3 lookDirection = _movementVector;
+
         if (lookDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDirection),
@@ -121,19 +114,6 @@ public class StaticCharacterMovement : MonoBehaviour
     public float SecondaryMovementVector
     {
         get { return _playerNavMesh.velocity.magnitude * _movementMultiplier; }
-    }
-
-    //private void MoveCameraTarget()
-    //{
-    //    CameraTarget.Instance.gameObject.transform.position = gameObject.transform.position;
-    //}
-
-    public void ControlSwitch(bool value)
-    {
-        if (!value)
-            _inputReader.DisableAllInput();
-        else
-            _inputReader.SwitchToGameControls();
     }
 
     public void SetNavigation(Transform transform)

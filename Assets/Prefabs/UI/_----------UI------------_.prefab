@@ -4383,7 +4383,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2139328666}
           m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
           m_MethodName: PlayClickSound
           m_Mode: 1
@@ -9590,7 +9590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88632fb46678c74f98f365b1ea7ca11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
 --- !u!1 &1357875737
 GameObject:
   m_ObjectHideFlags: 0
@@ -10017,7 +10016,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2139328666}
           m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
           m_MethodName: PlayClickSound
           m_Mode: 1
@@ -10882,7 +10881,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2139328666}
           m_TargetAssemblyTypeName: UISoundManager, Assembly-CSharp
           m_MethodName: PlayClickSound
           m_Mode: 1
@@ -16432,7 +16431,6 @@ MonoBehaviour:
   _inspectionDescription: {fileID: 1430813279}
   _loadingCanvas: {fileID: 2341692322137933185}
   _menuCanvas: {fileID: 1511965558991979139}
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
 --- !u!114 &2428797129013260438
 MonoBehaviour:
   m_ObjectHideFlags: 0

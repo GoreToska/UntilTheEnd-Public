@@ -6,7 +6,7 @@ using Zenject;
 
 public class WorldEvidence : MonoBehaviour, IViewableInteractable
 {
-	[SerializeField] protected InputReader _inputReader = default;
+	[Inject] protected InputReader _inputReader = default;
 	[SerializeField] protected Inventory _inventory;
 	[SerializeField] protected EvidenceItem _evidenceItem;
 
@@ -66,7 +66,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		_evidenceUIManager.SetEvidenceName(EvidenceItem.Name);
 		_uiManager.OnEvidenceOpen();
 		_inspectionCamera.InspectableObject = this;
-		//Добавить анимацию
+		//TODO: Add animation
 		_uiManager.HideMainCanvas();
 	}
 

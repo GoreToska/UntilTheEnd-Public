@@ -9,7 +9,6 @@ public class CameraMovement : MonoBehaviour
     // TODO: refactoring, delete serializes, only private fields through code
 
     // input
-    [SerializeField] private InputReader _inputReader = default;
     private Vector2 _lookInputVector;
 
     private CinemachineFramingTransposer _transposer;

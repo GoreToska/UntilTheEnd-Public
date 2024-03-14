@@ -1,8 +1,10 @@
 using UnityEngine;
+using Zenject;
 
+//Summary
+// This class was used for character movement with non-static camera view. Now this class is legacy
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader = default;
     [SerializeField] private GameObject _virtualCamera;
     [SerializeField] private float _movementSpeed;
 

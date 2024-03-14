@@ -5,25 +5,6 @@ using UnityEngine;
 
 public class DialogueEvidenceInteraction : MonoBehaviour
 {
-	[HideInInspector] public static DialogueEvidenceInteraction Instance;
-
-	private void Awake()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
-
-	private void Start()
-	{
-		//DontDestroyOnLoad(gameObject);
-	}
-
 	public void RegisterLua()
 	{
 		Lua.RegisterFunction("TakeEvidence", this, SymbolExtensions.GetMethodInfo(() => TakeEvidence("")));

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locations:
   - LocationName: Railway
-    IsCurrent: 1
+    IsCurrent: 0
     IsAvailable: 1
   - LocationName: Estate
     IsCurrent: 0

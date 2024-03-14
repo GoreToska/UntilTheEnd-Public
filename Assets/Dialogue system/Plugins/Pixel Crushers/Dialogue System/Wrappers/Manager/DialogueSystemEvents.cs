@@ -18,7 +18,7 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 		[Inject] private CameraStateManager _cameraStateManager;
 		[Inject] private UIAnimations _uiAnimations;
 		[Inject] private StandardDialogueUI _standardDialogueUI;
-		[SerializeField] private InputReader _inputReader; 
+		[Inject] private InputReader _inputReader; 
 
 		private void OnEnable()
 		{

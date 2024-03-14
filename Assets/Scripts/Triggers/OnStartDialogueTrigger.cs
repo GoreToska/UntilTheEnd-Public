@@ -14,7 +14,7 @@ public class OnStartDialogueTrigger : MonoBehaviour
     private IEnumerator StartDialogue()
     {
         yield return new WaitForSeconds(1);
-        GameObject.Find(_npcName).GetComponent<StartConversation>().Invoke("OpenDialogue", 0);
+        GameObject.Find(_npcName).GetComponent<StartConversation>().StartInteraction();
         Destroy(this.gameObject);
         
         yield break;

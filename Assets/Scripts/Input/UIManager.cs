@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using PixelCrushers.DialogueSystem;
 using Zenject;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Canvas _mapPageCanvas;
 	[SerializeField] private Canvas _casePageCanvas;
 	[SerializeField] private Canvas _questsPageCanvas;
+	[Inject] private MapManager _mapManager;
 
 	[Header("Quest page")]
 	[SerializeField] private Canvas _activeQuestInfoPage;
@@ -36,7 +38,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Canvas _menuCanvas;
 
 	[Header("Input reader")]
-	[SerializeField] private InputReader _inputReader = default;
+	[Inject] private InputReader _inputReader;
 
 	private Canvas _currentCanvas;
 
@@ -58,16 +60,12 @@ public class UIManager : MonoBehaviour
 	{
 		InputReader.OpenJournal += OnOpenJournal;
 		InputReader.ExitEvent += OnCloseJournal;
-		// PixelCrushers.SaveSystem.loadStarted += StartLoading;
-		//PixelCrushers.SaveSystem.loadEnded += EndLoading;
 	}
 
 	private void OnDisable()
 	{
 		InputReader.OpenJournal -= OnOpenJournal;
 		InputReader.ExitEvent -= OnCloseJournal;
-		// PixelCrushers.SaveSystem.loadStarted -= StartLoading;
-		//PixelCrushers.SaveSystem.loadEnded -= EndLoading;
 	}
 
 	public void RegisterLua()
@@ -157,23 +155,6 @@ public class UIManager : MonoBehaviour
 
 		_uiAnimations.FadeCanvas(1f, _mapPageCanvas.gameObject);
 		_currentCanvas = _mapPageCanvas;
-
-		//_currentCanvas = _mapPageCanvas;
-
-		//if (!_journalCanvas.GetComponent<Canvas>().enabled)
-		//{
-		//    _journalCanvas.GetComponent<Canvas>().enabled = true;
-		//    _journalCanvas.GetComponent<CanvasGroup>().alpha = 1f;
-		//}
-
-		//_inputReader.SwitchToJournalControls();
-		////FadeOutAllWindows(2);
-
-		//OnOpenJournal();
-
-		//_mapPageCanvas.enabled = true;
-		//Debug.Log(_mapPageCanvas.enabled);
-		////_mapPageCanvas.GetComponent<CanvasGroup>().alpha = 1f;
 	}
 
 	public void DisableStartSkillsCanvas()
@@ -205,6 +186,7 @@ public class UIManager : MonoBehaviour
 		_uiAnimations.FadeCanvas(1f, _mainCanvas.gameObject);
 		_uiAnimations.FadeCanvas(0f, _currentCanvas.gameObject);
 		_inputReader.SwitchToGameControls();
+		_mapManager.DisableFastTravel();
 	}
 
 	private void FadeOutAllWindows(int n)

@@ -3,7 +3,6 @@ using Zenject;
 
 public class LoadSceneOnTrigger : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader;
     [SerializeField] private string _sceneName;
     [SerializeField] private string _tempRusName;
     [SerializeField] private string _spawnPointName;

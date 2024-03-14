@@ -15,5 +15,4 @@ public class CharacterSkills : ScriptableObject
 
     public int Savvy
     { get { return _savvy; } set { _savvy = value; } }
-
 }

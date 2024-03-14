@@ -7,7 +7,7 @@ public class LogsInfo : ScriptableObject
 {
     [SerializeField] string _text;
 
-    //TODO: do something
+    //TODO: do something with this, now it is not used
     public string Text
     {
         get { return _text; }

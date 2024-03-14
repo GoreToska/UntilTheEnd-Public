@@ -4,9 +4,9 @@ using DG.Tweening;
 using System.Collections;
 using Zenject;
 
-public class StartConversation : MonoBehaviour
+public class StartConversation : MonoBehaviour, IInteractable
 {
-	[SerializeField] private InputReader _inputReader = default;
+	[Inject] private InputReader _inputReader;
 	[SerializeField] private GameObject _player;
 
 	[Header("If conversation starts with specified conversant.")]
@@ -15,6 +15,13 @@ public class StartConversation : MonoBehaviour
 
 	[Inject] private PromptManager _promptManager;
 	[Inject] private UIAnimations _uiAnimations;
+	[Inject] private PlayerInteractionSystem _playerInteractionSystem;
+
+	public void StartInteraction()
+	{
+		OpenDialogue();
+		_playerInteractionSystem.EndInteraction();
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -31,7 +38,7 @@ public class StartConversation : MonoBehaviour
 			_promptManager.ActivatePromptDialogue(gameObject);
 		}
 
-		InputReader.InteractEvent += OpenDialogue;
+		_playerInteractionSystem.AddInteractable(this);
 	}
 
 	private void OnTriggerExit(Collider other)
@@ -40,16 +47,13 @@ public class StartConversation : MonoBehaviour
 			return;
 
 		_promptManager.DeactivatePromptDialogue();
-		InputReader.InteractEvent -= OpenDialogue;
+		_playerInteractionSystem.RemoveInteractable(this);
 	}
 
 	private void OpenDialogue()
 	{
-		_inputReader.SwitchToJournalControls();
-
+		_inputReader.DisableAllInput();
 		_promptManager.DeactivatePromptDialogue();
-		InputReader.InteractEvent -= OpenDialogue;
-
 		_uiAnimations.DialogueFadeIn();
 
 		if (_conversant)

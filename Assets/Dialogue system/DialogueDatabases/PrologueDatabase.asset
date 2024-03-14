@@ -13855,9 +13855,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -14002,8 +14002,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 314.4734, y: 0}
-    canvasZoom: 0.89224833
+    canvasScrollPosition: {x: 843.6924, y: 118.41585}
+    canvasZoom: 1.1322482
   - id: 8
     fields:
     - title: Title
@@ -41653,7 +41653,7 @@ MonoBehaviour:
         width: 1476.861
         height: 340.65494
       color: {r: 1, g: 1, b: 1, a: 0.2509804}
-    canvasScrollPosition: {x: 2036.0603, y: 523.58105}
+    canvasScrollPosition: {x: 2137.1243, y: 533.15564}
     canvasZoom: 0.9399995
   - id: 15
     fields:
@@ -46173,9 +46173,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -46417,8 +46417,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 272.97278, y: 0}
-    canvasZoom: 0.8800001
+    canvasScrollPosition: {x: 307.8072, y: 0}
+    canvasZoom: 1.03
   - id: 17
     fields:
     - title: Title
@@ -46671,9 +46671,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -46988,8 +46988,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 135.49612, y: 5.1798897}
-    canvasZoom: 0.7900002
+    canvasScrollPosition: {x: 265.14304, y: 0}
+    canvasZoom: 1.03
   - id: 18
     fields:
     - title: Title

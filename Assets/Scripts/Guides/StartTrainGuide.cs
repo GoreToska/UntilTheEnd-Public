@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using Zenject;
 
 public class StartTrainGuide : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class StartTrainGuide : MonoBehaviour
     [SerializeField] private GameObject _guideCanvas;
     [SerializeField] private UnityEngine.Rendering.Volume _volume;
     [SerializeField] private Toggle _firstToggle;
-    [SerializeField] private InputReader _inputReader;
     [SerializeField] private Sprite _activeImage;
     [SerializeField] private Sprite _defaultImage;
 
-    private Sequence _sequence;
+	[Inject] private InputReader _inputReader;
+
+	private Sequence _sequence;
     private int _currentPage;
     private int _previousPage;
 
@@ -24,9 +26,6 @@ public class StartTrainGuide : MonoBehaviour
     {
         _sequence = DOTween.Sequence();
         _currentPage = 0;
-
-        //небольшой костылёк
-        //_toggles[_currentPage].GetComponent<Image>().sprite = _activeImage;
 
         StartCoroutine(Wait());
     }
@@ -38,7 +37,6 @@ public class StartTrainGuide : MonoBehaviour
 
         _onStartDialogueTrigger.SetActive(true);
         Destroy(_guideCanvas);
-        //Destroy(this.gameObject);
     }
 
     public void SetVisible(int page)
@@ -57,7 +55,7 @@ public class StartTrainGuide : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
 
         _inputReader.DisableAllInput();
 

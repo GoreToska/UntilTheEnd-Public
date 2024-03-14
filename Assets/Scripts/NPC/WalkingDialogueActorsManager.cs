@@ -5,25 +5,6 @@ using System.Collections;
 
 public class WalkingDialogueActorsManager : MonoBehaviour
 {
-    [HideInInspector] public static WalkingDialogueActorsManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-	private void Start()
-	{
-		//DontDestroyOnLoad(gameObject);
-	}
-
 	public void RegisterLua()
     {
         Lua.RegisterFunction("DisableActorWalk", this, SymbolExtensions.GetMethodInfo(() => DisableActorWalk((string)"", (double)0)));

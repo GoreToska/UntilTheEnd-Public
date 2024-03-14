@@ -6,7 +6,6 @@ using Zenject;
 public class StaticDialogueCameraMovement : MonoBehaviour
 {
 	// input
-	[SerializeField] private InputReader _inputReader = default;
 	private CinemachineVirtualCamera _virtualCamera;
 
 	// settings

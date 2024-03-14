@@ -7,8 +7,6 @@ using Zenject;
 
 public class UTESceneManager : MonoBehaviour
 {
-	[SerializeField] private InputReader _inputReader;
-
 	[SerializeField] public const string _train = "Train";
 	[SerializeField] public const string _estate = "Estate";
 	[SerializeField] public const string _estateFirst = "EstateFirstFloor";

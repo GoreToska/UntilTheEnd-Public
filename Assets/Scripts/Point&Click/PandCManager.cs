@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class PandCManager : MonoBehaviour
 {
-	[SerializeField] private InputReader _inputReader;
 	[SerializeField] private LayerMask _pandcLayerMask;
 
 	private Camera _camera;

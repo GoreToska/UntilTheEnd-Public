@@ -1,22 +1,21 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Camera))]
 public class InspectionCamera : MonoBehaviour
 {
 	[NonSerialized] public WorldEvidence InspectableObject;
 
-	[SerializeField] private InputReader _inputReader;
 	[SerializeField] private Transform _objectRotator;
-
-	[SerializeField] private float _degree = -60;
+	
 	private GameObject _target;
 	private Vector2 _targetRotation;
 	private float _zoom;
 	private Vector3 _targetPosition;
-	//[SerializeField] private Vector3 _initialSpawnOffset = Vector3.down * 5f;
 
 	[Header("Rotation & Zoom Settings")]
+	[SerializeField] private float _degree = -60;
 	[SerializeField] private float _rotationSpeed = 50f;
 	[SerializeField] private float _zoomSpeed = 10f;
 	[SerializeField] private float _zoomLerpSpeed = 10f;
@@ -26,7 +25,6 @@ public class InspectionCamera : MonoBehaviour
 
 	private void Awake()
 	{
-		//_defaultRotatorPosition = _objectRotator.localPosition;
 		_camera = GetComponent<Camera>();
 		DisableCamera();
 	}
@@ -35,9 +33,6 @@ public class InspectionCamera : MonoBehaviour
 	{
 		InputReader.ClickEvent += OnCLick;
 		InputReader.ZoomEvidenceEvent += OnZoom;
-
-		//ObjectRotator.localPosition = _defaultRotatorPosition;
-		//ObjectRotator.localRotation = Quaternion.Euler(Vector3.zero + new Vector3(_targetRotation.x, _targetRotation.y, 0));
 	}
 
 	private void OnDisable()
@@ -81,8 +76,6 @@ public class InspectionCamera : MonoBehaviour
 	private void RotateObject()
 	{
 		_objectRotator.transform.Rotate(new Vector3(_targetRotation.y, -_targetRotation.x, 0) * Time.deltaTime * _rotationSpeed, Space.World);
-
-		//		InspectableObject.transform.Rotate(new Vector3(_targetRotation.y, -_targetRotation.x, 0) * Time.deltaTime * _rotationSpeed, Space.World);
 	}
 
 	private void ZoomInOut()
@@ -106,30 +99,6 @@ public class InspectionCamera : MonoBehaviour
 			_targetPosition,
 			_zoomLerpSpeed * Time.deltaTime
 			);
-
-		//_objectRotator.localPosition = Vector3.Lerp(
-		//	_objectRotator.localPosition,
-		//	new Vector3(
-		//		Mathf.Clamp(_objectRotator.localPosition.x + _zoom *
-		//		Mathf.Cos(Mathf.Deg2Rad * _degree) * _zoomSpeed, (float)(InspectableObject.EvidenceItem.MinDistance / Math.Cos(_degree)), (float)(InspectableObject.EvidenceItem.MaxDistance / Math.Cos(_degree))),
-		//	_objectRotator.localPosition.y,
-		//	Mathf.Clamp(_objectRotator.localPosition.z + _zoom *
-		//	Mathf.Sin(Mathf.Deg2Rad * _degree) * _zoomSpeed, (float)(InspectableObject.EvidenceItem.MinDistance / Math.Sin(Mathf.Abs(_degree))), (float)(InspectableObject.EvidenceItem.MaxDistance * Math.Sin(Mathf.Abs(_degree))))),
-		//	_zoomLerpSpeed * Time.deltaTime);
-
-		//_objectRotator.localPosition = Vector3.Lerp(_objectRotator.localPosition,
-		//	new Vector3(Mathf.Clamp(_objectRotator.localPosition.x + _defaultRotatorPosition.x + _zoom, InspectableObject.EvidenceItem.MinMaxZoomX.x, InspectableObject.EvidenceItem.MinMaxZoomX.y),
-		//	_targetPosition.y,
-		//	Mathf.Clamp(_objectRotator.localPosition.z + _defaultRotatorPosition.z + _zoom, InspectableObject.EvidenceItem.MinMaxZoomZ.x, InspectableObject.EvidenceItem.MinMaxZoomZ.y)), Time.deltaTime * _zoomSpeed);
-
-
-		//_targetPosition = new Vector3(
-		//	Mathf.Clamp(_targetPosition.x + _zoom, InspectableObject.EvidenceItem.MinMaxZoomX.x, InspectableObject.EvidenceItem.MinMaxZoomX.y),
-		//	_targetPosition.y,
-		//	Mathf.Clamp(_targetPosition.z - _zoom, InspectableObject.EvidenceItem.MinMaxZoomZ.x, InspectableObject.EvidenceItem.MinMaxZoomZ.y));
-
-		//_objectRotator.localPosition = Vector3.Lerp(_objectRotator.localPosition, _targetPosition,
-		//	Time.deltaTime * _zoomSpeed);
 	}
 
 	public void EnableCamera()

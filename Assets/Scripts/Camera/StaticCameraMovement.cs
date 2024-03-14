@@ -6,8 +6,6 @@ using Zenject;
 [RequireComponent(typeof(CinemachineVirtualCamera))]
 public class StaticCameraMovement : MonoBehaviour
 {
-	// input
-	[SerializeField] private InputReader _inputReader = default;
 	private CinemachineVirtualCamera _virtualCamera;
 
 	// settings

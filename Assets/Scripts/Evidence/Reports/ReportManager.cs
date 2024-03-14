@@ -29,7 +29,6 @@ public class ReportManager : MonoBehaviour
 
     private void AddReport(string reportName)
     {
-        Debug.Log("Add report");
         if (!_alert)
             _alert = GameObject.Find("AlertPanel");
 
@@ -40,20 +39,11 @@ public class ReportManager : MonoBehaviour
 
     private EvidenceReport FindReportWithName(string name)
     {
-        Debug.Log("Find report");
-
-        foreach (EvidenceReport report in _listOfReports)
-        {
-            if (report.Name == name)
-                return report;
-        }
-        return null;
+        return _listOfReports.Find(report => report.Name == name);
     }
 
     private IEnumerator ShowAlert(GameObject alert, float seconds)
     {
-        Debug.Log("Show alert");
-
         _sequence.Kill();
 
         _sequence.Append(alert.GetComponent<CanvasGroup>().DOFade(1f, _fadeTime));

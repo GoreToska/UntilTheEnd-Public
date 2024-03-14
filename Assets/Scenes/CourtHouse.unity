@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 693108219}
   _conversant: {fileID: 0}
   _conversationName: a1/courthouse/fedor_03
@@ -1905,7 +1904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 693108219}
   _conversant: {fileID: 919132148510823528}
   _conversationName: a1/courthouse/bogdan_01
@@ -24821,22 +24819,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 539231690, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 539231690, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 539231690, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 539231690, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 611462318, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -24893,22 +24875,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1423167611, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423167611, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423167611, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423167611, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1430813278, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -24930,22 +24896,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430813278, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516102088, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516102088, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516102088, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516102088, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -25009,10 +24959,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1411266227841225984, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -15
-      objectReference: {fileID: 0}
     - target: {fileID: 2138959452665394552, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -25052,10 +24998,6 @@ PrefabInstance:
     - target: {fileID: 3595215165957515684, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3595215165957515684, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3769259743196265114, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
@@ -25425,14 +25367,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 112925391446445968}
-    - target: {fileID: 7306800424742579160, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: conversationEvents.onConversationStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 112925391446445968}
     - target: {fileID: 7306800424914209323, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -25707,7 +25641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 693108219}
   _conversant: {fileID: 0}
   _conversationName: a1/courthouse/rene_01
@@ -27313,7 +27246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ad7bcd26d00754fa4ba9092415d623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: 71cd5d6c26943904c89dd6e14896d6b0, type: 2}
   _dialogueVariableName: '"Bogdan.TookBullet"'

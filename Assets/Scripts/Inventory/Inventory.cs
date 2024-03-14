@@ -11,7 +11,6 @@ public class Inventory : ScriptableObject
     public event UnityAction<EvidenceReport, bool> AddReportEvent = delegate { };
     public event UnityAction<EvidenceReport, bool> AddConclusionEvent = delegate { };
 
-    // TODO: MAKE private
     [SerializeField] private List<EvidenceItem> _evidenceItems;
     [SerializeField] private List<LogsInfo> _logsInfos;
     [SerializeField] private List<EvidenceReport> _evidenceReports;
@@ -77,24 +76,12 @@ public class Inventory : ScriptableObject
 
     private bool CheckEvidenceReport(EvidenceReport report)
     {
-        foreach(EvidenceReport evRep in _evidenceReports)
-        {
-            if (evRep == report)
-                return true;
-        }
-
-        return false;
+        return _evidenceReports.Contains(report);
     }
 
     private bool CheckEvidenceItem(EvidenceItem item)
     {
-        foreach (EvidenceItem evItem in _evidenceItems)
-        {
-            if (evItem == item)
-                return true;
-        }
-
-        return false;
+        return _evidenceItems.Contains(item);
     }
 
     public void ClearInventory()
@@ -107,12 +94,7 @@ public class Inventory : ScriptableObject
 
     public bool HasConclusion(EvidenceReport report)
     {
-        if (_conclusions.Contains(report))
-        {
-            return true;
-        }
-            
-        return false;
+        return _conclusions.Contains(report);
     }
 
     public List<LogsInfo> LogsInfos

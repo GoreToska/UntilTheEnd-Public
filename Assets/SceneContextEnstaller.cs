@@ -31,6 +31,7 @@ public class SceneContextEnstaller : MonoInstaller
 
 	public override void InstallBindings()
 	{
+		// Instances
 		Container.BindInstance(_attitudeManager).AsSingle().NonLazy();
 		Container.BindInstance(_skillsManager).AsSingle().NonLazy();
 		Container.BindInstance(_uiAnimations).AsSingle().NonLazy();
@@ -53,5 +54,7 @@ public class SceneContextEnstaller : MonoInstaller
 		Container.BindInstance(_uiSoundManager).AsSingle().NonLazy();
 		Container.BindInstance(_uiConclusion).AsSingle().NonLazy();
 		Container.BindInstance(_inspectionCamera).AsSingle().NonLazy();
+
+		Container.Bind<InputReader>().AsSingle().NonLazy();
 	}
 }

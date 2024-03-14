@@ -5126,6 +5126,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1518117635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7744713809627274432, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+  m_PrefabInstance: {fileID: 1644854721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1519555878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5856,6 +5861,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7306800423008537194, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: _closeButton
+      value: 
+      objectReference: {fileID: 1518117635}
     - target: {fileID: 7306800423106541982, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
