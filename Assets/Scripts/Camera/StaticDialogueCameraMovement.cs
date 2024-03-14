@@ -10,29 +10,31 @@ public class StaticDialogueCameraMovement : MonoBehaviour
 	private CinemachineVirtualCamera _virtualCamera;
 
 	// settings
-	private float _maxCameraOffset = 4.2f;
-	private float _minCameraOffset = 3f;
+	private float _maxCameraDistance = 4.2f;
+	private float _minCameraDistance = 3f;
 	[SerializeField] private float _zoomSensitivity = 1f;
+	[SerializeField] private float _zoomSpeed = 0.5f;
 
 	[Inject] private CameraTarget _cameraTarget;
+
+	private float _currentCameraDistance;
 
 	private void Awake()
 	{
 		_virtualCamera = GetComponent<CinemachineVirtualCamera>();
-
-		if (_virtualCamera == null)
-		{
-			// TODO: if none, create new through code
-			Debug.LogError("CameraMovement requires CinemachineVirtualCamera component");
-		}
-
 		_virtualCamera.Follow = _cameraTarget.gameObject.transform;
+		_currentCameraDistance = _minCameraDistance;
+	}
+
+	private void Update()
+	{
+		_virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(_virtualCamera.m_Lens.OrthographicSize, _currentCameraDistance, _zoomSpeed * Time.deltaTime);
 	}
 
 	private void OnEnable()
 	{
 		InputReader.ZoomEvent += OnZoom;
-		_virtualCamera.Follow =_cameraTarget.gameObject.transform;
+		_virtualCamera.Follow = _cameraTarget.gameObject.transform;
 	}
 
 	private void OnDisable()
@@ -45,18 +47,9 @@ public class StaticDialogueCameraMovement : MonoBehaviour
 		CalculateCameraOffset(zoom);
 	}
 
-	void CalculateCameraOffset(float zoomInput)
+	private void CalculateCameraOffset(float zoomInput)
 	{
-		float newCameraDistance = _virtualCamera.m_Lens.OrthographicSize + zoomInput / 100 * _zoomSensitivity * Time.deltaTime;
-		if (newCameraDistance < _minCameraOffset)
-		{
-			newCameraDistance = _minCameraOffset;
-		}
-		else if (newCameraDistance > _maxCameraOffset)
-		{
-			newCameraDistance = _maxCameraOffset;
-		}
-
-		_virtualCamera.m_Lens.OrthographicSize = newCameraDistance;
+		_currentCameraDistance += zoomInput / 100 * _zoomSensitivity * Time.deltaTime;
+		_currentCameraDistance = Mathf.Clamp(_currentCameraDistance, _minCameraDistance, _maxCameraDistance);
 	}
 }

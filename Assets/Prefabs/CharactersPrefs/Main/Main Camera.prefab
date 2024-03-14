@@ -141,7 +141,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: 7b7606932e026b94690e267f5daa654d, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -161,7 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vCameras: []
-  _cameraInterim: {fileID: 11400000, guid: e1abe1116b456e84f846913c724108eb, type: 2}
 --- !u!114 &5287575611878615337
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52325,7 +52325,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AnimatorPlay(Standing, OfficerFix)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 21
@@ -52343,7 +52343,9 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: 'TakeEvidence("DressPiece");
+
+        Destroy("Interest_DressPiece");'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -52509,7 +52511,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AnimatorPlay(Standing, OfficerFix)
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 21
@@ -52521,11 +52523,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'EndDialogue();
-
-        TakeEvidence("DressPiece");
-
-        Destroy("Interest_DressPiece");'
+      userScript: EndDialogue();
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -52536,7 +52534,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 196.92183, y: 0}
+    canvasScrollPosition: {x: 625.0772, y: 0}
     canvasZoom: 1.03
   - id: 22
     fields:

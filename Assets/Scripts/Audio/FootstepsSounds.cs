@@ -16,5 +16,5 @@ public class FootstepsSounds : ScriptableObject
     }
 
     public AudioClip Sound
-    { get { return _sounds[Random.Range(0, _sounds.Count - 1)]; } }
+    { get { return _sounds[Random.Range(0, _sounds.Count)]; } }
 }

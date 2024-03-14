@@ -27,6 +27,7 @@ public class SceneContextEnstaller : MonoInstaller
 	[SerializeField] private CameraTarget _cameraTarget;
 	[SerializeField] private UISoundManager _uiSoundManager;
 	[SerializeField] private UIConclusion _uiConclusion;
+	[SerializeField] private InspectionCamera _inspectionCamera;
 
 	public override void InstallBindings()
 	{
@@ -51,5 +52,6 @@ public class SceneContextEnstaller : MonoInstaller
 		Container.BindInstance(_cameraTarget).AsSingle().NonLazy();
 		Container.BindInstance(_uiSoundManager).AsSingle().NonLazy();
 		Container.BindInstance(_uiConclusion).AsSingle().NonLazy();
+		Container.BindInstance(_inspectionCamera).AsSingle().NonLazy();
 	}
 }

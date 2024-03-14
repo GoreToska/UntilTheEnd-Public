@@ -6,6 +6,7 @@ public class HideObstacles : MonoBehaviour
     [SerializeField] private List<GameObject> _simpleObstacles;
     [SerializeField] private List<GameObject> _glassObstacles;
     [SerializeField] private float _hidingSpeed = 1f;
+
     private bool _hidingIsActive = false;
     private bool _showingIsActive = false;
 

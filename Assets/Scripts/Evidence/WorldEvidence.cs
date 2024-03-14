@@ -10,8 +10,6 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	[SerializeField] protected Inventory _inventory;
 	[SerializeField] protected EvidenceItem _evidenceItem;
 
-	protected GameObject _inspectableObject;
-
 	[SerializeField] public string _dialogueVariableName = "";
 	protected HighlightComponent _highlightComponent;
 
@@ -22,6 +20,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	[Inject] protected PromptManager _promptManager;
 	[Inject] protected UIAnimations _uIAnimations;
 	[Inject] protected PlayerInteractionSystem _playerInteractionSystem;
+	[Inject] protected InspectionCamera _inspectionCamera;
 
 	private void Awake()
 	{
@@ -58,19 +57,15 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 
 	public virtual void StartInspect()
 	{
-		InstantiateEvidence();
-
+		_highlightComponent.SetGlow(0, gameObject);
+		_inspectionCamera.SpawnInspectableObject(this.gameObject, EvidenceItem);
 		_promptManager.DeactivatePromptEvidence();
-		_highlightComponent.SetGlow(0, _inspectableObject);
 
-		// TODO: inspectableObject to scriptable object
-		_inspectableObject.transform.localPosition = Vector3.zero + EvidenceItem.SpawnPositionOffset;
-		_inspectableObject.transform.localRotation = Quaternion.Euler(Vector3.zero + EvidenceItem.SpawnRotationOffset);
+		
 
 		_evidenceUIManager.SetEvidenceName(EvidenceItem.Name);
-
 		_uiManager.OnEvidenceOpen();
-		InspectionCamera.Instance.InspectableObject = this;
+		_inspectionCamera.InspectableObject = this;
 		//Добавить анимацию
 		_uiManager.HideMainCanvas();
 	}
@@ -86,18 +81,9 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		_inputReader.SwitchToGameControls();
 	}
 
-	protected virtual void InstantiateEvidence()
-	{
-		_inspectableObject = Instantiate(gameObject, InspectionCamera.Instance.gameObject.transform.GetChild(0));
-		_inspectableObject.GetComponent<Rigidbody>().isKinematic = true;
-		_inspectableObject.GetComponent<BoxCollider>().enabled = false;
-		InspectionCamera.Instance.GetComponentInChildren<Camera>().enabled = false;
-	}
-
 	protected virtual void ClearEvidence()
 	{
-		InspectionCamera.Instance.GetComponentInChildren<Camera>().enabled = false;
-		Destroy(_inspectableObject);
+		_inspectionCamera.DestroyInspectableObject();
 		Destroy(gameObject);
 	}
 

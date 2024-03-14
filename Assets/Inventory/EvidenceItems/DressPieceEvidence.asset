@@ -22,8 +22,7 @@ MonoBehaviour:
   _npcName: 0
   _logsInfo: {fileID: 0}
   <EvidenceIcon>k__BackingField: {fileID: 21300000, guid: 2f64f927628c64848a987e33393ff427, type: 3}
-  <SpawnPositionOffset>k__BackingField: {x: -1, y: 0, z: 2}
+  <SpawnPositionOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <SpawnRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
-  <MinMaxZoomZ>k__BackingField: {x: 0, y: 0}
-  <MinMaxZoomX>k__BackingField: {x: 0, y: 0}
-  <defaultZoomValue>k__BackingField: 1
+  <MaxDistance>k__BackingField: 2
+  <MinDistance>k__BackingField: 0.55

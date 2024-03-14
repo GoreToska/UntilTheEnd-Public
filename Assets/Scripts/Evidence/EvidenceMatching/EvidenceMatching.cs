@@ -1,90 +1,87 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EvidenceMatching", menuName = "UTE/Evidence Matching")]
 public class EvidenceMatching : ScriptableObject
 {
-    [System.Serializable]
-    private struct EvidenceCombination
-    {
-        // TODO: custom == operator
-        [SerializeField] private AEvidence _evidenceOne;
-        [SerializeField] private AEvidence _evidenceTwo;
-        [SerializeField] private EvidenceReport _report;
-        [SerializeField] private string _variableName;
+	[System.Serializable]
+	private struct EvidenceCombination
+	{
+		// TODO: custom == operator
+		[SerializeField] private AEvidence _evidenceOne;
+		[SerializeField] private AEvidence _evidenceTwo;
+		[SerializeField] private EvidenceReport _report;
+		[SerializeField] private string _variableName;
 
-        public EvidenceCombination(AEvidence evOne, AEvidence evTwo)
-        {
-            _evidenceOne = evOne;
-            _evidenceTwo = evTwo;
-            _report = null;
-            _variableName = null;
-        }
+		public EvidenceCombination(AEvidence evOne, AEvidence evTwo)
+		{
+			_evidenceOne = evOne;
+			_evidenceTwo = evTwo;
+			_report = null;
+			_variableName = null;
+		}
 
-        public AEvidence EvidenceOne
-        {
-            get { return _evidenceOne; }
-        }
+		public readonly AEvidence EvidenceOne => _evidenceOne;
+		public readonly AEvidence EvidenceTwo => _evidenceTwo;
+		public readonly EvidenceReport Report => _report;
+		public readonly string VariableName => _variableName;
 
-        public AEvidence EvidenceTwo
-        {
-            get { return _evidenceTwo; }
-        }
+		public static bool operator ==(EvidenceCombination combination1, EvidenceCombination combination2)
+		{
+			if (combination1.EvidenceOne == combination2.EvidenceOne && combination1.EvidenceTwo == combination2.EvidenceTwo)
+				return true;
+			else if (combination1.EvidenceOne == combination2.EvidenceTwo && combination1.EvidenceTwo == combination2.EvidenceOne)
+				return true;
+			else
+				return false;
+		}
 
-        public EvidenceReport Report
-        {
-            get 
-            { 
-                return _report; 
-            }
-        }
+		public static bool operator !=(EvidenceCombination combination1, EvidenceCombination combination2)
+		{
+			if (combination1.EvidenceOne == combination2.EvidenceOne && combination1.EvidenceTwo == combination2.EvidenceTwo)
+				return false;
+			else if (combination1.EvidenceOne == combination2.EvidenceTwo && combination1.EvidenceTwo == combination2.EvidenceOne)
+				return false;
+			else
+				return true;
+		}
+	}
 
-        public string VariableName
-        {
-            get { return _variableName; }
-        }
-    }
+	[SerializeField] private List<EvidenceCombination> _evidenceCombinations;
+	[SerializeField] private Inventory _inventory = default;
 
-    [SerializeField] private List<EvidenceCombination> _evidenceCombinations;
-    [SerializeField] private Inventory _inventory = default;
+	private void OnEnable()
+	{
+		foreach (EvidenceCombination combination in _evidenceCombinations)
+		{
+			if (combination.Report == null || combination.EvidenceOne == null
+				|| combination.EvidenceTwo == null)
+				Debug.LogError("Preset evidence combinations must be filled!");
+		}
+	}
 
-    private void OnEnable()
-    {
-        foreach(EvidenceCombination combination in _evidenceCombinations)
-        {
-            if (combination.Report == null || combination.EvidenceOne == null 
-                || combination.EvidenceTwo == null)
-                Debug.LogError("Preset evidence combinations must be filled!");
-        }
-    }
+	public EvidenceReport FindMatch(AEvidence firstEvidence, AEvidence secondEvidence)
+	{
+		EvidenceCombination inEvidenceComb = new EvidenceCombination(firstEvidence, secondEvidence);
 
-    public EvidenceReport FindMatch(AEvidence inEvidenceOne, AEvidence inEvidenceTwo)
-    {
-        EvidenceCombination inEvidenceComb = new EvidenceCombination(inEvidenceOne, inEvidenceTwo);
+		foreach (EvidenceCombination combination in _evidenceCombinations)
+		{
+			if (inEvidenceComb == combination)
+			{
+				if (_inventory.HasConclusion(combination.Report))
+					return null;
 
-        foreach (EvidenceCombination combination in _evidenceCombinations)
-        {
-            if (CompareEvidenceCombinations(inEvidenceComb, combination))
-            {
-                if (_inventory.HasConclusion(combination.Report))
-                    return null;
+				if(combination.VariableName != string.Empty)
+				{
+					DialogueLua.SetVariable(combination.VariableName, true);
+				}
 
-                DialogueLua.SetVariable(combination.VariableName, true);
-                return combination.Report;
-            }
-        }
-        
-        return null;
-    }
+				return combination.Report;
+			}
+		}
 
-    private bool CompareEvidenceCombinations(EvidenceCombination combOne, EvidenceCombination combTwo)
-    {
-        if (combOne.EvidenceOne == combTwo.EvidenceOne && combOne.EvidenceTwo == combTwo.EvidenceTwo)
-            return true;
-        else if (combOne.EvidenceOne == combTwo.EvidenceTwo && combOne.EvidenceTwo == combTwo.EvidenceOne)
-            return true;
-        else
-            return false;
-    }
+		return null;
+	}
 }

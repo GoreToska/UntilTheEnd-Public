@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioSourceClips : MonoBehaviour
 {
-    [Header("Должен висеть на объекте с AudioSource")]
     [SerializeField] private List<AudioClip> _clips;
 
-    [Header("Время, которое необходимо ждать между двумя клипами")]
+    [Header("Time between two audio clips")]
     [SerializeField] private float _minTime;
     [SerializeField] private float _maxTime;
 

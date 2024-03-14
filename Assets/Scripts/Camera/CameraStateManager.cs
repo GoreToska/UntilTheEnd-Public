@@ -7,7 +7,6 @@ using Zenject;
 public class CameraStateManager : MonoBehaviour
 {
 	[SerializeField] private List<CinemachineVirtualCamera> _vCameras = new List<CinemachineVirtualCamera>();
-	[SerializeField] private CameraInterim _cameraInterim;
 
 	[Inject] private StaticCameraMovement _staticCameraMovement;
 	[Inject] private StaticDialogueCameraMovement _staticDialogueCameraMovement;
@@ -28,13 +27,11 @@ public class CameraStateManager : MonoBehaviour
 
 	public void ActivateMainCamera()
 	{
-		_cameraInterim.DisactivateDialogue();
 		SwitchCamera(_mainVirtualCamera);
 	}
 
 	public void ActivateDialogueCamera()
 	{
-		_cameraInterim.ActivateDialogue();
 		SwitchCamera(_dialogueVirtualCamera);
 	}
 
