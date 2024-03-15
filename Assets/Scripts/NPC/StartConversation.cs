@@ -6,7 +6,6 @@ using Zenject;
 
 public class StartConversation : MonoBehaviour, IInteractable
 {
-	[Inject] private InputReader _inputReader;
 	[SerializeField] private GameObject _player;
 
 	[Header("If conversation starts with specified conversant.")]
@@ -52,7 +51,7 @@ public class StartConversation : MonoBehaviour, IInteractable
 
 	private void OpenDialogue()
 	{
-		_inputReader.DisableAllInput();
+		//_inputReader.DisableAllInput();
 		_promptManager.DeactivatePromptDialogue();
 		_uiAnimations.DialogueFadeIn();
 

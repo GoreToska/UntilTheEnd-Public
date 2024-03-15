@@ -13835,7 +13835,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\"\u0425\u043E\u0440\u043E\u0448\u043E\"."
+        value: "\"\u0425\u043E\u0440\u043E\u0448\u043E.\""
         type: 0
         typeString: 
       - title: Sequence
@@ -13890,7 +13890,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\"\u042F \u043F\u0435\u0440\u0435\u0434\u0443\u043C\u0430\u043B \u0435\u0445\u0430\u0442\u044C\"."
+        value: "\"\u042F \u043F\u0435\u0440\u0435\u0434\u0443\u043C\u0430\u043B \u0435\u0445\u0430\u0442\u044C.\""
         type: 0
         typeString: 
       - title: Sequence
@@ -14002,7 +14002,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 843.6924, y: 118.41585}
+    canvasScrollPosition: {x: 542.5214, y: 56.591995}
     canvasZoom: 1.1322482
   - id: 8
     fields:
@@ -41653,8 +41653,8 @@ MonoBehaviour:
         width: 1476.861
         height: 340.65494
       color: {r: 1, g: 1, b: 1, a: 0.2509804}
-    canvasScrollPosition: {x: 2137.1243, y: 533.15564}
-    canvasZoom: 0.9399995
+    canvasScrollPosition: {x: 1657.5747, y: 81.55344}
+    canvasZoom: 1.0299995
   - id: 15
     fields:
     - title: Title

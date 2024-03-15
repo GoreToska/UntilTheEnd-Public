@@ -42,8 +42,8 @@ public class StaticCharacterMovement : MonoBehaviour
 		InputReader.MoveEvent += OnMove;
 		InputReader.Sprint += OnSprint;
 		InputReader.StopSprint += OnSprintExit;
-        // TODO: other functions
-    }
+		// TODO: other functions
+	}
 
     private void OnDisable()
     {

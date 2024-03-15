@@ -6,7 +6,7 @@ public class OnStartDialogueTrigger : MonoBehaviour
 {
     [SerializeField] private string _npcName;
 
-    void Awake()
+    void Start()
     {
         StartCoroutine(StartDialogue());
     }

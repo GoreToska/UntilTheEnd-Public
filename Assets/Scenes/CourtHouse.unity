@@ -1986,9 +1986,9 @@ MonoBehaviour:
   m_key: CortHouseDialogue
   m_appendSaverTypeToKey: 0
   m_saveAcrossSceneChanges: 1
-  m_restoreStateOnStart: 1
-  m_mode: 1
-  m_destroyMode: 1
+  m_restoreStateOnStart: 0
+  m_mode: 0
+  m_destroyMode: 0
   m_destroyedVersionPrefab: {fileID: 0}
 --- !u!4 &593432413
 Transform:
@@ -26908,6 +26908,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1644854727}
     - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
+      propertyPath: _inputReader
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986739385684021515, guid: ab00e04e5c200984c9bed6336526a0ae, type: 3}
       propertyPath: _cameraTarget
       value: 
       objectReference: {fileID: 7363234250909489436}
@@ -27249,6 +27253,7 @@ MonoBehaviour:
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: 71cd5d6c26943904c89dd6e14896d6b0, type: 2}
   _dialogueVariableName: '"Bogdan.TookBullet"'
+  _inputReader: {fileID: 0}
 --- !u!4 &3647683187587278
 Transform:
   m_ObjectHideFlags: 0

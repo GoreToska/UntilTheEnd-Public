@@ -63,6 +63,10 @@ MonoBehaviour:
   _musicManager: {fileID: 0}
   _standardDialogueUI: {fileID: 0}
   _cameraTarget: {fileID: 0}
+  _uiSoundManager: {fileID: 0}
+  _uiConclusion: {fileID: 0}
+  _inspectionCamera: {fileID: 0}
+  _inputReader: {fileID: 11400000, guid: 5c2da02b4799ca04cae0e4304160aee5, type: 2}
 --- !u!1 &2986739387297190458
 GameObject:
   m_ObjectHideFlags: 0

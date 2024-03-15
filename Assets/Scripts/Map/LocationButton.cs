@@ -24,7 +24,7 @@ public class LocationButton : MonoBehaviour
 	public void SetCurrentLocation()
 	{
 		_button.image.sprite = _currentImage;
-		RemoveListeners();
+		//RemoveListeners();
 
 		if (!_mapManager.LocationsList.ContainsLocation(_name))
 			return;
@@ -50,7 +50,7 @@ public class LocationButton : MonoBehaviour
 		EnableLocation();
 		_button.image.sprite = _enabledImage;
 
-		AddListeners();
+		//AddListeners();
 
 		if (!_mapManager.LocationsList.ContainsLocation(_name))
 			return;
@@ -79,7 +79,7 @@ public class LocationButton : MonoBehaviour
 		_mapManager.EnableFastTravels += SetInteractable;
 		_mapManager.DisableFastTravels += UnsetInteractable;
 
-		AddListeners();
+		//AddListeners();
 
 		_button.transform.gameObject.SetActive(true);
 		UnsetInteractable();

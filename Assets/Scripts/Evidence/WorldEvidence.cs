@@ -6,7 +6,6 @@ using Zenject;
 
 public class WorldEvidence : MonoBehaviour, IViewableInteractable
 {
-	[Inject] protected InputReader _inputReader = default;
 	[SerializeField] protected Inventory _inventory;
 	[SerializeField] protected EvidenceItem _evidenceItem;
 
@@ -49,7 +48,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 
 	public virtual void StartInteraction()
 	{
-		_inputReader.SwitchToInspectionControls();
+		InputReader.SwitchToInspectionControls();
 		InputReader.AcceptEvent += OnInteractionView;
 		AddButtonListener();
 		StartInspect();
@@ -78,7 +77,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	protected virtual void OnDisable()
 	{
 		InputReader.AcceptEvent -= OnInteractionView;
-		_inputReader.SwitchToGameControls();
+		InputReader.SwitchToGameControls();
 	}
 
 	protected virtual void ClearEvidence()
@@ -100,7 +99,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		}
 
 		_playerInteractionSystem.EndInteraction();
-		_inputReader.SwitchToGameControls();
+		InputReader.SwitchToGameControls();
 		_evidenceUIManager.RemoveButtonEvents();
 		ClearEvidence();
 	}

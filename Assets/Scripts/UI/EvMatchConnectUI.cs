@@ -53,8 +53,6 @@ public class EvMatchConnectUI : ScriptableObject
 	{
 		if (_activeEvidences.Count == 0) return;
 
-		Debug.Log(num);
-		Debug.Log(_activeEvidences.Count);
 		_activeEvidences[num - 1] = null;
 	}
 

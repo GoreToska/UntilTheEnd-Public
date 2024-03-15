@@ -16,8 +16,6 @@ public class StartTrainGuide : MonoBehaviour
     [SerializeField] private Sprite _activeImage;
     [SerializeField] private Sprite _defaultImage;
 
-	[Inject] private InputReader _inputReader;
-
 	private Sequence _sequence;
     private int _currentPage;
     private int _previousPage;
@@ -57,7 +55,7 @@ public class StartTrainGuide : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        _inputReader.DisableAllInput();
+		InputReader.DisableAllInput();
 
         yield break;
     }

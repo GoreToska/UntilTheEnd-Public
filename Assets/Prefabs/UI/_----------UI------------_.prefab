@@ -1928,6 +1928,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: CloseMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: DisableFastTravel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1981617407389186672}
         m_TargetAssemblyTypeName: UTESceneManager, Assembly-CSharp
         m_MethodName: LoadRailway
@@ -9578,6 +9602,7 @@ MonoBehaviour:
   _closeButton: {fileID: 7744713809627274432}
   _mapButton: {fileID: 1815218234}
   LocationsList: {fileID: 11400000, guid: f91e16b604210d842b2e357bd4e302ef, type: 2}
+  _inputReader: {fileID: 11400000, guid: 5c2da02b4799ca04cae0e4304160aee5, type: 2}
 --- !u!114 &1981617407389186672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10298,6 +10323,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: CloseMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: DisableFastTravel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1981617407389186672}
         m_TargetAssemblyTypeName: UTESceneManager, Assembly-CSharp
         m_MethodName: LoadEstate
@@ -15384,6 +15433,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: CloseMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: DisableFastTravel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1981617407389186672}
         m_TargetAssemblyTypeName: UTESceneManager, Assembly-CSharp
         m_MethodName: LoadPub
@@ -15534,6 +15607,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: CloseMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1644854728}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: DisableFastTravel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1981617407389186672}
         m_TargetAssemblyTypeName: UTESceneManager, Assembly-CSharp
         m_MethodName: LoadCourtHouse
@@ -16431,6 +16528,7 @@ MonoBehaviour:
   _inspectionDescription: {fileID: 1430813279}
   _loadingCanvas: {fileID: 2341692322137933185}
   _menuCanvas: {fileID: 1511965558991979139}
+  _inputReader: {fileID: 11400000, guid: 5c2da02b4799ca04cae0e4304160aee5, type: 2}
 --- !u!114 &2428797129013260438
 MonoBehaviour:
   m_ObjectHideFlags: 0

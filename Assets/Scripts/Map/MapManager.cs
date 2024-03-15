@@ -8,7 +8,6 @@ using Zenject;
 
 public class MapManager : MonoBehaviour
 {
-
 	[Header(" нопки локаций стоит называть так, как называетс€ сцена локации")]
 	[SerializeField] private List<LocationButton> _mapButtons;
 	[SerializeField] private List<UnityEngine.UI.Toggle> _topBarButtons;
@@ -23,7 +22,6 @@ public class MapManager : MonoBehaviour
 	public event UnityAction DisableFastTravels = delegate { };
 
 	[Inject] private UIManager _uiManager;
-	[Inject] private InputReader _inputReader;
 
 	private void Awake()
 	{
@@ -71,13 +69,12 @@ public class MapManager : MonoBehaviour
 			}
 		}
 
-		_inputReader.SwitchToJournalControls();
+		InputReader.SwitchToJournalControls();
 		_lastButton.isOn = false;
 		_mapButton.isOn = true;
 		EnableFastTravel();
 		_uiManager.OnOpenJournal();
 		_closeButton.SetActive(true);
-
 	}
 
 	public void CloseMap()
@@ -86,7 +83,7 @@ public class MapManager : MonoBehaviour
 		_closeButton.SetActive(false);
 		_uiManager.OnCloseJournal();
 		_lastButton.isOn = true;
-		_inputReader.SwitchToGameControls();
+		InputReader.SwitchToGameControls();
 	}
 
 	public void SetCurrentButton(string name)

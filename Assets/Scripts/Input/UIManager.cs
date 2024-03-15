@@ -37,9 +37,6 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Canvas _loadingCanvas;
 	[SerializeField] private Canvas _menuCanvas;
 
-	[Header("Input reader")]
-	[Inject] private InputReader _inputReader;
-
 	private Canvas _currentCanvas;
 
 	[Inject] private UIAnimations _uiAnimations;
@@ -47,10 +44,6 @@ public class UIManager : MonoBehaviour
 	private void Awake()
 	{
 		_journalCanvas.enabled = false;
-	}
-
-	private void Start()
-	{
 		_currentCanvas = _casePageCanvas;
 		DisableAllWindows();
 		OnCloseJournal();
@@ -174,10 +167,10 @@ public class UIManager : MonoBehaviour
 
 	public void OnOpenJournal()
 	{
+		InputReader.SwitchToJournalControls();
 		_uiAnimations.FadeCanvasWithVolume(1f, _journalCanvas.gameObject);
 		_uiAnimations.FadeCanvas(0f, _mainCanvas.gameObject);
 		_uiAnimations.FadeCanvas(1f, _currentCanvas.gameObject);
-		_inputReader.SwitchToJournalControls();
 	}
 
 	public void OnCloseJournal()
@@ -185,7 +178,7 @@ public class UIManager : MonoBehaviour
 		_uiAnimations.FadeCanvasWithVolume(0f, _journalCanvas.gameObject);
 		_uiAnimations.FadeCanvas(1f, _mainCanvas.gameObject);
 		_uiAnimations.FadeCanvas(0f, _currentCanvas.gameObject);
-		_inputReader.SwitchToGameControls();
+		InputReader.SwitchToGameControls();
 		_mapManager.DisableFastTravel();
 	}
 
@@ -246,13 +239,13 @@ public class UIManager : MonoBehaviour
 	public void OnCloseMenu()
 	{
 		_uiAnimations.FadeCanvas(0f, _menuCanvas.gameObject);
-		_inputReader.SwitchToGameControls();
+		InputReader.SwitchToGameControls();
 	}
 
 	public void OnOpenMenu()
 	{
 		_uiAnimations.FadeCanvas(1f, _menuCanvas.gameObject);
-		_inputReader.SwitchToMainMenuControls();
+		InputReader.SwitchToMainMenuControls();
 	}
 
 	#endregion
