@@ -57,6 +57,11 @@ public class StaticCharacterMovement : MonoBehaviour
         MoveCharacter();
     }
 
+    public void DisableMovement()
+    {
+        InputReader.DisableAllInput();
+    }
+
     private void OnMove(Vector2 movement)
     {
         _inputVector = movement;
