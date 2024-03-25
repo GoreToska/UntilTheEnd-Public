@@ -4,12 +4,11 @@ using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EvidenceMatching", menuName = "UTE/Evidence Matching")]
-public class EvidenceMatching : ScriptableObject
+public class EvidenceMatchingModel : ScriptableObject
 {
 	[System.Serializable]
 	private struct EvidenceCombination
 	{
-		// TODO: custom == operator
 		[SerializeField] private AEvidence _evidenceOne;
 		[SerializeField] private AEvidence _evidenceTwo;
 		[SerializeField] private EvidenceReport _report;
@@ -50,7 +49,6 @@ public class EvidenceMatching : ScriptableObject
 	}
 
 	[SerializeField] private List<EvidenceCombination> _evidenceCombinations;
-	[SerializeField] private Inventory _inventory = default;
 
 	private void OnEnable()
 	{
@@ -62,7 +60,7 @@ public class EvidenceMatching : ScriptableObject
 		}
 	}
 
-	public EvidenceReport FindMatch(AEvidence firstEvidence, AEvidence secondEvidence)
+	public EvidenceReport FindMatch(AEvidence firstEvidence, AEvidence secondEvidence, out string variableName)
 	{
 		EvidenceCombination inEvidenceComb = new EvidenceCombination(firstEvidence, secondEvidence);
 
@@ -70,18 +68,21 @@ public class EvidenceMatching : ScriptableObject
 		{
 			if (inEvidenceComb == combination)
 			{
-				if (_inventory.HasConclusion(combination.Report))
-					return null;
-
 				if(combination.VariableName != string.Empty)
 				{
-					DialogueLua.SetVariable(combination.VariableName, true);
+					variableName = combination.VariableName;
+					//DialogueLua.SetVariable(combination.VariableName, true);
+				}
+				else
+				{
+					variableName = string.Empty;
 				}
 
 				return combination.Report;
 			}
 		}
 
+		variableName = string.Empty;
 		return null;
 	}
 }

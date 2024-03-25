@@ -22,6 +22,7 @@ public class MapManager : MonoBehaviour
 	public event UnityAction DisableFastTravels = delegate { };
 
 	[Inject] private UIManager _uiManager;
+	[SerializeField] private InputReader _inputReader;
 
 	private void Awake()
 	{
@@ -69,7 +70,7 @@ public class MapManager : MonoBehaviour
 			}
 		}
 
-		InputReader.SwitchToJournalControls();
+		_inputReader.SwitchToJournalControls();
 		_lastButton.isOn = false;
 		_mapButton.isOn = true;
 		EnableFastTravel();
@@ -83,7 +84,7 @@ public class MapManager : MonoBehaviour
 		_closeButton.SetActive(false);
 		_uiManager.OnCloseJournal();
 		_lastButton.isOn = true;
-		InputReader.SwitchToGameControls();
+		_inputReader.SwitchToGameControls();
 	}
 
 	public void SetCurrentButton(string name)
@@ -150,8 +151,6 @@ public class MapManager : MonoBehaviour
 	{
 		DisableFastTravels.Invoke();
 	}
-
-	public static string ActiveScene { get { return SceneManager.GetActiveScene().ToString(); } }
 
 	public string SavedLocation
 	{

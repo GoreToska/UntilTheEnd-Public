@@ -14153,11 +14153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb8708481781df4ead301d10e3fa9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _walkSpeed: 1
   _sprintSpeed: 3
   _smoothing: 0.25
   _targetLerpSpeed: 2
+  _inputReader: {fileID: 11400000, guid: 5c2da02b4799ca04cae0e4304160aee5, type: 2}
 --- !u!114 &7923671107616119646
 MonoBehaviour:
   m_ObjectHideFlags: 0

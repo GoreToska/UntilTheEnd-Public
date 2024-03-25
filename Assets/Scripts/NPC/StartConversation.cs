@@ -51,7 +51,6 @@ public class StartConversation : MonoBehaviour, IInteractable
 
 	private void OpenDialogue()
 	{
-		//_inputReader.DisableAllInput();
 		_promptManager.DeactivatePromptDialogue();
 		_uiAnimations.DialogueFadeIn();
 

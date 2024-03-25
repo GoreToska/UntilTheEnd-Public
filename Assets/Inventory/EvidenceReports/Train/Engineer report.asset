@@ -22,7 +22,7 @@ MonoBehaviour:
   _type: 1
   _npcName: "\u0418\u043D\u0436\u0435\u043D\u0435\u0440"
   _logsInfo: {fileID: 0}
-  _variable: 
-  _personName: 
-  _sprite: {fileID: 21300000, guid: 6de958a5578adb042b9aebb68299a423, type: 3}
-  _personSprite: {fileID: 0}
+  <Variable>k__BackingField: 
+  <PersonName>k__BackingField: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 6de958a5578adb042b9aebb68299a423, type: 3}
+  <PersonSprite>k__BackingField: {fileID: 0}

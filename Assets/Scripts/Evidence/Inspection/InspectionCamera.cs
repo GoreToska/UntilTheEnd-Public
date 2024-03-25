@@ -21,8 +21,6 @@ public class InspectionCamera : MonoBehaviour
 	[SerializeField] private float _zoomLerpSpeed = 10f;
 	private Camera _camera;
 
-	public Transform ObjectRotator { get { return _objectRotator; } }
-
 	private void Awake()
 	{
 		_camera = GetComponent<Camera>();
@@ -113,7 +111,7 @@ public class InspectionCamera : MonoBehaviour
 
 	public void SpawnInspectableObject(GameObject gameObject, EvidenceItem evidence)
 	{
-		_target = Instantiate(gameObject, ObjectRotator);
+		_target = Instantiate(gameObject, _objectRotator);
 		_target.GetComponent<Rigidbody>().isKinematic = true;
 		_target.GetComponent<BoxCollider>().enabled = false;
 

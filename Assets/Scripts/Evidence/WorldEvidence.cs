@@ -20,6 +20,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 	[Inject] protected UIAnimations _uIAnimations;
 	[Inject] protected PlayerInteractionSystem _playerInteractionSystem;
 	[Inject] protected InspectionCamera _inspectionCamera;
+	[SerializeField] protected InputReader _inputReader;
 
 	private void Awake()
 	{
@@ -48,7 +49,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 
 	public virtual void StartInteraction()
 	{
-		InputReader.SwitchToInspectionControls();
+		_inputReader.SwitchToInspectionControls();
 		InputReader.AcceptEvent += OnInteractionView;
 		AddButtonListener();
 		StartInspect();
@@ -74,10 +75,10 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		_evidenceUIManager.SetTakeButtonEvent(this);
 	}
 
-	protected virtual void OnDisable()
+	protected virtual void OnDestroy()
 	{
 		InputReader.AcceptEvent -= OnInteractionView;
-		InputReader.SwitchToGameControls();
+		_inputReader.SwitchToGameControls();
 	}
 
 	protected virtual void ClearEvidence()
@@ -99,7 +100,7 @@ public class WorldEvidence : MonoBehaviour, IViewableInteractable
 		}
 
 		_playerInteractionSystem.EndInteraction();
-		InputReader.SwitchToGameControls();
+		_inputReader.SwitchToGameControls();
 		_evidenceUIManager.RemoveButtonEvents();
 		ClearEvidence();
 	}

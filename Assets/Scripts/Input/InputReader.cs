@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting;
 
-[CreateAssetMenu(fileName = "InputReader", menuName ="UTE/InputReader")]
+[CreateAssetMenu(fileName = "InputReader", menuName = "UTE/InputReader")]
 public class InputReader : ScriptableObject, GameInput.IGameControlsActions, GameInput.IInspectionControlsActions, GameInput.IMenuControlsActions, GameInput.IMainMenuControlsActions
 {
 	//Gameplay delegates
@@ -36,49 +36,53 @@ public class InputReader : ScriptableObject, GameInput.IGameControlsActions, Gam
 	//Main menu delegates
 	public static event UnityAction CloseMenuEvent = delegate { };
 
-	private static GameInput _gameInput;
+	private GameInput _gameInput;
 
-	private void OnEnable()
+	void OnEnable()
 	{
 		if (_gameInput == null)
+		{
 			_gameInput = new GameInput();
-
-		_gameInput.GameControls.SetCallbacks(this);
-		_gameInput.InspectionControls.SetCallbacks(this);
-		_gameInput.MenuControls.SetCallbacks(this);
-		_gameInput.MainMenuControls.SetCallbacks(this);
-		Debug.Log("AWAKE");
+			_gameInput.GameControls.SetCallbacks(this);
+			_gameInput.InspectionControls.SetCallbacks(this);
+			_gameInput.MenuControls.SetCallbacks(this);
+			_gameInput.MainMenuControls.SetCallbacks(this);
+			// TODO: add other interfaces callbacks
+		}
+		Debug.Log(_gameInput);
+		// TODO: add function
+		_gameInput.GameControls.Enable();
 	}
 
 	#region Enable/Disable Controls
 
-	public static void SwitchToInspectionControls()
+	public void SwitchToInspectionControls()
 	{
 		DisableAllInput();
 		_gameInput.InspectionControls.Enable();
 	}
 
-	public static void SwitchToMainMenuControls()
+	public void SwitchToMainMenuControls()
 	{
 		DisableAllInput();
 		_gameInput.MainMenuControls.Enable();
 	}
 
-	public static void SwitchToGameControls()
+	public void SwitchToGameControls()
 	{
 		DisableAllInput();
 		_gameInput.GameControls.Enable();
 		Debug.Log("Enable Game Controls");
 	}
 
-	public static void SwitchToJournalControls()
+	public void SwitchToJournalControls()
 	{
 		DisableAllInput();
 		_gameInput.MenuControls.Enable();
 		Debug.Log("Switch to Journal Controls");
 	}
 
-	public static void DisableAllInput()
+	public void DisableAllInput()
 	{
 		_gameInput.GameControls.Disable();
 		_gameInput.InspectionControls.Disable();

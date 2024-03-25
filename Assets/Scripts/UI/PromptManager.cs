@@ -18,7 +18,6 @@ public class PromptManager : MonoBehaviour
     private GameObject _targetLocation;
 
     [SerializeField] private int _lift = 175;
-    private int _moveDistance = 150;
 
     private Camera _camera;
 
@@ -72,9 +71,6 @@ public class PromptManager : MonoBehaviour
 
     public void DeactivatePromptDialogue()
     {
-        if (!_targetDialogue)
-            _targetDialogue = GameObject.Find("DialoguePrompt");
-
         _targetDialogue = null;
         _promptDialogue.SetActive(false);
     }
@@ -89,8 +85,6 @@ public class PromptManager : MonoBehaviour
 
     public void DeactivatePromptEvidence()
     {
-        if (!_promptEvidence)
-            _promptEvidence = GameObject.Find("EvidencePrompt");
         _targetEvidence = null;
         _promptEvidence.SetActive(false);
     }

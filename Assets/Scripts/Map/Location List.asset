@@ -18,10 +18,10 @@ MonoBehaviour:
     IsAvailable: 1
   - LocationName: Estate
     IsCurrent: 0
-    IsAvailable: 0
+    IsAvailable: 1
   - LocationName: Pub
-    IsCurrent: 0
-    IsAvailable: 0
+    IsCurrent: 1
+    IsAvailable: 1
   - LocationName: CourtHouse
     IsCurrent: 0
-    IsAvailable: 0
+    IsAvailable: 1

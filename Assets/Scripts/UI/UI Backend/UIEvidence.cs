@@ -10,7 +10,7 @@ public class UIEvidence : MonoBehaviour
 	[SerializeField] private GameObject _evidenceHelp;
 	[SerializeField] private GameObject _evidencesScrollView;
 	[SerializeField] private Inventory _inventory;
-	[SerializeField] private EvMatchConnectUI _matchingConnect;
+	[SerializeField] private EvidenceMatchingController _matchingConnect;
 	[SerializeField] private GameObject _pageHint;
 	private PageHint _hint;
 

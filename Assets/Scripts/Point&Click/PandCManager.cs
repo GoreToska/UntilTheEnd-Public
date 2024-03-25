@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Zenject;
 
 public class PandCManager : MonoBehaviour
 {
@@ -11,15 +10,15 @@ public class PandCManager : MonoBehaviour
 	private void OnEnable()
 	{
 		_camera = Camera.main;
-		InputReader.PointAndClick += PerformRatcast;
+		InputReader.PointAndClick += PerformRaycast;
 	}
 
 	private void OnDisable()
 	{
-		InputReader.PointAndClick -= PerformRatcast;
+		InputReader.PointAndClick -= PerformRaycast;
 	}
 
-	private void PerformRatcast()
+	private void PerformRaycast()
 	{
 		if (Physics.Raycast(_camera.ScreenPointToRay(Mouse.current.position.ReadValue()), out var hitInfo, 1000f, _pandcLayerMask))
 		{

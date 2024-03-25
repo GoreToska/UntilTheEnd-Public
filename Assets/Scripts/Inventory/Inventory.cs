@@ -35,7 +35,7 @@ public class Inventory : ScriptableObject
         {
             case EEvidenceType.Item:
                 EvidenceItem item = evidence as EvidenceItem;
-                if (CheckEvidenceItem(item))
+                if (HaveEvidenceItem(item))
                     return;
 
                 _evidenceItems.Add(item);
@@ -45,7 +45,7 @@ public class Inventory : ScriptableObject
 
             case EEvidenceType.Report:
                 EvidenceReport report = evidence as EvidenceReport;
-                if (CheckEvidenceReport(report))
+                if (HaveEvidenceReport(report))
                     return;
 
                 _evidenceReports.Add(report);
@@ -64,22 +64,22 @@ public class Inventory : ScriptableObject
         ChangeLogEvent.Invoke(logsInfo);
     }
 
-    public void AddConclusion(EvidenceReport inConclusion)
+    public void AddConclusion(EvidenceReport conclusion)
     {
-        if (inConclusion == null)
+        if (conclusion == null)
             return;
 
-        _conclusions.Add(inConclusion);
-        AddLog(inConclusion._logsInfo);
-        AddConclusionEvent.Invoke(inConclusion, false);
+        _conclusions.Add(conclusion);
+        AddLog(conclusion._logsInfo);
+        AddConclusionEvent.Invoke(conclusion, false);
     }
 
-    private bool CheckEvidenceReport(EvidenceReport report)
+    private bool HaveEvidenceReport(EvidenceReport report)
     {
         return _evidenceReports.Contains(report);
     }
 
-    private bool CheckEvidenceItem(EvidenceItem item)
+    private bool HaveEvidenceItem(EvidenceItem item)
     {
         return _evidenceItems.Contains(item);
     }
@@ -92,7 +92,7 @@ public class Inventory : ScriptableObject
         _conclusions.Clear();
     }
 
-    public bool HasConclusion(EvidenceReport report)
+    public bool HaveConclusion(EvidenceReport report)
     {
         return _conclusions.Contains(report);
     }
@@ -119,7 +119,7 @@ public class Inventory : ScriptableObject
 
     #region Lua
 
-    private bool HaveEvidence(string evidenceItemName)
+    public bool HaveEvidence(string evidenceItemName)
     {
         foreach (var evidence in _evidenceItems)
         {

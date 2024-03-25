@@ -10738,6 +10738,12 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
+      - originConversationID: 6
+        originDialogueID: 1
+        destinationConversationID: 6
+        destinationDialogueID: 0
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: ActivateSpecificCamera("CutsceneCamera01")
       onExecute:
@@ -12717,8 +12723,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1194.1847, y: 0}
-    canvasZoom: 0.3400001
+    canvasScrollPosition: {x: 166.9119, y: 131.69608}
+    canvasZoom: 1.3599993
   - id: 7
     fields:
     - title: Title
@@ -13829,7 +13835,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\"\u0425\u043E\u0440\u043E\u0448\u043E\"."
+        value: "\"\u0425\u043E\u0440\u043E\u0448\u043E.\""
         type: 0
         typeString: 
       - title: Sequence
@@ -13849,9 +13855,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -13884,7 +13890,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\"\u042F \u043F\u0435\u0440\u0435\u0434\u0443\u043C\u0430\u043B \u0435\u0445\u0430\u0442\u044C\"."
+        value: "\"\u042F \u043F\u0435\u0440\u0435\u0434\u0443\u043C\u0430\u043B \u0435\u0445\u0430\u0442\u044C.\""
         type: 0
         typeString: 
       - title: Sequence
@@ -13996,8 +14002,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 752.0475, y: 255.034}
-    canvasZoom: 0.9222483
+    canvasScrollPosition: {x: 542.5214, y: 56.591995}
+    canvasZoom: 1.1322482
   - id: 8
     fields:
     - title: Title
@@ -20111,6 +20117,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: True
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 9
       isRoot: 0
       isGroup: 0
@@ -20168,6 +20178,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: True
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 9
       isRoot: 0
       isGroup: 0
@@ -24643,8 +24657,8 @@ MonoBehaviour:
         width: 294.41296
         height: 112.92667
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 2568.7556, y: 231.42392}
-    canvasZoom: 0.34274977
+    canvasScrollPosition: {x: 10150.001, y: 3506.4224}
+    canvasZoom: 1.0027493
   - id: 10
     fields:
     - title: Title
@@ -38152,7 +38166,7 @@ MonoBehaviour:
         priority: 2
       conditionsString: Variable["Bogdan.TookBullet"] == false and (CheckLaw(2) 
         == true)
-      userScript: 
+      userScript: Variable["Bogdan.TookBullet"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -38209,7 +38223,7 @@ MonoBehaviour:
         priority: 2
       conditionsString: (CheckCharter(2)  == true) and (Variable["Bogdan.TookSilentShotReport"]
         == false)
-      userScript: 
+      userScript: Variable["Bogdan.TookSilentShotReport"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -38286,11 +38300,11 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Actor
         value: 20
-        type: 0
+        type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
         value: 1
-        type: 0
+        type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
         value: 
@@ -38305,6 +38319,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: True
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 12
       isRoot: 0
       isGroup: 0
@@ -38320,16 +38338,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'TakeEvidence("BulletEvidence");
-
-        EndDialogue();'
+      userScript: TakeEvidence("BulletEvidence");
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 3271.8018
-        y: 1016.96234
+        x: 3272.8328
+        y: 1017.99335
         width: 160
         height: 30
     - id: 46
@@ -38344,11 +38360,11 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Actor
         value: 20
-        type: 0
+        type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
         value: 1
-        type: 0
+        type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
         value: 
@@ -38368,6 +38384,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: True
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 12
       isRoot: 0
       isGroup: 0
@@ -38549,8 +38569,8 @@ MonoBehaviour:
         width: 219
         height: 86
       color: {r: 1, g: 0.3537736, b: 0.44290817, a: 0.2509804}
-    canvasScrollPosition: {x: 2723.8271, y: 706.4447}
-    canvasZoom: 0.8499995
+    canvasScrollPosition: {x: 2312.5715, y: 654.4319}
+    canvasZoom: 0.9699994
   - id: 13
     fields:
     - title: Title
@@ -39246,7 +39266,7 @@ MonoBehaviour:
         width: 205
         height: 93
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 341.23495, y: 99.60556}
+    canvasScrollPosition: {x: 264.63922, y: 0}
     canvasZoom: 0.94000006
   - id: 14
     fields:
@@ -41349,6 +41369,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: True
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 14
       isRoot: 0
       isGroup: 0
@@ -41406,6 +41430,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: False
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 14
       isRoot: 0
       isGroup: 0
@@ -41625,8 +41653,8 @@ MonoBehaviour:
         width: 1476.861
         height: 340.65494
       color: {r: 1, g: 1, b: 1, a: 0.2509804}
-    canvasScrollPosition: {x: 2067.1965, y: 719.0663}
-    canvasZoom: 0.81999964
+    canvasScrollPosition: {x: 3358.5464, y: 280.5827}
+    canvasZoom: 1.0299995
   - id: 15
     fields:
     - title: Title
@@ -46145,9 +46173,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -46389,8 +46417,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 272.97278, y: 0}
-    canvasZoom: 0.8800001
+    canvasScrollPosition: {x: 307.8072, y: 0}
+    canvasZoom: 1.03
   - id: 17
     fields:
     - title: Title
@@ -46643,9 +46671,9 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'OpenMap();
+      userScript: 'EndDialogue();
 
-        EndDialogue();'
+        OpenMap();'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -46960,8 +46988,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 135.49612, y: 5.1798897}
-    canvasZoom: 0.7900002
+    canvasScrollPosition: {x: 265.14304, y: 0}
+    canvasZoom: 1.03
   - id: 18
     fields:
     - title: Title
@@ -51250,8 +51278,8 @@ MonoBehaviour:
         width: 250.31494
         height: 133.87668
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 7288.68, y: 635.29065}
-    canvasZoom: 0.88
+    canvasScrollPosition: {x: 4856.08, y: 118.47066}
+    canvasZoom: 1.2099997
   - id: 20
     fields:
     - title: Title
@@ -51552,6 +51580,10 @@ MonoBehaviour:
         value: AnimatorPlay(Standing, OfficerFix);
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: False
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 20
       isRoot: 0
       isGroup: 0
@@ -51843,6 +51875,10 @@ MonoBehaviour:
         value: AnimatorPlay(Standing, OfficerFix);
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: False
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 20
       isRoot: 0
       isGroup: 0
@@ -51858,14 +51894,16 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: 'TakeEvidence("FootprintsEvidence");
+
+        Destroy("Interest_Footprints")'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 1076.0029
-        y: 176.70775
+        y: 177.51353
         width: 160
         height: 30
     - id: 10
@@ -51898,6 +51936,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Show Invalid
+        value: False
+        type: 2
+        typeString: CustomFieldType_Boolean
       conversationID: 20
       isRoot: 0
       isGroup: 0
@@ -51913,11 +51955,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'EndDialogue();
-
-        TakeEvidence("FootprintsEvidence");
-
-        Destroy("Interest_Footprints")'
+      userScript: EndDialogue();
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -51936,8 +51974,8 @@ MonoBehaviour:
         width: 248.99994
         height: 98.87233
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 542.6894, y: 0}
-    canvasZoom: 0.8509999
+    canvasScrollPosition: {x: 745.9158, y: 0}
+    canvasZoom: 1.2409996
   - id: 21
     fields:
     - title: Title
@@ -52019,7 +52057,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 21
@@ -52287,7 +52325,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AnimatorPlay(Standing, OfficerFix)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 21
@@ -52305,7 +52343,9 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: 'TakeEvidence("DressPiece");
+
+        Destroy("Interest_DressPiece");'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -52471,7 +52511,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AnimatorPlay(Standing, OfficerFix)
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 21
@@ -52483,11 +52523,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 'EndDialogue();
-
-        TakeEvidence("DressPiece");
-
-        Destroy("Interest_DressPiece");'
+      userScript: EndDialogue();
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -52498,7 +52534,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 692.7581, y: 29.12622}
+    canvasScrollPosition: {x: 625.0772, y: 0}
     canvasZoom: 1.03
   - id: 22
     fields:
@@ -53208,7 +53244,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AnimatorPlay(Standing, OfficerFix);
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 23
@@ -53226,14 +53262,19 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: 'TakeEvidence("CigaretteCase");
+
+        Variable["Prologue.CigaretteCaseFound"]
+        = true;
+
+        Destroy("Interest_portsigar");'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 989
-        y: 54
+        y: 53.107147
         width: 160
         height: 30
     - id: 5
@@ -53263,7 +53304,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AnimatorPlay(Standing, OfficerFix);
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 23
@@ -53273,22 +53314,9 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 23
-        originDialogueID: 5
-        destinationConversationID: 23
-        destinationDialogueID: 4
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
-      userScript: 'EndDialogue();
-
-        TakeEvidence("CigaretteCase");
-
-        Variable["Prologue.CigaretteCaseFound"]
-        = true;
-
-        Destroy("Interest_portsigar")'
+      userScript: EndDialogue();
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -53299,8 +53327,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 595.3673, y: 0}
-    canvasZoom: 0.97
+    canvasScrollPosition: {x: 533.44214, y: 0}
+    canvasZoom: 1.1199999
   syncInfo:
     syncActors: 0
     syncItems: 0
@@ -53316,4 +53344,6 @@ MonoBehaviour:
     Item","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"locationFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Description","value":"","type":0,"typeString":""}],"variableFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Initial
     Value","value":"","type":0,"typeString":""},{"title":"Description","value":"","type":0,"typeString":""}],"conversationFields":[{"title":"Title","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Actor","value":"0","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"0","type":5,"typeString":"CustomFieldType_Actor"}],"dialogueEntryFields":[{"title":"Title","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Actor","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Menu
     Text","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Dialogue
-    Text","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Sequence","value":"","type":0,"typeString":"CustomFieldType_Text"}],"actorPrimaryFieldTitles":[],"itemPrimaryFieldTitles":[],"questPrimaryFieldTitles":[],"locationPrimaryFieldTitles":[],"variablePrimaryFieldTitles":[],"conversationPrimaryFieldTitles":[],"dialogueEntryPrimaryFieldTitles":[],"npcLineColor":{"r":1.0,"g":0.0,"b":0.0,"a":1.0},"pcLineColor":{"r":0.0,"g":0.0,"b":1.0,"a":1.0},"repeatLineColor":{"r":0.5,"g":0.5,"b":0.5,"a":1.0}}'
+    Text","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Sequence","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Show
+    Invalid","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"actorPrimaryFieldTitles":[],"itemPrimaryFieldTitles":[],"questPrimaryFieldTitles":[],"locationPrimaryFieldTitles":[],"variablePrimaryFieldTitles":[],"conversationPrimaryFieldTitles":[],"dialogueEntryPrimaryFieldTitles":["Show
+    Invalid"],"npcLineColor":{"r":1.0,"g":0.0,"b":0.0,"a":1.0},"pcLineColor":{"r":0.0,"g":0.0,"b":1.0,"a":1.0},"repeatLineColor":{"r":0.5,"g":0.5,"b":0.5,"a":1.0}}'

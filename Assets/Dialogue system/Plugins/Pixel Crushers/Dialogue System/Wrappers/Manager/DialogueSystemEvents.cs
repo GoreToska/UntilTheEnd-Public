@@ -18,6 +18,7 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 		[Inject] private CameraStateManager _cameraStateManager;
 		[Inject] private UIAnimations _uiAnimations;
 		[Inject] private StandardDialogueUI _standardDialogueUI;
+		[SerializeField] private InputReader _inputReader;
 
 		private void Awake()
 		{
@@ -26,7 +27,7 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 				{
 					_cameraStateManager.ActivateDialogueCamera();
 					_uiAnimations.DialogueFadeIn();
-					InputReader.DisableAllInput();
+					_inputReader.DisableAllInput();
 				});
 
 			conversationEvents.onConversationEnd.AddListener(
@@ -35,7 +36,7 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 					_cameraStateManager.ActivateMainCamera();
 					_uiAnimations.DialogueFadeOut();
 					_standardDialogueUI.ClearHistory();
-					InputReader.SwitchToGameControls();
+					_inputReader.SwitchToGameControls();
 				});
 		}
 

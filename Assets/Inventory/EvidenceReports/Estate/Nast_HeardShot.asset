@@ -20,7 +20,7 @@ MonoBehaviour:
   _type: 1
   _npcName: 0
   _logsInfo: {fileID: 0}
-  _variable: 
-  _personName: 
-  _sprite: {fileID: 21300000, guid: 4eb2adc49923a9642bf74293a4b23871, type: 3}
-  _personSprite: {fileID: 0}
+  <Variable>k__BackingField: 
+  <PersonName>k__BackingField: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 4eb2adc49923a9642bf74293a4b23871, type: 3}
+  <PersonSprite>k__BackingField: {fileID: 0}

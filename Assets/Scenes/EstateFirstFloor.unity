@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 1519555879}
   _conversant: {fileID: 0}
   _conversationName: a1/estate/rogneda_01
@@ -358,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf4bdeae598dda448e74253fde17940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _sceneName: Estate
   _tempRusName: "\u0414\u0432\u043E\u0440"
   _spawnPointName: Spawnpoint
@@ -3514,10 +3512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05b0d3c3db41f648be7487e7f83156f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: cd385393b9503e54aa02e6d04891ca89, type: 2}
   _dialogueVariableName: 
+  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
 --- !u!1 &984480469
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,7 +4270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 1519555879}
   _conversant: {fileID: 0}
   _conversationName: a1/estate/nastasya_01
@@ -4526,7 +4523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fefb2901f84b740998ac97dc1f815b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _player: {fileID: 1519555879}
   _conversant: {fileID: 0}
   _conversationName: a1/estate/interest_tornDress
@@ -8073,7 +8069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf4bdeae598dda448e74253fde17940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _sceneName: EstateSecondFloor
   _tempRusName: 
   _spawnPointName: 
@@ -8387,10 +8382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ad7bcd26d00754fa4ba9092415d623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: bc95d3e63bb5cc94eafb580f20e3b596, type: 2}
   _inventory: {fileID: 11400000, guid: 9e55e7c2cab243d42ac09f89abfa486d, type: 2}
   _evidenceItem: {fileID: 11400000, guid: cd385393b9503e54aa02e6d04891ca89, type: 2}
   _dialogueVariableName: 
+  _inputReader: {fileID: 11400000, guid: 5c2da02b4799ca04cae0e4304160aee5, type: 2}
 --- !u!114 &2036662992
 MonoBehaviour:
   m_ObjectHideFlags: 0

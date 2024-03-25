@@ -9,7 +9,7 @@ public class UIConclusion : MonoBehaviour
     [SerializeField] private GameObject _conclusionHelp;
     [SerializeField] private GameObject _conclusionsPanel;
     [SerializeField] private Inventory _inventory;
-    [SerializeField] private EvMatchConnectUI _matchingConnect;
+    [SerializeField] private EvidenceMatchingController _matchingConnect;
     [SerializeField] private TMP_Text _conclusionsAllertText;
     [SerializeField] private Canvas _conclusionSuccessCanvas;
     [SerializeField] private TMP_Text _conclusionsMessageText;

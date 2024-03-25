@@ -12,11 +12,7 @@ public class StaticCharacterMovement : MonoBehaviour
     private int _movementMultiplier = 1;
 
     private Vector2 _inputVector;
-    private Vector3 _directionForward;
-
     private NavMeshAgent _playerNavMesh;
-
-    //New
     private Vector3 _movementVector;
     private Vector3 _lastDirection;
     private Vector3 _targetDirection;
@@ -27,22 +23,18 @@ public class StaticCharacterMovement : MonoBehaviour
     private float _smoothing = 0.25f;
     [SerializeField] private float _targetLerpSpeed = 1;
 
-    [Inject] private StaticCameraMovement _staticCameraMovement;
+    [SerializeField] private InputReader _inputReader;
 
-	private void Start()
-    {
-        _directionForward.y = 0;
-
-        _directionForward = _staticCameraMovement.gameObject.transform.forward.normalized;
-    }
-
-    private void OnEnable()
-    {
+	private void Awake()
+	{
         _playerNavMesh = GetComponent<NavMeshAgent>();
+	}
+
+	private void OnEnable()
+    {
 		InputReader.MoveEvent += OnMove;
 		InputReader.Sprint += OnSprint;
 		InputReader.StopSprint += OnSprintExit;
-		// TODO: other functions
 	}
 
     private void OnDisable()
@@ -59,7 +51,7 @@ public class StaticCharacterMovement : MonoBehaviour
 
     public void DisableMovement()
     {
-        InputReader.DisableAllInput();
+		_inputReader.DisableAllInput();
     }
 
     private void OnMove(Vector2 movement)

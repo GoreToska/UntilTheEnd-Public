@@ -6,20 +6,19 @@ using UnityEngine.Audio;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _musicAudioMixer;
-    [SerializeField] private List<AudioClip> _TrainMusicClips;
-    [SerializeField] private List<AudioClip> _RailwayMusicClips;
-    [SerializeField] private List<AudioClip> _TrainSoundsMusicClips;
-    [SerializeField] private List<AudioClip> _RainMusicClips;
-    [SerializeField] private List<AudioClip> _CourtSoundsMusicClips;
-    [SerializeField] private List<AudioClip> _EstateSoundsMusicClips;
-    [SerializeField] private List<AudioClip> _PubSoundsMusicClips;
+    [SerializeField] private List<AudioClip> _trainMusicClips;
+    [SerializeField] private List<AudioClip> _railwayMusicClips;
+    [SerializeField] private List<AudioClip> _trainSoundsMusicClips;
+    [SerializeField] private List<AudioClip> _rainMusicClips;
+    [SerializeField] private List<AudioClip> _courtSoundsMusicClips;
+    [SerializeField] private List<AudioClip> _estateSoundsMusicClips;
+    [SerializeField] private List<AudioClip> _pubSoundsMusicClips;
+    [SerializeField] private List<FootstepsSounds> _footstepsSounds;
 
     [SerializeField] private AudioSource _musicAudioSource;
     [SerializeField] private AudioSource _rainAudioSource;
     [SerializeField] private AudioSource _trainAudioSource;
     [SerializeField] private AudioSource _voiceAudioSource;
-
-    [SerializeField] private List<FootstepsSounds> _sounds;
 
     private void OnDisable()
     {
@@ -32,15 +31,9 @@ public class MusicManager : MonoBehaviour
         PlayAmbient();
     }
 
-    public void PlayFootSound(string tag, AudioSource source)
+    public void PlayFootstepSound(string tag, AudioSource source)
     {
-        foreach (var footstep in _sounds)
-        {
-            if (tag != footstep.Tag)
-                continue;
-
-            source.PlayOneShot(footstep.Sound);
-        }
+		source.PlayOneShot(_footstepsSounds.Find(i=> i.Tag == tag).Sound);
     }
 
     private void PlayAmbient()
@@ -50,24 +43,24 @@ public class MusicManager : MonoBehaviour
 
         if (UTESceneManager.CurrentScene == UTESceneManager.TrainName)
         {
-            _musicAudioSource.PlayOneShot(_TrainMusicClips[Random.Range(0, _TrainMusicClips.Count)]);
+            _musicAudioSource.PlayOneShot(_trainMusicClips[Random.Range(0, _trainMusicClips.Count)]);
         }
 
         if (UTESceneManager.CurrentScene == UTESceneManager.RailwayName)
         {
-            _musicAudioSource.PlayOneShot(_RailwayMusicClips[Random.Range(0, _TrainMusicClips.Count)]);
+            _musicAudioSource.PlayOneShot(_railwayMusicClips[Random.Range(0, _trainMusicClips.Count)]);
         }
 
         if (UTESceneManager.CurrentScene == UTESceneManager.CourtName)
         {
-            _musicAudioSource.PlayOneShot(_CourtSoundsMusicClips[Random.Range(0, _CourtSoundsMusicClips.Count)]);
+            _musicAudioSource.PlayOneShot(_courtSoundsMusicClips[Random.Range(0, _courtSoundsMusicClips.Count)]);
         }
 
         if (UTESceneManager.CurrentScene == UTESceneManager.EstateName ||
             UTESceneManager.CurrentScene == UTESceneManager.EstateFirstName ||
             UTESceneManager.CurrentScene == UTESceneManager.EstateSecondName)
         {
-            _musicAudioSource.PlayOneShot(_EstateSoundsMusicClips[Random.Range(0, _EstateSoundsMusicClips.Count)]);
+            _musicAudioSource.PlayOneShot(_estateSoundsMusicClips[Random.Range(0, _estateSoundsMusicClips.Count)]);
         }
     }
 
@@ -75,30 +68,30 @@ public class MusicManager : MonoBehaviour
     {
         if (UTESceneManager.CurrentScene == UTESceneManager.TrainName)
         {
-            TrainSounds();
-            LiteRain();
+            PlayTrainSounds();
+            PlayLiteRain();
         }
 
         if (UTESceneManager.CurrentScene == UTESceneManager.RailwayName)
         {
-            _musicAudioSource.PlayOneShot(_RailwayMusicClips[Random.Range(0, _TrainMusicClips.Count)]);
+            _musicAudioSource.PlayOneShot(_railwayMusicClips[Random.Range(0, _trainMusicClips.Count)]);
         }
     }
 
-    private void LiteRain()
+    private void PlayLiteRain()
     {
         if (_rainAudioSource.isPlaying)
             return;
 
-        _rainAudioSource.PlayOneShot(_RainMusicClips[0]);
+        _rainAudioSource.PlayOneShot(_rainMusicClips[0]);
     }
 
-    private void TrainSounds()
+    private void PlayTrainSounds()
     {
         if (_trainAudioSource.isPlaying)
             return;
 
-        _trainAudioSource.PlayOneShot(_TrainSoundsMusicClips[0]);
+        _trainAudioSource.PlayOneShot(_trainSoundsMusicClips[0]);
     }
 
     public void PlayInspectionPhrase(AudioClip audioClip)

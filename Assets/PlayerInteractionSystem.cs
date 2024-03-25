@@ -20,7 +20,6 @@ public class PlayerInteractionSystem : MonoBehaviour
 
 	private void TryToInteract()
 	{
-		Debug.Log("Interact");
 		if (_interactables.Count == 0 || _currentInteractable != null)
 			return;
 
