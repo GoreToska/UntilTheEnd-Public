@@ -18,9 +18,9 @@ MonoBehaviour:
   _id: 4
   _location: 1
   _type: 1
-  _npcName: 0
+  _npcName: "\u0411\u043E\u0433\u0448\u0430"
   _logsInfo: {fileID: 0}
-  _variable: 
-  _personName: 
-  _sprite: {fileID: 21300000, guid: e2c20816abb61b14da4e31a6ed9b261f, type: 3}
-  _personSprite: {fileID: 0}
+  <Variable>k__BackingField: 
+  <PersonName>k__BackingField: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: e2c20816abb61b14da4e31a6ed9b261f, type: 3}
+  <PersonSprite>k__BackingField: {fileID: 0}

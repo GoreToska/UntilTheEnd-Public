@@ -20,7 +20,7 @@ public class UTESceneManager : MonoBehaviour
 	[Inject] private PromptManager _promptManager;
 	[Inject] private UIManager _uiManager;
 	[Inject] private MusicManager _musicManager;
-
+	[Inject] private StaticCharacterMovement _player;
 	private static AsyncOperation _loadingOperation;
 
 	private void OnEnable()
@@ -62,7 +62,7 @@ public class UTESceneManager : MonoBehaviour
 
 		_loadingOperation = LoadLoadingScene();
 
-		_loadingOperation.completed += delegate { LoadScene(_railway); _loadingOperation = null; };
+		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_railway); _loadingOperation = null; };
 	}
 
 	public void LoadRailway(string spawnpoint)
@@ -90,7 +90,7 @@ public class UTESceneManager : MonoBehaviour
 
 		_loadingOperation = LoadLoadingScene();
 		_loadingOperation.allowSceneActivation = true;
-		_loadingOperation.completed += delegate { LoadScene(_estate); _loadingOperation = null; };
+		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_estate); _loadingOperation = null; };
 	}
 
 	public void LoadCourtHouse()
@@ -103,7 +103,7 @@ public class UTESceneManager : MonoBehaviour
 
 		_loadingOperation = LoadLoadingScene();
 
-		_loadingOperation.completed += delegate { LoadScene(_court); _loadingOperation = null; };
+		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_court); _loadingOperation = null; };
 	}
 
 	public void LoadPub()
@@ -116,7 +116,7 @@ public class UTESceneManager : MonoBehaviour
 
 		_loadingOperation = LoadLoadingScene();
 
-		_loadingOperation.completed += delegate { LoadScene(_pub); _loadingOperation = null; };
+		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_pub); _loadingOperation = null; };
 	}
 
 	public void OnSaveGame()
@@ -136,7 +136,7 @@ public class UTESceneManager : MonoBehaviour
 		_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadFromSlot(0); _loadingOperation = null; };
 	}
 
-	private void LoadScene(string locationName, string spawnPoint = null)
+	private void LoadScenePixelCrushers(string locationName, string spawnPoint = null)
 	{
 		if (spawnPoint != null)
 		{
@@ -145,6 +145,21 @@ public class UTESceneManager : MonoBehaviour
 		else
 		{
 			PixelCrushers.SaveSystem.LoadScene(locationName);
+		}
+	}
+
+	public void LoadScene(string locationName, string spawnPoint = null)
+	{
+		if(spawnPoint != null)
+		{
+			_loadingOperation = LoadLoadingScene();
+
+			_loadingOperation.completed += delegate { LoadScenePixelCrushers(locationName, spawnPoint); _loadingOperation = null; };
+		}
+		else
+		{
+			_loadingOperation = LoadLoadingScene();
+			_loadingOperation.completed += delegate { LoadScenePixelCrushers(locationName); _loadingOperation = null; };
 		}
 	}
 

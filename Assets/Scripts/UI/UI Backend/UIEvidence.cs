@@ -48,6 +48,8 @@ public class UIEvidence : MonoBehaviour
 		evidence.GetComponent<Button>().onClick.AddListener(() => _uiSoundManager.PlayClickSound());
 		evidence.GetComponent<InvokeReportInfo>().SetData(evidenceItem.Description, evidenceItem.Name, evidenceItem.EvidenceIcon);
 
+		Debug.Log($"{evidence}, {evidence.GetComponent<Button>()}");
+
 		if (disableHint)
 		{
 			evidence.GetComponent<ButtonHint>().DisableHint();
