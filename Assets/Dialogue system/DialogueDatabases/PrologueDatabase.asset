@@ -24657,8 +24657,8 @@ MonoBehaviour:
         width: 294.41296
         height: 112.92667
       color: {r: 0.6510388, g: 0.15686274, b: 1, a: 0.5019608}
-    canvasScrollPosition: {x: 10150.001, y: 3506.4224}
-    canvasZoom: 1.0027493
+    canvasScrollPosition: {x: 2768.527, y: 2147.7854}
+    canvasZoom: 0.90999967
   - id: 10
     fields:
     - title: Title

@@ -24,16 +24,18 @@ public class MapManager : MonoBehaviour
 	[Inject] private UIManager _uiManager;
 	[SerializeField] private InputReader _inputReader;
 
-	private void Awake()
+	private void Start()
 	{
 		foreach (var item in LocationsList.Locations)
 		{
 			if (item.IsAvailable)
 			{
 				_mapButtons.First(i => i.Name == item.LocationName).UnsetCurrentLocation();
+				Debug.Log("Enable");
 			}
 			else
 			{
+				Debug.Log("Disable");
 				_mapButtons.First(i => i.Name == item.LocationName).DisableLocation();
 			}
 

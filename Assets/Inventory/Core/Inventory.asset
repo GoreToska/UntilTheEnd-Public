@@ -12,19 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebe5071654d62340a104a75a489b6c4, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  _evidenceItems:
-  - {fileID: 11400000, guid: 87a0a6a424e125c4b8df314cb32ec275, type: 2}
-  - {fileID: 11400000, guid: 71cd5d6c26943904c89dd6e14896d6b0, type: 2}
-  - {fileID: 11400000, guid: 128d471d409119d40adf31589509c5c0, type: 2}
-  - {fileID: 11400000, guid: cd385393b9503e54aa02e6d04891ca89, type: 2}
-  _logsInfos:
-  - {fileID: 11400000, guid: 426e009280a0cfe46bc0ce4fc9e9a2ac, type: 2}
-  _evidenceReports:
-  - {fileID: 11400000, guid: 0fb2c13ad4cdbf7489d688ff080ca4a6, type: 2}
-  - {fileID: 11400000, guid: 531858ad8225a2b46b8633c47dd5eab1, type: 2}
-  - {fileID: 11400000, guid: 4bac3537c3de2494ca85db4e11a04b7d, type: 2}
-  - {fileID: 11400000, guid: 44610d03998b44a418be6c58cbddf044, type: 2}
-  - {fileID: 11400000, guid: 982ca195e8965534692f53f47330fb59, type: 2}
-  - {fileID: 11400000, guid: cffc603d5b5ba0443822dc6bb1eed168, type: 2}
-  - {fileID: 11400000, guid: 74920b4a01c215340938108b4cdd76ee, type: 2}
+  _evidenceItems: []
+  _logsInfos: []
+  _evidenceReports: []
   _conclusions: []
