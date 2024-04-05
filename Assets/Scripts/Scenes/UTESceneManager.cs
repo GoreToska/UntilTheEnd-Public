@@ -23,6 +23,11 @@ public class UTESceneManager : MonoBehaviour
 	[Inject] private StaticCharacterMovement _player;
 	private static AsyncOperation _loadingOperation;
 
+	private void Awake()
+	{
+		PixelCrushers.SaveSystem.ApplySavedGameData();
+	}
+
 	private void OnEnable()
 	{
 		InputReader.SaveGame += OnSaveGame;
@@ -60,9 +65,7 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButton(_railway);
 		_musicManager.StopAllMusic();
 
-		_loadingOperation = LoadLoadingScene();
-
-		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_railway); _loadingOperation = null; };
+		LoadScene(_railway);
 	}
 
 	public void LoadRailway(string spawnpoint)
@@ -73,11 +76,7 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButton(_railway);
 		_musicManager.StopAllMusic();
 
-		_loadingOperation = LoadLoadingScene();
-
-		_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadScene($"{_railway}@{spawnpoint}"); };
-
-		//StartCoroutine(LoadScene(_railway, spawnpoint));
+		LoadScene(_railway, spawnpoint);
 	}
 
 	public void LoadEstate()
@@ -88,9 +87,7 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButton(_estate);
 		_musicManager.StopAllMusic();
 
-		_loadingOperation = LoadLoadingScene();
-		_loadingOperation.allowSceneActivation = true;
-		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_estate); _loadingOperation = null; };
+		LoadScene(_estate);
 	}
 
 	public void LoadCourtHouse()
@@ -101,9 +98,7 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButton(_court);
 		_musicManager.StopAllMusic();
 
-		_loadingOperation = LoadLoadingScene();
-
-		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_court); _loadingOperation = null; };
+		LoadScene(_court);
 	}
 
 	public void LoadPub()
@@ -114,9 +109,7 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButton(_pub);
 		_musicManager.StopAllMusic();
 
-		_loadingOperation = LoadLoadingScene();
-
-		_loadingOperation.completed += delegate { LoadScenePixelCrushers(_pub); _loadingOperation = null; };
+		LoadScene(_pub);
 	}
 
 	public void OnSaveGame()
@@ -131,42 +124,35 @@ public class UTESceneManager : MonoBehaviour
 		_mapManager.SetCurrentButtonLong(_mapManager.SavedLocation);
 		_promptManager.DeactivatePrompts();
 
-		_loadingOperation = LoadLoadingScene();
+		PixelCrushers.SaveSystem.LoadScene(_loading);
+		_loadingOperation = PixelCrushers.SaveSystem.currentAsyncOperation;
 
 		_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadFromSlot(0); _loadingOperation = null; };
 	}
 
-	private void LoadScenePixelCrushers(string locationName, string spawnPoint = null)
-	{
-		if (spawnPoint != null)
-		{
-			PixelCrushers.SaveSystem.LoadScene($"{locationName}@{spawnPoint}");
-		}
-		else
-		{
-			PixelCrushers.SaveSystem.LoadScene(locationName);
-		}
-	}
-
 	public void LoadScene(string locationName, string spawnPoint = null)
 	{
-		if(spawnPoint != null)
-		{
-			_loadingOperation = LoadLoadingScene();
+		PixelCrushers.SaveSystem.BeforeSceneChange();
+		PixelCrushers.SaveSystem.RecordSavedGameData();
 
-			_loadingOperation.completed += delegate { LoadScenePixelCrushers(locationName, spawnPoint); _loadingOperation = null; };
+		_loadingOperation = SceneManager.LoadSceneAsync(_loading, LoadSceneMode.Additive);
+
+		if (spawnPoint != null)
+		{
+			_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadScene($"{locationName}@{spawnPoint}"); ; _loadingOperation = null; };
 		}
 		else
 		{
-			_loadingOperation = LoadLoadingScene();
-			_loadingOperation.completed += delegate { LoadScenePixelCrushers(locationName); _loadingOperation = null; };
+			_loadingOperation.completed += delegate { PixelCrushers.SaveSystem.LoadScene(locationName); _loadingOperation = null; };
 		}
 	}
 
-	private AsyncOperation LoadLoadingScene()
-	{
-		return SceneManager.LoadSceneAsync(_loading, LoadSceneMode.Single);
-	}
+	//private AsyncOperation LoadLoadingScene()
+	//{
+
+	//	return PixelCrushers.SaveSystem.currentAsyncOperation;
+	//	//return SceneManager.LoadSceneAsync(_loading, LoadSceneMode.Single);
+	//}
 
 	public static string CurrentScene { get { return SceneManager.GetActiveScene().name; } }
 

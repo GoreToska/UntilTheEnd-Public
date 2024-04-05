@@ -104,7 +104,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (formattedText == null) return;
             text = UITools.GetUIFormattedText(formattedText);
-            SetColor((formattedText.emphases.Length > 0) ? formattedText.emphases[0].color : defaultColor);
+			SetColor((formattedText.emphases.Length > 0) ? formattedText.emphases[0].color : defaultColor);
         }
 
         /// <summary>

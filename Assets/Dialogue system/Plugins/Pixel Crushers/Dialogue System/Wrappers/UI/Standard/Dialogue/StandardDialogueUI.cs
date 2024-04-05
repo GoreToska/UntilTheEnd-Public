@@ -57,6 +57,7 @@ namespace PixelCrushers.DialogueSystem.Wrappers
 			for (int i = 0; i < responses.Length; i++)
 			{
 				var response = responses[i];
+
 				// Is Show Invalid true?
 				if (response.enabled || Field.LookupBool(response.destinationEntry.fields, showInvalidFieldName))
 				{

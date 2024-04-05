@@ -286,6 +286,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &200102454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200102447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bba65d9207a8049b448b6c05eea7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_key: FedorEstate
+  m_appendSaverTypeToKey: 0
+  m_saveAcrossSceneChanges: 1
+  m_restoreStateOnStart: 1
 --- !u!1001 &201344020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21117,10 +21133,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5762969071196783051, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6016030647247260574, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -21171,6 +21183,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7306800422860282838, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306800422979020372, guid: 81118ff5439503a419e154872e4ad178, type: 3}
+      propertyPath: dontDestroyOnLoad
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306800423106541982, guid: 81118ff5439503a419e154872e4ad178, type: 3}
@@ -21503,10 +21519,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7893468584422849903, guid: 81118ff5439503a419e154872e4ad178, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7893468584422849903, guid: 81118ff5439503a419e154872e4ad178, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8431156486401596312, guid: 81118ff5439503a419e154872e4ad178, type: 3}

@@ -4,6 +4,7 @@ using DG.Tweening;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class UIAnimations : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class UIAnimations : MonoBehaviour
     //private Tween _tween;
 
     private void Awake()
-    {
+	{
 		DialogueFadeOut();
 	}
 
@@ -150,7 +151,7 @@ public class UIAnimations : MonoBehaviour
 
     private void FadeDialogue(float value)
     {
-        if (value == 1)
+		if (value == 1)
         {
             _dialogueCanvas.enabled = true;
             _dialogueCanvas.GetComponent<CanvasGroup>().alpha = 1f;
